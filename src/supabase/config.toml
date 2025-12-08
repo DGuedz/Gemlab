@@ -1,0 +1,15 @@
+# GemLab Platform - Supabase Configuration
+# Application is 100% frontend-only using Supabase Auth natively
+
+[project]
+name = "gemlab-platform"
+
+[functions]
+# Edge functions are enabled for deployment (minimal placeholders)
+# These functions deploy successfully but are NOT used by the application
+enabled = true
+
+[functions.make-server]
+# Allow deployment of minimal placeholder functions
+enabled = true
+verify_jwt = false

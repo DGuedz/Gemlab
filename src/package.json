@@ -1,0 +1,91 @@
+{
+  "name": "gemlab-protocol",
+  "version": "1.1.0",
+  "description": "Protocolo de Confiança para Mineração 4.0 - Rastreabilidade, Certificação e Governança Fiscal de Esmeraldas",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "type-check": "tsc --noEmit",
+    "format": "prettier --write \"**/*.{ts,tsx,json,md}\""
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.2",
+    "framer-motion": "^11.11.17",
+    "lucide-react": "^0.462.0",
+    "recharts": "^2.13.3",
+    "react-hook-form": "^7.55.0",
+    "zod": "^3.23.8",
+    "@hookform/resolvers": "^3.9.1",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.5.5",
+    "class-variance-authority": "^0.7.1",
+    "sonner": "^1.7.1",
+    "qrcode.react": "^4.1.0",
+    "date-fns": "^4.1.0",
+    "@radix-ui/react-avatar": "^1.1.2",
+    "@radix-ui/react-dialog": "^1.1.2",
+    "@radix-ui/react-dropdown-menu": "^2.1.2",
+    "@radix-ui/react-label": "^2.1.1",
+    "@radix-ui/react-popover": "^1.1.2",
+    "@radix-ui/react-select": "^2.1.2",
+    "@radix-ui/react-separator": "^1.1.1",
+    "@radix-ui/react-slot": "^1.1.1",
+    "@radix-ui/react-switch": "^1.1.1",
+    "@radix-ui/react-tabs": "^1.1.1",
+    "@radix-ui/react-toast": "^1.2.2",
+    "@radix-ui/react-tooltip": "^1.1.5",
+    "@supabase/supabase-js": "^2.46.2",
+    "ethers": "^6.13.4",
+    "@ethereum-attestation-service/eas-sdk": "^2.8.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@typescript-eslint/eslint-plugin": "^8.15.0",
+    "@typescript-eslint/parser": "^8.15.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.3",
+    "eslint": "^9.15.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.14",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^4.0.0",
+    "autoprefixer": "^10.4.20",
+    "prettier": "^3.4.2",
+    "prettier-plugin-tailwindcss": "^0.6.9"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gemlab-protocol/gemlab.git"
+  },
+  "keywords": [
+    "blockchain",
+    "ethereum",
+    "eas",
+    "attestation",
+    "gemology",
+    "emerald",
+    "traceability",
+    "compliance",
+    "mining",
+    "sustainability",
+    "esg"
+  ],
+  "author": "GEMLAB Team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gemlab-protocol/gemlab/issues"
+  },
+  "homepage": "https://gemlab.com.br"
+}
