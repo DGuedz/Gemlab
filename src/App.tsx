@@ -1,4 +1,4 @@
-import { MainApp } from "./components/MainApp";
+import { Router } from "./components/Router";
 import { AuthProvider } from "./contexts/AuthContext";
 import { DarkModeProvider } from "./contexts/DarkModeContext";
 import { AuthModal } from "./components/AuthModal";
@@ -8,7 +8,7 @@ export default function App() {
   return (
     <DarkModeProvider>
       <AuthProvider>
-        <MainApp />
+        <Router />
         <AuthModal />
         <Toaster />
       </AuthProvider>

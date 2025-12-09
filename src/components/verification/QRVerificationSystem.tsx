@@ -325,7 +325,7 @@ export function QRVerificationSystem() {
               </div>
 
               <p className="text-xs text-[#1b1b1b]/60">
-                ℹ️ A verificação consulta o blockchain Ethereum e valida a atestação EAS em tempo real
+                INFO: A verificação consulta o blockchain Ethereum e valida a atestação EAS em tempo real
               </p>
             </CardContent>
           </Card>

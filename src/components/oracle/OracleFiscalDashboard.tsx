@@ -296,7 +296,7 @@ export function OracleFiscalDashboard() {
     
     // Notificar outros atores do protocolo
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    toast.info("🔔 Notificação enviada para GEMLAB Tech", {
+    toast.info("Notificação enviada para GEMLAB Tech", {
       description: "Aguardando emissão de Prova Científica",
       duration: 4000,
     });
@@ -347,7 +347,7 @@ export function OracleFiscalDashboard() {
                 <div className="flex items-center gap-2">
                   <Activity className="h-4 w-4 text-green-400" />
                   <span className="font-['Inter'] text-sm font-semibold text-green-400">
-                    🟢 Operacional e Integrado ao Contrato EAS
+                    Operacional e Integrado ao Contrato EAS
                   </span>
                 </div>
               </div>

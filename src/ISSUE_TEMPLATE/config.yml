@@ -1,0 +1,17 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 Discussões Gerais
+    url: https://github.com/DGuedz/Gemlab/discussions
+    about: Para perguntas, ideias e discussões gerais sobre o projeto
+  - name: 📚 Documentação
+    url: https://github.com/DGuedz/Gemlab#readme
+    about: Consulte nossa documentação completa antes de abrir uma issue
+  - name: 🔒 Vulnerabilidade de Segurança Crítica
+    url: mailto:security@gemlab.tech
+    about: Reporte vulnerabilidades críticas diretamente por email (confidencial)
+  - name: 💼 Contato Comercial/Parcerias
+    url: mailto:contato@gemlab.tech
+    about: Para oportunidades de parceria e questões comerciais
+  - name: 🎓 CENTELHA/Edital
+    url: mailto:edital@gemlab.tech
+    about: Questões relacionadas ao edital CENTELHA e projeto acadêmico

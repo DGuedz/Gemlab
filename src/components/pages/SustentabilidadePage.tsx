@@ -107,7 +107,7 @@ export function SustentabilidadePage({
     challenges: [
       {
         title: "Antes do GemLab",
-        icon: "⚠️",
+        icon: "WARNING",
         points: [
           "Garimpeiros informais sem direitos trabalhistas",
           "Exploração por atravessadores (markup de 300%+)",
@@ -117,7 +117,7 @@ export function SustentabilidadePage({
       },
       {
         title: "Depois do GemLab",
-        icon: "✅",
+        icon: "SUCCESS",
         points: [
           "340+ garimpeiros formalizados via COOPESMERALDA",
           "Acesso direto a mercado com certificação gemológica",

@@ -132,7 +132,7 @@ export function EASVerificationBadge({ attestations, compact = false, loading = 
               title={`${getAttestationLabel(attestation.type)} - ${attestation.status}`}
             >
               <Icon className="h-3 w-3 mr-1" />
-              {attestation.status === "active" ? "✓" : "⚠"}
+              {attestation.status === "active" ? "Verified" : "Warning"}
             </Badge>
           );
         })}
@@ -158,7 +158,7 @@ export function EASVerificationBadge({ attestations, compact = false, loading = 
           </p>
         </div>
         <Badge className={allActive ? "bg-green-600 text-white" : "bg-yellow-600 text-white"}>
-          {allActive ? "✓ Verificado" : "⚠ Atenção"}
+          {allActive ? "Verificado" : "Atenção"}
         </Badge>
       </div>
 
