@@ -362,7 +362,7 @@ export function QRVerificationSystem() {
                         ? "bg-[#006b4f] text-white"
                         : "bg-[#dc2626] text-white"
                     }>
-                      {verificationResult.status === "verified" ? "✓ VERIFICADO" : "✗ NÃO VERIFICADO"}
+                      {verificationResult.status === "verified" ? "VERIFICADO" : "NÃO VERIFICADO"}
                     </Badge>
                   </div>
                   {verificationResult.status === "verified" ? (

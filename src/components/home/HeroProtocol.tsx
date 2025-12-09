@@ -138,7 +138,7 @@ export function HeroProtocol() {
                 <div className="flex justify-between items-center">
                   <span className="font-['Inter'] text-sm text-[var(--gray-600)]">Status Fiscal</span>
                   <Badge className="bg-green-100 text-green-700 border-green-200">
-                    ✓ Oracle Validado
+                    Oracle Validado
                   </Badge>
                 </div>
               </div>
@@ -150,13 +150,13 @@ export function HeroProtocol() {
                 </div>
                 <div className="flex gap-2">
                   <Badge className="bg-[var(--emerald-green)]/10 text-[var(--emerald-green)] border-[var(--emerald-green)]/20 text-xs">
-                    ✓ Origem
+                    Origem
                   </Badge>
                   <Badge className="bg-purple-100 text-purple-700 border-purple-200 text-xs">
-                    ✓ Ciência
+                    Ciência
                   </Badge>
                   <Badge className="bg-amber-100 text-amber-700 border-amber-200 text-xs">
-                    ✓ Custódia
+                    Custódia
                   </Badge>
                 </div>
               </div>

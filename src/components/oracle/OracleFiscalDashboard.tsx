@@ -195,7 +195,7 @@ export function OracleFiscalDashboard() {
       `[ENCODER] invoiceHash: ${invoiceHashFormatted} (bytes32)`,
       `[ENCODER] extractionDate: ${Math.floor(extractionTimestamp)} (uint48)`,
       `[ENCODER] mineLocationID: "${formData.mineLocationID}" (string)`,
-      "[ENCODER] ✓ Dados codificados com sucesso",
+      "[ENCODER] Dados codificados com sucesso",
     ]);
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
@@ -204,7 +204,7 @@ export function OracleFiscalDashboard() {
     setProcessLogs((prev) => [
       ...prev,
       "[SIGNER] Solicitando assinatura da carteira da Prefeitura...",
-      "[SIGNER] ✓ Assinatura confirmada",
+      "[SIGNER] Assinatura confirmada",
       "[TX] Transmitindo transação para a blockchain...",
       "[TX] Aguardando confirmação da rede (Sepolia Testnet)...",
     ]);
@@ -217,7 +217,7 @@ export function OracleFiscalDashboard() {
     
     setProcessLogs((prev) => [
       ...prev,
-      `[TX] ✓ Transação confirmada!`,
+      `[TX] Transação confirmada!`,
       `[TX] Gas Used: ${gasUsed.toLocaleString("pt-BR")} units`,
       `[TX] Block Number: ${blockNumber}`,
     ]);
@@ -262,7 +262,7 @@ export function OracleFiscalDashboard() {
     await new Promise((resolve) => setTimeout(resolve, 500));
     setProcessLogs((prev) => [
       ...prev,
-      "[SYSTEM] ✓ Novo atestado adicionado à tabela",
+      "[SYSTEM] Novo atestado adicionado à tabela",
       "[SYSTEM] Atualizando Métricas Fiscais...",
     ]);
     
@@ -280,9 +280,9 @@ export function OracleFiscalDashboard() {
     await new Promise((resolve) => setTimeout(resolve, 500));
     setProcessLogs((prev) => [
       ...prev,
-      `[SYSTEM] ✓ Arrecadação atualizada: +R$ ${cfemImpact.toLocaleString("pt-BR")}`,
-      `[SYSTEM] ✓ Fundo 2050 atualizado: +R$ ${fundoImpact.toLocaleString("pt-BR")}`,
-      `[SYSTEM] ✓ Ativos Validados: +1`,
+      `[SYSTEM] Arrecadação atualizada: +R$ ${cfemImpact.toLocaleString("pt-BR")}`,
+      `[SYSTEM] Fundo 2050 atualizado: +R$ ${fundoImpact.toLocaleString("pt-BR")}`,
+      `[SYSTEM] Ativos Validados: +1`,
       "[SYSTEM] Sincronização completa!",
     ]);
 
