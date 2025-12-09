@@ -222,7 +222,7 @@ export function GovernancaFiscalPage({
                   <ul className="space-y-3">
                     {problemSolutionData.problem.points.map((point, index) => (
                       <li key={index} className="flex items-start gap-2">
-                        <span className="text-red-600 dark:text-red-400 mt-1">✗</span>
+                        <AlertTriangle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 flex-shrink-0" />
                         <span className="text-gray-700 dark:text-gray-300">{point}</span>
                       </li>
                     ))}
