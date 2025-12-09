@@ -9,6 +9,8 @@
 
 > **Enterprise-grade blockchain protocol for emerald traceability, scientific certification, and fiscal compliance.**
 
+Acesse aqui o modelo prototipado: https://undo-walnut-04123706.figma.site
+
 ## Visão Geral do Projeto
 
 O **Protocolo GEMLAB** estabelece o primeiro **Protocolo Nativo de Conformidade Mineral** do Brasil. Nossa missão é transformar esmeraldas brutas de Campos Verdes (GO) em **Ativos do Mundo Real (RWA)** totalmente auditáveis, líquidos e compatíveis com a regulamentação brasileira, incluindo a **Instrução Normativa RFB nº 2.291/2025 (DeCripto/CARF)**.
