@@ -1,4 +1,4 @@
-# 💎 Protocolo GEMLAB: Rastreabilidade Mineral e Imunidade Política
+# Protocolo GEMLAB: Rastreabilidade Mineral e Imunidade Política
 
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Status](https://img.shields.io/badge/status-Pilot%20Launch-yellow)
@@ -18,11 +18,11 @@ A arquitetura centraliza a **mitigação absoluta de riscos** (físicos, geológ
 *   **Precisão Científica:** Uso de ciência de ponta para autenticar a gema.
 *   **Conformidade Fiscal:** Reporte de impostos automatizado e em conformidade com o padrão global CARF/OCDE.
 
-## 🏗️ Arquitetura de Tripla Blindagem (Triple Shielding)
+## Arquitetura de Tripla Blindagem (Triple Shielding)
 
 A blindagem do RWA Mineral ocorre em três camadas interligadas, utilizando a rede Ethereum (EVM) e o **Ethereum Attestation Service (EAS)**. O ativo digital é representado como um **Token ERC-721 (NFT)**.
 
-### 🔒 Camada 1: Blindagem Física e Fiscal
+### Camada 1: Blindagem Física e Fiscal
 **(Ator: COOPESMERALDA - Oráculo Operacional e Custodiante)**
 
 A Cooperativa Mista dos Garimpeiros de Esmeralda (**COOPESMERALDA**) atua como a âncora do mundo real, provendo a **Prova de Existência**.
@@ -31,7 +31,7 @@ A Cooperativa Mista dos Garimpeiros de Esmeralda (**COOPESMERALDA**) atua como a
 *   **Origem:** Emite a **Nota Fiscal Eletrônica (NFe)** de origem e registra o *hash* dessa NFe, criando o **Atestado de Origem (EAS #1)** na *blockchain*.
 *   **Risco Mitigado:** Fraude de volume e origem ilícita.
 
-### 🔬 Camada 2: Blindagem Científica e Política
+### Camada 2: Blindagem Científica e Política
 **(Ator: GEMLAB Tech - Regente de Contratos e Auditor Digital)**
 
 O GEMLAB é o **Oráculo Científico e Auditor Fiscal Digital**, responsável por criar a Prova Científica e a Prova Tributária.
@@ -40,26 +40,26 @@ O GEMLAB é o **Oráculo Científico e Auditor Fiscal Digital**, responsável po
 *   **Prova Tributária (EAS #5 - Imunidade Política):** O GEMLAB atesta que o pagamento do **CFEM e do ISS** foi calculado e protocolado (ancorando o *hash* do DARF/GUIA).
 *   **Regra Inabalável:** O Smart Contract (ERC-721) possui uma **regra IMUTÁVEL** que o torna **inválido e intransferível** se os três atestados (**EAS #1, #2 e #5**) não estiverem ativos. A arrecadação não pode ser desligada politicamente.
 
-### 💳 Camada 3: Blindagem Financeira e Regulatória
+### Camada 3: Blindagem Financeira e Regulatória
 **(Ator: VASP Parceiro - Gatekeeper de Liquidez)**
 
-O **VASP Parceiro** (como a Liqi) assume a custódia fiduciária, o KYC/AML e a liquidação financeira, blindando o ecossistema contra regulamentações bancárias.
+O **VASP Parceiro** Assume a custódia fiduciária, o KYC/AML e a liquidação financeira, blindando o ecossistema contra regulamentações bancárias.
 
 *   **Gatekeeper de Transferência:** O Smart Contract restringe a compra do NFT a carteiras com **Atestado *on-chain* de KYC/AML validado** (padrões como ERC-3643/1400).
 *   **Compliance DeCripto/CARF:** Para transações acima de **R$ 35.000**, o sistema integra **Zero-Knowledge Proofs (ZKPs)**. Um *ZK Proof of Transaction* é gerado para certificar o reporte obrigatório à Receita Federal (**DeCripto**) sem expor a margem de lucro e a identidade do vendedor (privacidade estratégica).
 
-## 🚀 Impacto Social e Governança Regenerativa
+##  Impacto Social e Governança Regenerativa
 
 O protocolo garante que parte da receita retorne para o desenvolvimento local, criando o **Lastro Social** do RWA. O impacto é medido e registrado via EAS:
 *   **Projeto Mãos de Pedra (R$ 100.000,00):** Focado na capacitação de jovens e adultos em lapidação, design e formação de **Operadores Raman**.
 *   **Projeto Mineração nas Escolas (R$ 140.000,00):** Promove a **transformação cultural** e a educação em Geociências e Mineração Sustentável, mitigando o risco social (ESG) e garantindo um *pipeline* de futuros técnicos.
 *   **Métrica de Sucesso:** O GEMLAB utiliza o EAS para criar um **Atestado de Impacto Educacional (EAS Schema)**, registrando o número de alunos alcançados e kits entregues anualmente.
 
-## 🛠️ Ferramentas para Desenvolvedores (EAS SDK)
+## Ferramentas para Desenvolvedores (EAS SDK)
 
 O Ethereum Attestation Service (EAS) é a infraestrutura de confiança fundamental para o projeto. Os desenvolvedores podem interagir com os atestados usando as seguintes ferramentas:
 
-### 📦 Instalação do SDK (TypeScript/JavaScript)
+### Instalação do SDK (TypeScript/JavaScript)
 
 Para integrar o EAS em seu projeto, use o comando abaixo para instalar a biblioteca:
 
@@ -68,7 +68,7 @@ yarn add @ethereum-attestation-service/eas-sdk
 # ou npm install @ethereum-attestation-service/eas-sdk
 ```
 
-### 💻 Contratos e Endpoints
+### Contratos e Endpoints
 
 A EAS funciona com dois contratos principais: `SchemaRegistry.sol` (define a estrutura de dados) e `EAS.sol` (cria os atestados).
 
@@ -87,7 +87,7 @@ O SDK é usado para:
 
 ---
 
-## 📚 Documentação Adicional
+## Documentação Adicional
 
 Confira as variações especializadas deste README:
 
@@ -97,26 +97,26 @@ Confira as variações especializadas deste README:
 
 ---
 
-## 🌐 Conclusão
+## Conclusão
 
 O **Protocolo GEMLAB** é mais do que um ativo tokenizado; é uma infraestrutura de governança que utiliza o código para automatizar a lei fiscal e a ciência mineral, tornando Campos Verdes um **Modelo Global de Mineração Regenerativa 2050**.
 
 ---
 
-## 📝 Licença
+## Licença
 
 Este projeto está licenciado sob a **MIT License** - veja o arquivo [LICENSE.md](LICENSE.md) para detalhes.
 
 O EAS (Ethereum Attestation Service) é um **protocolo de bem público** e de **código aberto** que visa catalisar a inovação.
 
-## 📞 Contato
+## Contato
 
 Para mais informações sobre o projeto ou a arquitetura, entre em contato com o time do GEMLAB.
 
 **GEMLAB Tech** - Campos Verdes, Goiás, Brasil  
 Website: [Em desenvolvimento]  
-Email: contato@gemlab.tech
+Email: dguedz07@gmail.com
 
 ---
 
-**Built with ❤️ for transparent and sustainable mining**
+**Built with for transparent and sustainable mining**
