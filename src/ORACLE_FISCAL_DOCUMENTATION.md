@@ -309,7 +309,7 @@ const transaction = await eas.attest({
 // 5. Aguardar Confirmação
 const newAttestationUID = await transaction.wait();
 
-console.log(" ATESTADO DE ORIGEM EMITIDO COM SUCESSO");
+console.log("✅ ATESTADO DE ORIGEM EMITIDO COM SUCESSO");
 console.log("Novo UID:", newAttestationUID);
 console.log("Attester:", await signer.getAddress());
 ```
@@ -388,7 +388,7 @@ RPC_URL=https://sepolia.infura.io/v3/YOUR_PROJECT_ID
                     ▼
 ┌─────────────────────────────────────────────────────────────┐
 │ 8. PASSO 4: Confirmação                                     │
-│     ATESTADO DE ORIGEM EMITIDO COM SUCESSO                │
+│    ✅ ATESTADO DE ORIGEM EMITIDO COM SUCESSO                │
 │    Novo UID: 0x7f8c4e2a...d3b9106f                          │
 │    Attester: 0xGovt...AE4C170eD35f4Cf77797                  │
 │    Schema: ORIGIN_SCHEMA_UID                                │
@@ -874,13 +874,13 @@ const web3Provider = new ethers.providers.Web3Provider(provider);
 ## 📝 Changelog
 
 ### Versão 1.0.0 (Novembro 2024)
--  Implementação inicial do Dashboard Oracle Fiscal
--  Integração completa com EAS SDK
--  Sistema de validação de formulários
--  Modal de processamento com 4 passos
--  Terminal de logs em tempo real
--  Toast notifications
--  Documentação técnica completa
+- ✅ Implementação inicial do Dashboard Oracle Fiscal
+- ✅ Integração completa com EAS SDK
+- ✅ Sistema de validação de formulários
+- ✅ Modal de processamento com 4 passos
+- ✅ Terminal de logs em tempo real
+- ✅ Toast notifications
+- ✅ Documentação técnica completa
 
 ---
 

@@ -20,6 +20,7 @@ interface LabPortalProps {
 
 export default function LabPortal({ onNavigate }: LabPortalProps = {}) {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const profiles = [
     {
@@ -117,7 +118,7 @@ export default function LabPortal({ onNavigate }: LabPortalProps = {}) {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white">
-      {/* Header */}
+      {/* Hero Section */}
       <div className="relative overflow-hidden bg-gradient-to-r from-[#006b4f] to-[#014733] py-20">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(202,163,75,0.3),transparent)]" />
@@ -182,26 +183,26 @@ export default function LabPortal({ onNavigate }: LabPortalProps = {}) {
       </div>
 
       {/* Profile Selection */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        <div className="text-center mb-12">
-          <h2 className="font-['Montserrat'] text-3xl font-bold text-[#1b1b1b] mb-4">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 lg:pb-20">
+        <div className="text-center mb-8 sm:mb-10 lg:mb-12">
+          <h2 className="font-['Montserrat'] text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1b1b1b] mb-3 sm:mb-4 px-4">
             Selecione Seu Perfil
           </h2>
-          <p className="font-['Inter'] text-gray-600">
+          <p className="font-['Inter'] text-sm sm:text-base text-gray-600 px-4">
             Acesse as ferramentas específicas para sua atuação no ecossistema
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 max-w-6xl mx-auto">
           {profiles.map((profile) => {
             const Icon = profile.icon;
             return (
               <Card
                 key={profile.id}
-                className={`relative overflow-hidden border-2 transition-all duration-300 cursor-pointer group ${
+                className={`relative overflow-hidden border-2 transition-all duration-300 cursor-pointer group touch-manipulation ${
                   hoveredCard === profile.id
-                    ? "border-opacity-100 shadow-2xl scale-[1.02]"
-                    : "border-[#e5e7eb] hover:border-opacity-50 hover:shadow-xl"
+                    ? "border-opacity-100 shadow-2xl scale-[1.01] sm:scale-[1.02]"
+                    : "border-[#e5e7eb] hover:border-opacity-50 hover:shadow-xl active:scale-[0.98]"
                 }`}
                 style={{
                   borderColor:
@@ -213,25 +214,25 @@ export default function LabPortal({ onNavigate }: LabPortalProps = {}) {
               >
                 {/* Gradient Background */}
                 <div
-                  className={`absolute inset-0 bg-gradient-to-br ${profile.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}
+                  className={`absolute inset-0 bg-gradient-to-br ${profile.gradient} opacity-0 group-hover:opacity-5 group-active:opacity-10 transition-opacity duration-300`}
                 />
 
-                <div className="relative p-8">
+                <div className="relative p-4 sm:p-6 lg:p-8">
                   {/* Icon & Title */}
-                  <div className="flex items-start justify-between mb-6">
-                    <div className="flex items-start gap-4">
+                  <div className="flex items-start justify-between mb-4 sm:mb-6">
+                    <div className="flex items-start gap-3 sm:gap-4 flex-1">
                       <div
-                        className="w-16 h-16 rounded-2xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
+                        className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110 group-active:scale-105"
                         style={{ backgroundColor: profile.color }}
                       >
-                        <Icon className="h-8 w-8 text-white" />
+                        <Icon className="h-6 w-6 sm:h-7 sm:w-7 lg:h-8 lg:w-8 text-white" />
                       </div>
-                      <div>
-                        <h3 className="font-['Montserrat'] text-2xl font-bold text-[#1b1b1b] mb-1">
+                      <div className="min-w-0 flex-1">
+                        <h3 className="font-['Montserrat'] text-lg sm:text-xl lg:text-2xl font-bold text-[#1b1b1b] mb-1 break-words">
                           {profile.title}
                         </h3>
                         <p
-                          className="font-['Inter'] text-sm font-semibold"
+                          className="font-['Inter'] text-xs sm:text-sm font-semibold break-words"
                           style={{ color: profile.color }}
                         >
                           {profile.subtitle}
@@ -239,24 +240,24 @@ export default function LabPortal({ onNavigate }: LabPortalProps = {}) {
                       </div>
                     </div>
                     <ArrowRight
-                      className={`h-6 w-6 transition-all duration-300 ${
+                      className={`h-5 w-5 sm:h-6 sm:w-6 flex-shrink-0 transition-all duration-300 ml-2 ${
                         hoveredCard === profile.id
                           ? "translate-x-1 opacity-100"
-                          : "opacity-0"
+                          : "opacity-0 sm:opacity-0"
                       }`}
                       style={{ color: profile.color }}
                     />
                   </div>
 
                   {/* Description */}
-                  <p className="font-['Inter'] text-gray-700 leading-relaxed mb-6">
+                  <p className="font-['Inter'] text-sm sm:text-base text-gray-700 leading-relaxed mb-4 sm:mb-6">
                     {profile.description}
                   </p>
 
                   {/* Features */}
-                  <div className="space-y-2 mb-6">
+                  <div className="space-y-2 mb-4 sm:mb-6">
                     {profile.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-center gap-2">
+                      <div key={idx} className="flex items-center gap-2 min-h-[32px]">
                         <div
                           className="w-1.5 h-1.5 rounded-full"
                           style={{ backgroundColor: profile.color }}

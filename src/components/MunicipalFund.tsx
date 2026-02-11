@@ -96,29 +96,102 @@ export function MunicipalFund({ onNavigateToOracleDashboard, onNavigateToGoverna
 
         {/* Key Metrics */}
         <div className="grid md:grid-cols-4 gap-6 mb-16">
-          {metrics.map((metric, index) => (
-            <Card
-              key={index}
-              className="p-6 text-center border-2 border-[#e5e7eb] hover:border-[#006b4f] transition-all duration-300"
-            >
-              <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4"
-                style={{ backgroundColor: `${metric.color}15` }}
+          {metrics.map((metric, index) => {
+            // Calcular progresso baseado no valor para animação
+            const progressValue = metric.value.includes("R$") 
+              ? 85 // Para valores monetários
+              : metric.value.includes("%")
+              ? parseInt(metric.value)
+              : 75; // Valor padrão
+            
+            return (
+              <Card
+                key={index}
+                className="p-6 text-center border-2 border-[#e5e7eb] hover:border-[#006b4f] transition-all duration-300 hover:shadow-xl group"
               >
-                <metric.icon className="h-6 w-6" style={{ color: metric.color }} />
-              </div>
-              <div
-                className="font-['Inter'] text-2xl font-bold mb-1"
-                style={{ color: metric.color }}
-              >
-                {metric.value}
-              </div>
-              <div className="font-['Inter'] text-sm text-gray-600">
-                {metric.label}
-              </div>
-            </Card>
-          ))}
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4 transition-transform duration-300 group-hover:scale-110"
+                  style={{ backgroundColor: `${metric.color}15` }}
+                >
+                  <metric.icon className="h-6 w-6" style={{ color: metric.color }} />
+                </div>
+                
+                {/* Progress Ring SVG */}
+                <div className="relative w-20 h-20 mx-auto mb-4">
+                  <svg className="w-20 h-20 transform -rotate-90" viewBox="0 0 80 80">
+                    <defs>
+                      <linearGradient
+                        id={`metric-gradient-${index}`}
+                        x1="0%"
+                        y1="0%"
+                        x2="100%"
+                        y2="100%"
+                      >
+                        <stop offset="0%" style={{ stopColor: metric.color, stopOpacity: 1 }} />
+                        <stop offset="100%" style={{ stopColor: metric.color, stopOpacity: 0.5 }} />
+                      </linearGradient>
+                    </defs>
+                    {/* Background Circle */}
+                    <circle
+                      cx="40"
+                      cy="40"
+                      r="32"
+                      fill="none"
+                      stroke="#e5e7eb"
+                      strokeWidth="6"
+                    />
+                    {/* Progress Circle */}
+                    <circle
+                      cx="40"
+                      cy="40"
+                      r="32"
+                      fill="none"
+                      stroke={`url(#metric-gradient-${index})`}
+                      strokeWidth="6"
+                      strokeLinecap="round"
+                      strokeDasharray={`${2 * Math.PI * 32}`}
+                      strokeDashoffset={`${2 * Math.PI * 32 * (1 - progressValue / 100)}`}
+                      className="transition-all duration-1500 ease-out"
+                      style={{
+                        animation: `drawCircle 1.5s ease-out forwards`,
+                        animationDelay: `${index * 0.15}s`,
+                      }}
+                    />
+                  </svg>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span 
+                      className="font-['Inter'] font-bold"
+                      style={{ color: metric.color, fontSize: '0.7rem' }}
+                    >
+                      {progressValue}%
+                    </span>
+                  </div>
+                </div>
+
+                <div
+                  className="font-['Inter'] text-2xl font-bold mb-1"
+                  style={{ color: metric.color }}
+                >
+                  {metric.value}
+                </div>
+                <div className="font-['Inter'] text-sm text-gray-600">
+                  {metric.label}
+                </div>
+              </Card>
+            );
+          })}
         </div>
+
+        <style>{`
+          @keyframes drawCircle {
+            from {
+              stroke-dashoffset: ${2 * Math.PI * 32};
+            }
+            to {
+              stroke-dashoffset: var(--final-offset);
+            }
+          }
+        `}</style>
 
         {/* Fund Allocation */}
         <div className="max-w-4xl mx-auto mb-16">
@@ -127,10 +200,13 @@ export function MunicipalFund({ onNavigateToOracleDashboard, onNavigateToGoverna
           </h3>
           <div className="space-y-4">
             {fundAllocation.map((item, index) => (
-              <Card key={index} className="p-6 border-2 border-[#e5e7eb]">
+              <Card 
+                key={index} 
+                className="p-6 border-2 border-[#e5e7eb] hover:border-[#006b4f] transition-all duration-300 group"
+              >
                 <div className="flex items-center gap-6">
                   <div
-                    className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0"
+                    className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
                     style={{ backgroundColor: `${item.color}15` }}
                   >
                     <item.icon className="h-8 w-8" style={{ color: item.color }} />
@@ -150,15 +226,45 @@ export function MunicipalFund({ onNavigateToOracleDashboard, onNavigateToGoverna
                     <p className="font-['Inter'] text-sm text-gray-600 mb-3">
                       {item.description}
                     </p>
-                    {/* Progress Bar */}
-                    <div className="w-full bg-gray-200 rounded-full h-2">
-                      <div
-                        className="h-2 rounded-full transition-all duration-500"
-                        style={{
-                          width: `${item.percentage}%`,
-                          backgroundColor: item.color,
-                        }}
-                      />
+                    {/* Enhanced Progress Bar with SVG Gradient */}
+                    <div className="relative w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                      <svg
+                        className="absolute inset-0 w-full h-full"
+                        preserveAspectRatio="none"
+                      >
+                        <defs>
+                          <linearGradient
+                            id={`allocation-gradient-${index}`}
+                            x1="0%"
+                            y1="0%"
+                            x2="100%"
+                            y2="0%"
+                          >
+                            <stop
+                              offset="0%"
+                              style={{ stopColor: item.color, stopOpacity: 1 }}
+                            />
+                            <stop
+                              offset="100%"
+                              style={{ stopColor: item.color, stopOpacity: 0.6 }}
+                            />
+                          </linearGradient>
+                        </defs>
+                        <rect
+                          x="0"
+                          y="0"
+                          width="100%"
+                          height="100%"
+                          fill={`url(#allocation-gradient-${index})`}
+                          className="transition-all duration-1000 ease-out"
+                          style={{
+                            transform: `scaleX(${item.percentage / 100})`,
+                            transformOrigin: "left",
+                            animation: `fillAllocation 1.2s ease-out forwards`,
+                            animationDelay: `${index * 0.2}s`,
+                          }}
+                        />
+                      </svg>
                     </div>
                   </div>
                 </div>
@@ -166,6 +272,17 @@ export function MunicipalFund({ onNavigateToOracleDashboard, onNavigateToGoverna
             ))}
           </div>
         </div>
+
+        <style>{`
+          @keyframes fillAllocation {
+            from {
+              transform: scaleX(0);
+            }
+            to {
+              transform: scaleX(1);
+            }
+          }
+        `}</style>
 
         {/* Impact Section */}
         <div className="mt-16 text-center max-w-3xl mx-auto">

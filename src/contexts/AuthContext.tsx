@@ -27,6 +27,8 @@ interface AuthContextType {
   signInWithEmail: (email: string, password: string) => Promise<void>;
   signInWithWallet: (address: string, signature: string) => Promise<void>;
   signOut: () => Promise<void>;
+  onAuthSuccess?: () => void;
+  setOnAuthSuccess: (callback: (() => void) | undefined) => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -54,6 +56,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [onAuthSuccess, setOnAuthSuccess] = useState<(() => void) | undefined>(undefined);
 
   useEffect(() => {
     // Check for existing session
@@ -75,16 +78,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   async function loadUserProfile(accessToken: string) {
     try {
-      // Mock user profile when edge function is not available
-      const { data: { user: authUser } } = await supabase.auth.getUser();
-      
-      if (authUser) {
-        setUser({
-          id: authUser.id,
-          email: authUser.email,
-          name: authUser.user_metadata?.name || authUser.email?.split('@')[0],
-          createdAt: authUser.created_at,
-        });
+      const response = await fetch(
+        `https://${projectId}.supabase.co/functions/v1/make-server-6272b4ab/auth/profile`,
+        {
+          headers: {
+            'Authorization': `Bearer ${accessToken}`,
+          },
+        }
+      );
+
+      if (response.ok) {
+        const userData = await response.json();
+        setUser(userData);
       }
     } catch (error) {
       console.error('Error loading user profile:', error);
@@ -95,25 +100,48 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     try {
       setIsLoading(true);
 
-      // Sign up directly with Supabase Auth (no edge function needed)
-      const { data: authData, error: signUpError } = await supabase.auth.signUp({
+      // Generate ephemeral wallet for new user
+      const ephemeralWallet = generateEphemeralWallet();
+
+      // Create user via server endpoint
+      const response = await fetch(
+        `https://${projectId}.supabase.co/functions/v1/make-server-6272b4ab/auth/signup`,
+        {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${publicAnonKey}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email,
+            password,
+            name,
+            ephemeralWallet,
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Erro ao criar conta');
+      }
+
+      const data = await response.json();
+
+      // Sign in automatically
+      const { data: authData, error: signInError } = await supabase.auth.signInWithPassword({
         email,
         password,
-        options: {
-          data: {
-            name,
-          },
-        },
       });
 
-      if (signUpError) throw signUpError;
+      if (signInError) throw signInError;
 
-      // Sign in automatically if email confirmation is disabled
       if (authData.session?.access_token) {
         await loadUserProfile(authData.session.access_token);
       }
 
       setIsAuthModalOpen(false);
+      if (onAuthSuccess) onAuthSuccess();
     } catch (error) {
       console.error('Error signing up:', error);
       throw error;
@@ -138,6 +166,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
 
       setIsAuthModalOpen(false);
+      if (onAuthSuccess) onAuthSuccess();
     } catch (error) {
       console.error('Error signing in:', error);
       throw error;
@@ -150,20 +179,30 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     try {
       setIsLoading(true);
 
-      // Mock wallet signin (edge function not available)
-      // Generate ephemeral user for wallet
-      const ephemeralWallet = generateEphemeralWallet();
-      
-      const mockUser: User = {
-        id: `wallet_${address.slice(0, 10)}`,
-        wallet: address,
-        ephemeralWallet,
-        name: `User ${address.slice(0, 6)}...${address.slice(-4)}`,
-        createdAt: new Date().toISOString(),
-      };
-      
-      setUser(mockUser);
+      const response = await fetch(
+        `https://${projectId}.supabase.co/functions/v1/make-server-6272b4ab/auth/wallet-signin`,
+        {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${publicAnonKey}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            address,
+            signature,
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Erro ao conectar wallet');
+      }
+
+      const data = await response.json();
+      setUser(data.user);
       setIsAuthModalOpen(false);
+      if (onAuthSuccess) onAuthSuccess();
     } catch (error) {
       console.error('Error signing in with wallet:', error);
       throw error;
@@ -192,6 +231,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         signInWithEmail,
         signInWithWallet,
         signOut,
+        onAuthSuccess,
+        setOnAuthSuccess,
       }}
     >
       {children}

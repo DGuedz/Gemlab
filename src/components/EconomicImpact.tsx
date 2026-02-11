@@ -7,6 +7,10 @@ import {
   Building2,
   Sparkles,
   Globe,
+  BarChart3,
+  LineChart,
+  PieChart,
+  Activity,
 } from "lucide-react";
 
 export function EconomicImpact() {
@@ -51,24 +55,32 @@ export function EconomicImpact() {
       value: "[Projeção Confidencial]",
       growth: "+156%",
       period: "Projeção 2025",
+      icon: BarChart3,
+      iconColor: "#006b4f",
     },
     {
       metric: "Arrecadação Municipal",
       value: "[Confidencial]",
       growth: "+280%",
       period: "CFEM + ISS + Royalties",
+      icon: PieChart,
+      iconColor: "#014733",
     },
     {
       metric: "Empregos Gerados",
       value: "450+",
       growth: "+85%",
       period: "Diretos e indiretos",
+      icon: Activity,
+      iconColor: "#caa34b",
     },
     {
       metric: "Esmeraldas Certificadas",
       value: "1.247",
       growth: "+320%",
       period: "Últimos 12 meses",
+      icon: LineChart,
+      iconColor: "#006b4f",
     },
   ];
 
@@ -89,34 +101,115 @@ export function EconomicImpact() {
         </div>
 
         {/* Economic Metrics Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {economicMetrics.map((item, index) => (
-            <Card
-              key={index}
-              className="p-6 border-2 border-[#e5e7eb] hover:border-[#006b4f] transition-all duration-300 hover:shadow-lg"
-            >
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <TrendingUp className="h-5 w-5 text-[#006b4f]" />
-                  <Badge className="bg-green-100 text-green-700 border-green-200">
-                    {item.growth}
-                  </Badge>
+        <div className="grid md:grid-cols-2 gap-6 mb-16">
+          {economicMetrics.map((item, index) => {
+            const IconComponent = item.icon;
+            // Extrair o número do percentual para a barra de progresso
+            const progressValue = parseInt(item.growth.replace(/[+%]/g, ""));
+            // Normalizar para escala de 0-100 (max 320% = 100%)
+            const normalizedProgress = Math.min((progressValue / 320) * 100, 100);
+            
+            return (
+              <Card
+                key={index}
+                className="p-6 border-2 border-[#e5e7eb] hover:border-[#006b4f] transition-all duration-300 hover:shadow-xl group"
+              >
+                <div className="flex items-start gap-4">
+                  {/* Icon Container */}
+                  <div
+                    className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
+                    style={{ backgroundColor: `${item.iconColor}15` }}
+                  >
+                    <IconComponent
+                      className="h-7 w-7"
+                      style={{ color: item.iconColor }}
+                    />
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start justify-between gap-2 mb-2">
+                      <h3 className="font-['Inter'] font-bold text-[#1b1b1b]">
+                        {item.metric}
+                      </h3>
+                      <Badge 
+                        className="font-semibold shrink-0"
+                        style={{ 
+                          backgroundColor: `${item.iconColor}20`,
+                          color: item.iconColor,
+                          borderColor: item.iconColor
+                        }}
+                      >
+                        {item.growth}
+                      </Badge>
+                    </div>
+
+                    <p className="font-['Inter'] text-xs text-gray-600 mb-3">
+                      {item.period}
+                    </p>
+
+                    {/* Progress Bar with SVG */}
+                    <div className="relative w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+                      <svg
+                        className="absolute inset-0 w-full h-full"
+                        preserveAspectRatio="none"
+                      >
+                        <defs>
+                          <linearGradient
+                            id={`gradient-${index}`}
+                            x1="0%"
+                            y1="0%"
+                            x2="100%"
+                            y2="0%"
+                          >
+                            <stop
+                              offset="0%"
+                              style={{ stopColor: item.iconColor, stopOpacity: 1 }}
+                            />
+                            <stop
+                              offset="100%"
+                              style={{ stopColor: item.iconColor, stopOpacity: 0.6 }}
+                            />
+                          </linearGradient>
+                        </defs>
+                        <rect
+                          x="0"
+                          y="0"
+                          width="100%"
+                          height="100%"
+                          fill={`url(#gradient-${index})`}
+                          className="transition-all duration-1000 ease-out"
+                          style={{
+                            transform: `scaleX(${normalizedProgress / 100})`,
+                            transformOrigin: "left",
+                            animation: `fillProgress 1.5s ease-out forwards`,
+                            animationDelay: `${index * 0.2}s`,
+                          }}
+                        />
+                      </svg>
+                    </div>
+
+                    {/* Value Display */}
+                    <div className="font-['Inter'] text-lg font-bold text-[#1b1b1b] mt-3">
+                      {item.value}
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <div className="font-['Inter'] text-3xl font-bold text-[#1b1b1b] mb-1">
-                    {item.value}
-                  </div>
-                  <div className="font-['Inter'] text-sm font-medium text-gray-900 mb-1">
-                    {item.metric}
-                  </div>
-                  <div className="font-['Inter'] text-xs text-gray-500">
-                    {item.period}
-                  </div>
-                </div>
-              </div>
-            </Card>
-          ))}
+              </Card>
+            );
+          })}
         </div>
+
+        <style>{`
+          @keyframes fillProgress {
+            from {
+              transform: scaleX(0);
+            }
+            to {
+              transform: scaleX(1);
+            }
+          }
+        `}</style>
 
         {/* Benefits Grid */}
         <div className="grid md:grid-cols-2 gap-6 mb-16">
@@ -181,16 +274,16 @@ export function EconomicImpact() {
                 </div>
                 <div
                   className="font-['Inter'] text-xl font-bold relative group-hover:scale-110 transition-all duration-300"
-                  style={{ 
+                  style={{
                     color: stage.color,
-                    textShadow: '0 0 0 transparent',
-                    transition: 'all 0.3s ease-in-out'
+                    textShadow: "0 0 0 transparent",
+                    transition: "all 0.3s ease-in-out",
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.textShadow = `0 0 20px ${stage.color}, 0 0 30px ${stage.color}, 0 0 40px ${stage.color}`;
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.textShadow = '0 0 0 transparent';
+                    e.currentTarget.style.textShadow = "0 0 0 transparent";
                   }}
                 >
                   {stage.value}

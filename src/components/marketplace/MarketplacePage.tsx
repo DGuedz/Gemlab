@@ -20,7 +20,7 @@ import {
   Award,
   SlidersHorizontal,
 } from "lucide-react";
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetDescription } from "../ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "../ui/sheet";
 
 interface Stone {
   id: string;
@@ -291,9 +291,6 @@ export function MarketplacePage() {
               <SheetContent>
                 <SheetHeader>
                   <SheetTitle>Filtros</SheetTitle>
-                  <SheetDescription className="sr-only">
-                    Configure os filtros para refinar sua busca por esmeraldas certificadas
-                  </SheetDescription>
                 </SheetHeader>
                 <div className="mt-6">
                   <FilterSection />

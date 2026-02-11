@@ -4,36 +4,41 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { motion } from "framer-motion";
 import emeraldImage from "figma:asset/424e84f437a2a74f98b3ea6b5e52a92e38df01a6.png";
 
-export function Hero() {
+interface HeroProps {
+  onNavigateToVerification?: () => void;
+}
+
+export function Hero({ onNavigateToVerification }: HeroProps = {}) {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-white via-[#f0fdf4] to-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-32">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Column - Content */}
-          <div className="space-y-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#006b4f]/10 rounded-full">
-              <Shield className="h-4 w-4 text-[#006b4f]" />
-              <span className="font-['Inter'] text-sm text-[#006b4f]">
+          <div className="space-y-6 sm:space-y-8">
+            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-[#006b4f]/10 rounded-full">
+              <Shield className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#006b4f]" />
+              <span className="font-['Inter'] text-xs sm:text-sm text-[#006b4f]">
                 Certificação Blockchain de Esmeraldas
               </span>
             </div>
 
-            <div className="space-y-4">
-              <h1 className="font-['Inter'] text-4xl lg:text-5xl xl:text-6xl font-bold text-[#1b1b1b] leading-tight">
+            <div className="space-y-3 sm:space-y-4">
+              <h1 className="font-['Inter'] text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-[#1b1b1b] leading-tight">
                 Rastreabilidade e Certificação Digital de{" "}
                 <span className="text-[#006b4f]">Esmeraldas</span>
               </h1>
-              <p className="font-['Inter'] text-lg text-gray-600 max-w-xl">
+              <p className="font-['Inter'] text-base sm:text-lg text-gray-600 max-w-xl">
                 Tecnologia blockchain para garantir autenticidade, origem e
                 qualidade gemológica. De Campos Verdes para o mundo.
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <Button
                 size="lg"
                 variant="outline"
-                className="bg-[#006b4f] text-white hover:bg-[#014733] gap-2"
+                className="bg-[#006b4f] text-white hover:bg-[#014733] gap-2 w-full sm:w-auto min-h-[48px]"
+                onClick={onNavigateToVerification}
               >
                 Consultar Registry
                 <ArrowRight className="h-5 w-5" />
@@ -41,35 +46,35 @@ export function Hero() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-[#006b4f] text-[#006b4f] hover:bg-[#006b4f] hover:text-white"
+                className="border-[#006b4f] text-[#006b4f] hover:bg-[#006b4f] hover:text-white w-full sm:w-auto min-h-[48px]"
               >
                 Como Funciona
               </Button>
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-[#e5e7eb]">
+            <div className="grid grid-cols-3 gap-3 sm:gap-6 pt-6 sm:pt-8 border-t border-[#e5e7eb]">
               <div>
-                <div className="font-['Inter'] text-2xl font-bold text-[#006b4f]">
+                <div className="font-['Inter'] text-xl sm:text-2xl font-bold text-[#006b4f]">
                   1,247
                 </div>
-                <div className="font-['Inter'] text-sm text-gray-600">
+                <div className="font-['Inter'] text-xs sm:text-sm text-gray-600">
                   Esmeraldas Certificadas
                 </div>
               </div>
               <div>
-                <div className="font-['Inter'] text-2xl font-bold text-[#006b4f]">
+                <div className="font-['Inter'] text-xl sm:text-2xl font-bold text-[#006b4f]">
                   23
                 </div>
-                <div className="font-['Inter'] text-sm text-gray-600">
+                <div className="font-['Inter'] text-xs sm:text-sm text-gray-600">
                   Labs Credenciados
                 </div>
               </div>
               <div>
-                <div className="font-['Inter'] text-2xl font-bold text-[#006b4f]">
+                <div className="font-['Inter'] text-xl sm:text-2xl font-bold text-[#006b4f]">
                   342
                 </div>
-                <div className="font-['Inter'] text-sm text-gray-600">
+                <div className="font-['Inter'] text-xs sm:text-sm text-gray-600">
                   Lotes Rastreados
                 </div>
               </div>
@@ -122,7 +127,79 @@ export function Hero() {
                           <animate attributeName="stop-opacity" values="0.8;0;0" dur="2s" repeatCount="indefinite" />
                         </stop>
                       </linearGradient>
+                      
+                      {/* Máscara para blur nas gemas */}
+                      <filter id="gemBlur">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="8" />
+                      </filter>
                     </defs>
+                    
+                    {/* Gemas de fundo assimétricas (camada mais profunda) */}
+                    {/* Gema grande no canto superior direito */}
+                    <image 
+                      href={emeraldImage} 
+                      x="55%" 
+                      y="5%" 
+                      width="35%" 
+                      height="35%" 
+                      opacity="0.15" 
+                      style={{filter: 'blur(8px)'}}
+                      transform="rotate(25 72 22)"
+                    >
+                      <animateTransform 
+                        attributeName="transform" 
+                        type="rotate" 
+                        from="25 72 22" 
+                        to="35 72 22" 
+                        dur="8s" 
+                        repeatCount="indefinite"
+                        additive="sum"
+                      />
+                    </image>
+                    
+                    {/* Gema média no canto inferior esquerdo */}
+                    <image 
+                      href={emeraldImage} 
+                      x="5%" 
+                      y="60%" 
+                      width="30%" 
+                      height="30%" 
+                      opacity="0.12" 
+                      style={{filter: 'blur(8px)'}}
+                      transform="rotate(-15 20 75)"
+                    >
+                      <animateTransform 
+                        attributeName="transform" 
+                        type="rotate" 
+                        from="-15 20 75" 
+                        to="-25 20 75" 
+                        dur="10s" 
+                        repeatCount="indefinite"
+                        additive="sum"
+                      />
+                    </image>
+                    
+                    {/* Gema pequena centralizada à esquerda */}
+                    <image 
+                      href={emeraldImage} 
+                      x="10%" 
+                      y="30%" 
+                      width="20%" 
+                      height="20%" 
+                      opacity="0.1" 
+                      style={{filter: 'blur(8px)'}}
+                      transform="rotate(45 20 40)"
+                    >
+                      <animateTransform 
+                        attributeName="transform" 
+                        type="rotate" 
+                        from="45 20 40" 
+                        to="55 20 40" 
+                        dur="12s" 
+                        repeatCount="indefinite"
+                        additive="sum"
+                      />
+                    </image>
                     
                     {/* Camada 1: Grid de fundo (profundidade) */}
                     <rect width="100%" height="100%" fill="url(#grid-small)" opacity="0.3" />
@@ -286,7 +363,8 @@ export function Hero() {
                       <ImageWithFallback
                         src={emeraldImage}
                         alt="Esmeralda certificada com SpectralHash"
-                        className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out group-hover/image:scale-110 group-hover/image:brightness-110 mix-blend-lighten"
+                        className="absolute inset-0 w-full h-full object-contain transition-all duration-700 ease-out group-hover/image:scale-110 group-hover/image:brightness-110 mix-blend-lighten"
+                        style={{ objectPosition: 'center' }}
                       />
                       
                       {/* Overlay de rede criptográfica sobre a esmeralda */}

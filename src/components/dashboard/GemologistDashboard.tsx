@@ -22,7 +22,6 @@ import {
 import { CertificationWizard } from "./CertificationWizard";
 import { PageHeader } from "../navigation/PageHeader";
 import { QuickActions } from "../navigation/QuickActions";
-import { SpectralOrb } from "../icons/SpectralOrb";
 
 interface GemologistDashboardProps {
   onNavigateToHome?: () => void;
@@ -399,12 +398,9 @@ export function GemologistDashboard({
                             </div>
                             <div>
                               <span className="text-gray-500">Hash: </span>
-                              <div className="inline-flex items-center gap-2">
-                                <SpectralOrb size={16} animated={false} />
-                                <code className="text-[#006b4f] font-mono text-xs">
-                                  {cert.spectralHash}
-                                </code>
-                              </div>
+                              <code className="text-[#006b4f] font-mono text-xs">
+                                {cert.spectralHash}
+                              </code>
                             </div>
                             <div>
                               <span className="text-gray-500">TX: </span>

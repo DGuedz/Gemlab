@@ -1,44 +1,58 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { OracleFiscalDashboard } from "./oracle/OracleFiscalDashboard";
 import { GovernancePage } from "./governance/GovernancePage";
 import { ProjectsPage } from "./projects/ProjectsPage";
 import { CoopDashboard } from "./coop/CoopDashboard";
 import LabPortal from "../LabPortal";
 import { useAuth } from "../contexts/AuthContext";
+import { NavigationProvider } from "../contexts/NavigationContext";
 import { Button } from "./ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
-import { Gem, Home, Microscope, ShoppingBag, Mountain, Shield, BookOpen, Menu, X, ArrowLeft } from "lucide-react";
-import logo from "figma:asset/cde6329a6c4b255a7d190dd68be01f6589014264.png";
+import { Menu, X, BookOpen, Gem, Microscope, ShoppingBag, Mountain, Shield } from "lucide-react";
 import { InstitutionalPage } from "./institutional/InstitutionalPage";
 import { GemologistDashboard } from "./dashboard/GemologistDashboard";
 import { CertifiedGemsRegistry } from "./registry/CertifiedGemsRegistry";
 import { MinerDashboard } from "./miner/MinerDashboard";
 import { AdminPanel } from "./admin/AdminPanel";
 import { UserDashboard } from "./dashboard/UserDashboard";
-import { GemDetailPage } from "./GemDetailPage";
+import { GemDetailPage } from "./gem-detail/GemDetailPage";
+import { RoadmapPage } from "./RoadmapPage";
+import { Navbar } from "./Navbar";
+import { Hero } from "./Hero";
+import { DashboardAccessCard } from "./DashboardAccessCard";
+import { SolutionSection } from "./SolutionSection";
+import { ProcessSteps } from "./ProcessSteps";
+import { TokenizationFlow } from "./TokenizationFlow";
+import { LifecycleTimeline } from "./LifecycleTimeline";
+import { WhyCamposVerdes } from "./WhyCamposVerdes";
+import { EconomicImpact } from "./EconomicImpact";
+import { MunicipalFund } from "./MunicipalFund";
+import { ComplianceSection } from "./ComplianceSection";
+import { LatestCertifications } from "./LatestCertifications";
+import { Footer } from "./Footer";
 import { EcosystemPage } from "./ecosystem/EcosystemPage";
-import { HomePage } from "./HomePage";
-import { RastreabilidadePage } from "./pages/RastreabilidadePage";
-import { GovernancaFiscalPage } from "./pages/GovernancaFiscalPage";
-import { SustentabilidadePage } from "./pages/SustentabilidadePage";
-import { EquipeParcerosPage } from "./pages/EquipeParcerosPage";
-import { ImpactDashboard } from "./impact/ImpactDashboard";
-import { ROICalculator } from "./calculators/ROICalculator";
-import { ComplianceDashboard } from "./compliance/ComplianceDashboard";
-import { QRVerificationSystem } from "./verification/QRVerificationSystem";
-import { SocialProofPage } from "./social-proof/SocialProofPage";
-import { AnalyticsDashboard } from "./analytics/AnalyticsDashboard";
-import { HeaderComponent } from "./HeaderComponent";
+import { MuseumPage } from "./museum/MuseumPage";
+import { MarketplacePage } from "./infrastructure/MarketplacePage";
+import { TourismRoutesPage } from "./infrastructure/TourismRoutesPage";
+import { DigitalPlatformPage } from "./infrastructure/DigitalPlatformPage";
+import { MunicipalMarketPage } from "./projects/MunicipalMarketPage";
+import { EmeraldVerification } from "./verification/EmeraldVerification";
+import { PremiumTeamPage } from "./team/PremiumTeamPage";
 
-type Page = "home" | "institutional" | "lab-portal" | "gemologist" | "marketplace" | "miner" | "admin" | "user-dashboard" | "gem-detail" | "ecosystem" | "oracle-dashboard" | "governance" | "projects" | "coop-dashboard" | "rastreabilidade" | "governanca-fiscal" | "sustentabilidade" | "equipe-parceiros" | "impact-dashboard" | "roi-calculator" | "compliance-dashboard" | "qr-verification" | "social-proof" | "analytics-dashboard";
+type Page = "home" | "institutional" | "lab-portal" | "gemologist" | "marketplace" | "miner" | "admin" | "user-dashboard" | "gem-detail" | "ecosystem" | "oracle-dashboard" | "governance" | "projects" | "coop-dashboard" | "museum" | "marketplace-infrastructure" | "tourism-routes" | "digital-platform" | "municipal-market" | "roadmap" | "emerald-verification" | "premium-team";
 
 export function MainApp() {
-  const { user } = useAuth();
+  const { user, setOnAuthSuccess } = useAuth();
   const [currentPage, setCurrentPage] = useState<Page>("home");
   const [selectedGemId, setSelectedGemId] = useState<string | null>(null);
-  const [pageHistory, setPageHistory] = useState<Page[]>(["home"]);
+  const [pageHistory, setPageHistory] = useState<Page[]>([]);
   const [quickMenuOpen, setQuickMenuOpen] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Setup auth success callback to navigate to user dashboard
+  useEffect(() => {
+    setOnAuthSuccess(() => () => {
+      navigateToPage("user-dashboard");
+    });
+  }, [setOnAuthSuccess]);
 
   // Função para navegar com histórico
   const navigateToPage = (page: Page, gemId?: string) => {
@@ -48,6 +62,8 @@ export function MainApp() {
     if (page !== currentPage) {
       setPageHistory([...pageHistory, currentPage]);
       setCurrentPage(page);
+      // Scroll to top quando navegar para nova página
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
@@ -59,161 +75,535 @@ export function MainApp() {
       setPageHistory(newHistory);
       if (previousPage) {
         setCurrentPage(previousPage);
+        // Scroll to top quando voltar para página anterior
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     }
   };
 
-  const renderNavigation = () => {
-    // Páginas que NÃO mostram header (já têm HeaderComponent próprio)
-    if (currentPage === "home" || currentPage === "rastreabilidade" || currentPage === "governanca-fiscal" || currentPage === "sustentabilidade" || currentPage === "equipe-parceiros") {
-      return null;
-    }
-    
-    // Demais páginas mostram HeaderComponent padronizado
-    return (
-      <HeaderComponent 
-        onNavigateToRegistry={() => navigateToPage("marketplace")}
-        onNavigateToInstitutional={() => navigateToPage("institutional")}
-        onNavigateToEcosystem={() => navigateToPage("ecosystem")}
-        onNavigateToProjects={() => navigateToPage("projects")}
-        onNavigateToRastreabilidade={() => navigateToPage("rastreabilidade")}
-        onNavigateToGovernancaFiscal={() => navigateToPage("governanca-fiscal")}
-        onNavigateToSustentabilidade={() => navigateToPage("sustentabilidade")}
-        onNavigateToEquipeParceiros={() => navigateToPage("equipe-parceiros")}
-        onNavigateBack={goBack}
-        isHomePage={currentPage === "home"}
-      />
-    );
-  };
-
   const renderPage = () => {
     switch (currentPage) {
-      case "impact-dashboard":
-        return <ImpactDashboard />;
-      case "roi-calculator":
-        return <ROICalculator />;
-      case "compliance-dashboard":
-        return <ComplianceDashboard />;
-      case "qr-verification":
-        return <QRVerificationSystem />;
-      case "social-proof":
-        return <SocialProofPage />;
-      case "analytics-dashboard":
-        return <AnalyticsDashboard />;
-      case "rastreabilidade":
-        return <RastreabilidadePage 
-          onNavigateToInstitutional={() => navigateToPage("institutional")}
-          onNavigateToEcosystem={() => navigateToPage("ecosystem")}
-          onNavigateToProjects={() => navigateToPage("projects")}
-          onNavigateToRegistry={() => navigateToPage("marketplace")}
-          onNavigateToRastreabilidade={() => navigateToPage("rastreabilidade")}
-          onNavigateToGovernancaFiscal={() => navigateToPage("governanca-fiscal")}
-          onNavigateToSustentabilidade={() => navigateToPage("sustentabilidade")}
-          onNavigateToEquipeParceiros={() => navigateToPage("equipe-parceiros")}
-          onNavigateBack={goBack}
-        />;
-      case "governanca-fiscal":
-        return <GovernancaFiscalPage 
-          onNavigateToInstitutional={() => navigateToPage("institutional")}
-          onNavigateToEcosystem={() => navigateToPage("ecosystem")}
-          onNavigateToProjects={() => navigateToPage("projects")}
-          onNavigateToRegistry={() => navigateToPage("marketplace")}
-          onNavigateToRastreabilidade={() => navigateToPage("rastreabilidade")}
-          onNavigateToGovernancaFiscal={() => navigateToPage("governanca-fiscal")}
-          onNavigateToSustentabilidade={() => navigateToPage("sustentabilidade")}
-          onNavigateToEquipeParceiros={() => navigateToPage("equipe-parceiros")}
-          onNavigateBack={goBack}
-        />;
-      case "sustentabilidade":
-        return <SustentabilidadePage 
-          onNavigateToInstitutional={() => navigateToPage("institutional")}
-          onNavigateToEcosystem={() => navigateToPage("ecosystem")}
-          onNavigateToProjects={() => navigateToPage("projects")}
-          onNavigateToRegistry={() => navigateToPage("marketplace")}
-          onNavigateToRastreabilidade={() => navigateToPage("rastreabilidade")}
-          onNavigateToGovernancaFiscal={() => navigateToPage("governanca-fiscal")}
-          onNavigateToSustentabilidade={() => navigateToPage("sustentabilidade")}
-          onNavigateToEquipeParceiros={() => navigateToPage("equipe-parceiros")}
-          onNavigateBack={goBack}
-        />;
-      case "equipe-parceiros":
-        return <EquipeParcerosPage 
-          onNavigateToInstitutional={() => navigateToPage("institutional")}
-          onNavigateToEcosystem={() => navigateToPage("ecosystem")}
-          onNavigateToProjects={() => navigateToPage("projects")}
-          onNavigateToRegistry={() => navigateToPage("marketplace")}
-          onNavigateToRastreabilidade={() => navigateToPage("rastreabilidade")}
-          onNavigateToGovernancaFiscal={() => navigateToPage("governanca-fiscal")}
-          onNavigateToSustentabilidade={() => navigateToPage("sustentabilidade")}
-          onNavigateToEquipeParceiros={() => navigateToPage("equipe-parceiros")}
-          onNavigateBack={goBack}
-        />;
       case "institutional":
-        return <InstitutionalPage />;
-      case "lab-portal":
-        return <LabPortal onNavigate={(page) => setCurrentPage(page as Page)} />;
-      case "gemologist":
-        return <GemologistDashboard 
-          onNavigateToHome={() => navigateToPage("home")}
-          onNavigateToRegistry={() => navigateToPage("marketplace")}
-          onNavigateToMiner={() => navigateToPage("miner")}
-          onNavigateToAdmin={() => navigateToPage("admin")}
-        />;
-      case "marketplace":
-        return <CertifiedGemsRegistry />;
-      case "miner":
-        return <MinerDashboard />;
-      case "admin":
-        return <AdminPanel />;
-      case "user-dashboard":
-        return <UserDashboard />;
-      case "gem-detail":
-        return selectedGemId ? (
-          <GemDetailPage gemId={selectedGemId} onBack={goBack} />
-        ) : null;
-      case "ecosystem":
-        return <EcosystemPage />;
-      case "oracle-dashboard":
-        return <OracleFiscalDashboard />;
-      case "governance":
-        return <GovernancePage 
-          onNavigateToEcosystem={() => navigateToPage("ecosystem")}
-          onNavigateToInstitutional={() => navigateToPage("institutional")}
-        />;
-      case "projects":
-        return <ProjectsPage 
-          onNavigateToGovernance={() => navigateToPage("governance")}
-          onNavigateToEcosystem={() => navigateToPage("ecosystem")}
-        />;
-      case "coop-dashboard":
-        return <CoopDashboard 
-          onNavigateToProjects={() => navigateToPage("projects")}
-          onNavigateToEcosystem={() => navigateToPage("ecosystem")}
-          onNavigateToGovernance={() => navigateToPage("governance")}
-        />;
-      case "home":
-      default:
         return (
           <>
-            <HomePage 
+            <Navbar 
+              currentPage={currentPage}
+              showBackButton={pageHistory.length > 0}
+              onGoBack={goBack}
+              onNavigateToHome={() => navigateToPage("home")}
               onNavigateToInstitutional={() => navigateToPage("institutional")}
               onNavigateToLabPortal={() => navigateToPage("lab-portal")}
               onNavigateToEcosystem={() => navigateToPage("ecosystem")}
               onNavigateToProjects={() => navigateToPage("projects")}
-              onViewGemDetails={(gemId) => navigateToPage("gem-detail", gemId)}
-              userName={user?.name}
-              onAccessDashboard={() => navigateToPage("user-dashboard")}
-              onNavigateToRastreabilidade={() => navigateToPage("rastreabilidade")}
-              onNavigateToGovernancaFiscal={() => navigateToPage("governanca-fiscal")}
-              onNavigateToSustentabilidade={() => navigateToPage("sustentabilidade")}
-              onNavigateToEquipeParceiros={() => navigateToPage("equipe-parceiros")}
-              onNavigateToImpactDashboard={() => navigateToPage("impact-dashboard")}
-              onNavigateToROICalculator={() => navigateToPage("roi-calculator")}
-              onNavigateToComplianceDashboard={() => navigateToPage("compliance-dashboard")}
-              onNavigateToQRVerification={() => navigateToPage("qr-verification")}
-              onNavigateToSocialProof={() => navigateToPage("social-proof")}
-              onNavigateToAnalyticsDashboard={() => navigateToPage("analytics-dashboard")}
+              onNavigateToRoadmap={() => navigateToPage("roadmap")}
+              onNavigateToGemologist={() => navigateToPage("gemologist")}
+              onNavigateToMarketplace={() => navigateToPage("marketplace")}
+              onNavigateToMiner={() => navigateToPage("miner")}
+              onNavigateToAdmin={() => navigateToPage("admin")}
+              onNavigateToUserDashboard={() => navigateToPage("user-dashboard")}
             />
+            <InstitutionalPage />
+          </>
+        );
+      case "lab-portal":
+        return (
+          <>
+            <Navbar 
+              currentPage={currentPage}
+              showBackButton={pageHistory.length > 0}
+              onGoBack={goBack}
+              onNavigateToHome={() => navigateToPage("home")}
+              onNavigateToInstitutional={() => navigateToPage("institutional")}
+              onNavigateToLabPortal={() => navigateToPage("lab-portal")}
+              onNavigateToEcosystem={() => navigateToPage("ecosystem")}
+              onNavigateToProjects={() => navigateToPage("projects")}
+              onNavigateToRoadmap={() => navigateToPage("roadmap")}
+              onNavigateToGemologist={() => navigateToPage("gemologist")}
+              onNavigateToMarketplace={() => navigateToPage("marketplace")}
+              onNavigateToMiner={() => navigateToPage("miner")}
+              onNavigateToAdmin={() => navigateToPage("admin")}
+              onNavigateToUserDashboard={() => navigateToPage("user-dashboard")}
+            />
+            <LabPortal onNavigate={(page) => setCurrentPage(page as Page)} />
+          </>
+        );
+      case "gemologist":
+        return (
+          <>
+            <Navbar 
+              currentPage={currentPage}
+              showBackButton={pageHistory.length > 0}
+              onGoBack={goBack}
+              onNavigateToHome={() => navigateToPage("home")}
+              onNavigateToInstitutional={() => navigateToPage("institutional")}
+              onNavigateToLabPortal={() => navigateToPage("lab-portal")}
+              onNavigateToEcosystem={() => navigateToPage("ecosystem")}
+              onNavigateToProjects={() => navigateToPage("projects")}
+              onNavigateToRoadmap={() => navigateToPage("roadmap")}
+              onNavigateToGemologist={() => navigateToPage("gemologist")}
+              onNavigateToMarketplace={() => navigateToPage("marketplace")}
+              onNavigateToMiner={() => navigateToPage("miner")}
+              onNavigateToAdmin={() => navigateToPage("admin")}
+              onNavigateToUserDashboard={() => navigateToPage("user-dashboard")}
+            />
+            <GemologistDashboard 
+              onNavigateToHome={() => navigateToPage("home")}
+              onNavigateToRegistry={() => navigateToPage("marketplace")}
+              onNavigateToMiner={() => navigateToPage("miner")}
+              onNavigateToAdmin={() => navigateToPage("admin")}
+            />
+          </>
+        );
+      case "marketplace":
+        return (
+          <>
+            <Navbar 
+              currentPage={currentPage}
+              showBackButton={pageHistory.length > 0}
+              onGoBack={goBack}
+              onNavigateToHome={() => navigateToPage("home")}
+              onNavigateToInstitutional={() => navigateToPage("institutional")}
+              onNavigateToLabPortal={() => navigateToPage("lab-portal")}
+              onNavigateToEcosystem={() => navigateToPage("ecosystem")}
+              onNavigateToProjects={() => navigateToPage("projects")}
+              onNavigateToRoadmap={() => navigateToPage("roadmap")}
+              onNavigateToGemologist={() => navigateToPage("gemologist")}
+              onNavigateToMarketplace={() => navigateToPage("marketplace")}
+              onNavigateToMiner={() => navigateToPage("miner")}
+              onNavigateToAdmin={() => navigateToPage("admin")}
+              onNavigateToUserDashboard={() => navigateToPage("user-dashboard")}
+            />
+            <CertifiedGemsRegistry />
+          </>
+        );
+      case "miner":
+        return (
+          <>
+            <Navbar 
+              currentPage={currentPage}
+              showBackButton={pageHistory.length > 0}
+              onGoBack={goBack}
+              onNavigateToHome={() => navigateToPage("home")}
+              onNavigateToInstitutional={() => navigateToPage("institutional")}
+              onNavigateToLabPortal={() => navigateToPage("lab-portal")}
+              onNavigateToEcosystem={() => navigateToPage("ecosystem")}
+              onNavigateToProjects={() => navigateToPage("projects")}
+              onNavigateToRoadmap={() => navigateToPage("roadmap")}
+              onNavigateToGemologist={() => navigateToPage("gemologist")}
+              onNavigateToMarketplace={() => navigateToPage("marketplace")}
+              onNavigateToMiner={() => navigateToPage("miner")}
+              onNavigateToAdmin={() => navigateToPage("admin")}
+              onNavigateToUserDashboard={() => navigateToPage("user-dashboard")}
+            />
+            <MinerDashboard />
+          </>
+        );
+      case "admin":
+        return (
+          <>
+            <Navbar 
+              currentPage={currentPage}
+              showBackButton={pageHistory.length > 0}
+              onGoBack={goBack}
+              onNavigateToHome={() => navigateToPage("home")}
+              onNavigateToInstitutional={() => navigateToPage("institutional")}
+              onNavigateToLabPortal={() => navigateToPage("lab-portal")}
+              onNavigateToEcosystem={() => navigateToPage("ecosystem")}
+              onNavigateToProjects={() => navigateToPage("projects")}
+              onNavigateToRoadmap={() => navigateToPage("roadmap")}
+              onNavigateToGemologist={() => navigateToPage("gemologist")}
+              onNavigateToMarketplace={() => navigateToPage("marketplace")}
+              onNavigateToMiner={() => navigateToPage("miner")}
+              onNavigateToAdmin={() => navigateToPage("admin")}
+              onNavigateToUserDashboard={() => navigateToPage("user-dashboard")}
+            />
+            <AdminPanel />
+          </>
+        );
+      case "user-dashboard":
+        return (
+          <>
+            <Navbar 
+              currentPage={currentPage}
+              showBackButton={pageHistory.length > 0}
+              onGoBack={goBack}
+              onNavigateToHome={() => navigateToPage("home")}
+              onNavigateToInstitutional={() => navigateToPage("institutional")}
+              onNavigateToLabPortal={() => navigateToPage("lab-portal")}
+              onNavigateToEcosystem={() => navigateToPage("ecosystem")}
+              onNavigateToProjects={() => navigateToPage("projects")}
+              onNavigateToRoadmap={() => navigateToPage("roadmap")}
+              onNavigateToGemologist={() => navigateToPage("gemologist")}
+              onNavigateToMarketplace={() => navigateToPage("marketplace")}
+              onNavigateToMiner={() => navigateToPage("miner")}
+              onNavigateToAdmin={() => navigateToPage("admin")}
+              onNavigateToUserDashboard={() => navigateToPage("user-dashboard")}
+            />
+            <UserDashboard />
+          </>
+        );
+      case "gem-detail":
+        return selectedGemId ? (
+          <>
+            <Navbar 
+              currentPage={currentPage}
+              showBackButton={pageHistory.length > 0}
+              onGoBack={goBack}
+              onNavigateToHome={() => navigateToPage("home")}
+              onNavigateToInstitutional={() => navigateToPage("institutional")}
+              onNavigateToLabPortal={() => navigateToPage("lab-portal")}
+              onNavigateToEcosystem={() => navigateToPage("ecosystem")}
+              onNavigateToProjects={() => navigateToPage("projects")}
+              onNavigateToRoadmap={() => navigateToPage("roadmap")}
+              onNavigateToGemologist={() => navigateToPage("gemologist")}
+              onNavigateToMarketplace={() => navigateToPage("marketplace")}
+              onNavigateToMiner={() => navigateToPage("miner")}
+              onNavigateToAdmin={() => navigateToPage("admin")}
+              onNavigateToUserDashboard={() => navigateToPage("user-dashboard")}
+            />
+            <GemDetailPage gemId={selectedGemId} onBack={goBack} />
+          </>
+        ) : null;
+      case "ecosystem":
+        return (
+          <>
+            <Navbar 
+              currentPage={currentPage}
+              showBackButton={pageHistory.length > 0}
+              onGoBack={goBack}
+              onNavigateToHome={() => navigateToPage("home")}
+              onNavigateToInstitutional={() => navigateToPage("institutional")}
+              onNavigateToLabPortal={() => navigateToPage("lab-portal")}
+              onNavigateToEcosystem={() => navigateToPage("ecosystem")}
+              onNavigateToProjects={() => navigateToPage("projects")}
+              onNavigateToRoadmap={() => navigateToPage("roadmap")}
+              onNavigateToGemologist={() => navigateToPage("gemologist")}
+              onNavigateToMarketplace={() => navigateToPage("marketplace")}
+              onNavigateToMiner={() => navigateToPage("miner")}
+              onNavigateToAdmin={() => navigateToPage("admin")}
+              onNavigateToUserDashboard={() => navigateToPage("user-dashboard")}
+            />
+            <EcosystemPage />
+          </>
+        );
+      case "oracle-dashboard":
+        return (
+          <>
+            <Navbar 
+              currentPage={currentPage}
+              showBackButton={pageHistory.length > 0}
+              onGoBack={goBack}
+              onNavigateToHome={() => navigateToPage("home")}
+              onNavigateToInstitutional={() => navigateToPage("institutional")}
+              onNavigateToLabPortal={() => navigateToPage("lab-portal")}
+              onNavigateToEcosystem={() => navigateToPage("ecosystem")}
+              onNavigateToProjects={() => navigateToPage("projects")}
+              onNavigateToRoadmap={() => navigateToPage("roadmap")}
+              onNavigateToGemologist={() => navigateToPage("gemologist")}
+              onNavigateToMarketplace={() => navigateToPage("marketplace")}
+              onNavigateToMiner={() => navigateToPage("miner")}
+              onNavigateToAdmin={() => navigateToPage("admin")}
+              onNavigateToUserDashboard={() => navigateToPage("user-dashboard")}
+            />
+            <OracleFiscalDashboard />
+          </>
+        );
+      case "governance":
+        return (
+          <>
+            <Navbar 
+              currentPage={currentPage}
+              showBackButton={pageHistory.length > 0}
+              onGoBack={goBack}
+              onNavigateToHome={() => navigateToPage("home")}
+              onNavigateToInstitutional={() => navigateToPage("institutional")}
+              onNavigateToLabPortal={() => navigateToPage("lab-portal")}
+              onNavigateToEcosystem={() => navigateToPage("ecosystem")}
+              onNavigateToProjects={() => navigateToPage("projects")}
+              onNavigateToRoadmap={() => navigateToPage("roadmap")}
+              onNavigateToGemologist={() => navigateToPage("gemologist")}
+              onNavigateToMarketplace={() => navigateToPage("marketplace")}
+              onNavigateToMiner={() => navigateToPage("miner")}
+              onNavigateToAdmin={() => navigateToPage("admin")}
+              onNavigateToUserDashboard={() => navigateToPage("user-dashboard")}
+            />
+            <GovernancePage 
+              onNavigateToEcosystem={() => navigateToPage("ecosystem")}
+              onNavigateToInstitutional={() => navigateToPage("institutional")}
+            />
+          </>
+        );
+      case "projects":
+        return (
+          <>
+            <Navbar 
+              currentPage={currentPage}
+              showBackButton={pageHistory.length > 0}
+              onGoBack={goBack}
+              onNavigateToHome={() => navigateToPage("home")}
+              onNavigateToInstitutional={() => navigateToPage("institutional")}
+              onNavigateToLabPortal={() => navigateToPage("lab-portal")}
+              onNavigateToEcosystem={() => navigateToPage("ecosystem")}
+              onNavigateToProjects={() => navigateToPage("projects")}
+              onNavigateToRoadmap={() => navigateToPage("roadmap")}
+              onNavigateToGemologist={() => navigateToPage("gemologist")}
+              onNavigateToMarketplace={() => navigateToPage("marketplace")}
+              onNavigateToMiner={() => navigateToPage("miner")}
+              onNavigateToAdmin={() => navigateToPage("admin")}
+              onNavigateToUserDashboard={() => navigateToPage("user-dashboard")}
+            />
+            <ProjectsPage 
+              onNavigateToGovernance={() => navigateToPage("governance")}
+              onNavigateToEcosystem={() => navigateToPage("ecosystem")}
+              onNavigateToMuseum={() => navigateToPage("museum")}
+              onNavigateToMarketplace={() => navigateToPage("marketplace-infrastructure")}
+              onNavigateToTourism={() => navigateToPage("tourism-routes")}
+              onNavigateToDigitalPlatform={() => navigateToPage("digital-platform")}
+              onNavigateToMunicipalMarket={() => navigateToPage("municipal-market")}
+            />
+          </>
+        );
+      case "coop-dashboard":
+        return (
+          <>
+            <Navbar 
+              currentPage={currentPage}
+              showBackButton={pageHistory.length > 0}
+              onGoBack={goBack}
+              onNavigateToHome={() => navigateToPage("home")}
+              onNavigateToInstitutional={() => navigateToPage("institutional")}
+              onNavigateToLabPortal={() => navigateToPage("lab-portal")}
+              onNavigateToEcosystem={() => navigateToPage("ecosystem")}
+              onNavigateToProjects={() => navigateToPage("projects")}
+              onNavigateToRoadmap={() => navigateToPage("roadmap")}
+              onNavigateToGemologist={() => navigateToPage("gemologist")}
+              onNavigateToMarketplace={() => navigateToPage("marketplace")}
+              onNavigateToMiner={() => navigateToPage("miner")}
+              onNavigateToAdmin={() => navigateToPage("admin")}
+              onNavigateToUserDashboard={() => navigateToPage("user-dashboard")}
+            />
+            <CoopDashboard 
+              onNavigateToProjects={() => navigateToPage("projects")}
+              onNavigateToEcosystem={() => navigateToPage("ecosystem")}
+              onNavigateToGovernance={() => navigateToPage("governance")}
+            />
+          </>
+        );
+      case "museum":
+        return (
+          <>
+            <Navbar 
+              currentPage={currentPage}
+              showBackButton={pageHistory.length > 0}
+              onGoBack={goBack}
+              onNavigateToHome={() => navigateToPage("home")}
+              onNavigateToInstitutional={() => navigateToPage("institutional")}
+              onNavigateToLabPortal={() => navigateToPage("lab-portal")}
+              onNavigateToEcosystem={() => navigateToPage("ecosystem")}
+              onNavigateToProjects={() => navigateToPage("projects")}
+              onNavigateToRoadmap={() => navigateToPage("roadmap")}
+              onNavigateToGemologist={() => navigateToPage("gemologist")}
+              onNavigateToMarketplace={() => navigateToPage("marketplace")}
+              onNavigateToMiner={() => navigateToPage("miner")}
+              onNavigateToAdmin={() => navigateToPage("admin")}
+              onNavigateToUserDashboard={() => navigateToPage("user-dashboard")}
+            />
+            <MuseumPage />
+          </>
+        );
+      case "marketplace-infrastructure":
+        return (
+          <>
+            <Navbar 
+              currentPage={currentPage}
+              showBackButton={pageHistory.length > 0}
+              onGoBack={goBack}
+              onNavigateToHome={() => navigateToPage("home")}
+              onNavigateToInstitutional={() => navigateToPage("institutional")}
+              onNavigateToLabPortal={() => navigateToPage("lab-portal")}
+              onNavigateToEcosystem={() => navigateToPage("ecosystem")}
+              onNavigateToProjects={() => navigateToPage("projects")}
+              onNavigateToRoadmap={() => navigateToPage("roadmap")}
+              onNavigateToGemologist={() => navigateToPage("gemologist")}
+              onNavigateToMarketplace={() => navigateToPage("marketplace")}
+              onNavigateToMiner={() => navigateToPage("miner")}
+              onNavigateToAdmin={() => navigateToPage("admin")}
+              onNavigateToUserDashboard={() => navigateToPage("user-dashboard")}
+            />
+            <MarketplacePage onBack={goBack} />
+          </>
+        );
+      case "tourism-routes":
+        return (
+          <>
+            <Navbar 
+              currentPage={currentPage}
+              showBackButton={pageHistory.length > 0}
+              onGoBack={goBack}
+              onNavigateToHome={() => navigateToPage("home")}
+              onNavigateToInstitutional={() => navigateToPage("institutional")}
+              onNavigateToLabPortal={() => navigateToPage("lab-portal")}
+              onNavigateToEcosystem={() => navigateToPage("ecosystem")}
+              onNavigateToProjects={() => navigateToPage("projects")}
+              onNavigateToRoadmap={() => navigateToPage("roadmap")}
+              onNavigateToGemologist={() => navigateToPage("gemologist")}
+              onNavigateToMarketplace={() => navigateToPage("marketplace")}
+              onNavigateToMiner={() => navigateToPage("miner")}
+              onNavigateToAdmin={() => navigateToPage("admin")}
+              onNavigateToUserDashboard={() => navigateToPage("user-dashboard")}
+            />
+            <TourismRoutesPage onBack={goBack} />
+          </>
+        );
+      case "digital-platform":
+        return (
+          <>
+            <Navbar 
+              currentPage={currentPage}
+              showBackButton={pageHistory.length > 0}
+              onGoBack={goBack}
+              onNavigateToHome={() => navigateToPage("home")}
+              onNavigateToInstitutional={() => navigateToPage("institutional")}
+              onNavigateToLabPortal={() => navigateToPage("lab-portal")}
+              onNavigateToEcosystem={() => navigateToPage("ecosystem")}
+              onNavigateToProjects={() => navigateToPage("projects")}
+              onNavigateToRoadmap={() => navigateToPage("roadmap")}
+              onNavigateToGemologist={() => navigateToPage("gemologist")}
+              onNavigateToMarketplace={() => navigateToPage("marketplace")}
+              onNavigateToMiner={() => navigateToPage("miner")}
+              onNavigateToAdmin={() => navigateToPage("admin")}
+              onNavigateToUserDashboard={() => navigateToPage("user-dashboard")}
+            />
+            <DigitalPlatformPage onBack={goBack} />
+          </>
+        );
+      case "municipal-market":
+        return (
+          <>
+            <Navbar 
+              currentPage={currentPage}
+              showBackButton={pageHistory.length > 0}
+              onGoBack={goBack}
+              onNavigateToHome={() => navigateToPage("home")}
+              onNavigateToInstitutional={() => navigateToPage("institutional")}
+              onNavigateToLabPortal={() => navigateToPage("lab-portal")}
+              onNavigateToEcosystem={() => navigateToPage("ecosystem")}
+              onNavigateToProjects={() => navigateToPage("projects")}
+              onNavigateToRoadmap={() => navigateToPage("roadmap")}
+              onNavigateToGemologist={() => navigateToPage("gemologist")}
+              onNavigateToMarketplace={() => navigateToPage("marketplace")}
+              onNavigateToMiner={() => navigateToPage("miner")}
+              onNavigateToAdmin={() => navigateToPage("admin")}
+              onNavigateToUserDashboard={() => navigateToPage("user-dashboard")}
+            />
+            <MunicipalMarketPage />
+          </>
+        );
+      case "roadmap":
+        return (
+          <>
+            <Navbar 
+              currentPage={currentPage}
+              showBackButton={pageHistory.length > 0}
+              onGoBack={goBack}
+              onNavigateToHome={() => navigateToPage("home")}
+              onNavigateToInstitutional={() => navigateToPage("institutional")}
+              onNavigateToLabPortal={() => navigateToPage("lab-portal")}
+              onNavigateToEcosystem={() => navigateToPage("ecosystem")}
+              onNavigateToProjects={() => navigateToPage("projects")}
+              onNavigateToRoadmap={() => navigateToPage("roadmap")}
+              onNavigateToGemologist={() => navigateToPage("gemologist")}
+              onNavigateToMarketplace={() => navigateToPage("marketplace")}
+              onNavigateToMiner={() => navigateToPage("miner")}
+              onNavigateToAdmin={() => navigateToPage("admin")}
+              onNavigateToUserDashboard={() => navigateToPage("user-dashboard")}
+              onNavigateToPremiumTeam={() => navigateToPage("premium-team")}
+            />
+            <RoadmapPage />
+          </>
+        );
+      case "premium-team":
+        return (
+          <>
+            <Navbar 
+              currentPage={currentPage}
+              showBackButton={pageHistory.length > 0}
+              onGoBack={goBack}
+              onNavigateToHome={() => navigateToPage("home")}
+              onNavigateToInstitutional={() => navigateToPage("institutional")}
+              onNavigateToLabPortal={() => navigateToPage("lab-portal")}
+              onNavigateToEcosystem={() => navigateToPage("ecosystem")}
+              onNavigateToProjects={() => navigateToPage("projects")}
+              onNavigateToRoadmap={() => navigateToPage("roadmap")}
+              onNavigateToGemologist={() => navigateToPage("gemologist")}
+              onNavigateToMarketplace={() => navigateToPage("marketplace")}
+              onNavigateToMiner={() => navigateToPage("miner")}
+              onNavigateToAdmin={() => navigateToPage("admin")}
+              onNavigateToUserDashboard={() => navigateToPage("user-dashboard")}
+              onNavigateToPremiumTeam={() => navigateToPage("premium-team")}
+            />
+            <PremiumTeamPage />
+          </>
+        );
+      case "emerald-verification":
+        return (
+          <>
+            <Navbar 
+              currentPage={currentPage}
+              showBackButton={pageHistory.length > 0}
+              onGoBack={goBack}
+              onNavigateToHome={() => navigateToPage("home")}
+              onNavigateToInstitutional={() => navigateToPage("institutional")}
+              onNavigateToLabPortal={() => navigateToPage("lab-portal")}
+              onNavigateToEcosystem={() => navigateToPage("ecosystem")}
+              onNavigateToProjects={() => navigateToPage("projects")}
+              onNavigateToRoadmap={() => navigateToPage("roadmap")}
+              onNavigateToGemologist={() => navigateToPage("gemologist")}
+              onNavigateToMarketplace={() => navigateToPage("marketplace")}
+              onNavigateToMiner={() => navigateToPage("miner")}
+              onNavigateToAdmin={() => navigateToPage("admin")}
+              onNavigateToUserDashboard={() => navigateToPage("user-dashboard")}
+            />
+            <EmeraldVerification onNavigate={(page) => navigateToPage(page as Page)} />
+          </>
+        );
+      case "home":
+      default:
+        return (
+          <>
+            <Navbar 
+              currentPage={currentPage}
+              onNavigateToHome={() => navigateToPage("home")}
+              onNavigateToInstitutional={() => navigateToPage("institutional")}
+              onNavigateToLabPortal={() => navigateToPage("lab-portal")}
+              onNavigateToEcosystem={() => navigateToPage("ecosystem")}
+              onNavigateToProjects={() => navigateToPage("projects")}
+              onNavigateToRoadmap={() => navigateToPage("roadmap")}
+              onNavigateToUserDashboard={() => navigateToPage("user-dashboard")}
+            />
+            <main>
+              <Hero onNavigateToVerification={() => navigateToPage("emerald-verification")} />
+              {user && (
+                <DashboardAccessCard
+                  userName={user.name}
+                  onAccessDashboard={() => setCurrentPage("user-dashboard")}
+                />
+              )}
+              <SolutionSection />
+              <ProcessSteps />
+              <TokenizationFlow />
+              <LifecycleTimeline />
+              <WhyCamposVerdes />
+              <EconomicImpact />
+              <MunicipalFund 
+                onNavigateToOracleDashboard={() => setCurrentPage("oracle-dashboard")} 
+                onNavigateToGovernance={() => setCurrentPage("governance")}
+                onNavigateToProjects={() => setCurrentPage("projects")}
+              />
+              <ComplianceSection />
+              <LatestCertifications onViewDetails={(gemId) => navigateToPage("gem-detail", gemId)} />
+            </main>
+            <Footer />
             
             {/* Quick Access Panel - Mobile Optimized */}
             <div className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-50">
@@ -317,42 +707,14 @@ export function MainApp() {
 
   return (
     <div className="min-h-screen bg-white">
-      {renderNavigation()}
-      
-      {/* Botões de Navegação Flutuantes */}
-      {currentPage !== "home" && (
-        <div className="fixed top-24 left-4 sm:left-8 z-40 flex flex-col gap-3">
-          {/* Botão Voltar - Aparece quando há histórico */}
-          {pageHistory.length > 0 && (
-            <button
-              onClick={goBack}
-              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border-2 border-[#006b4f] text-[#006b4f] shadow-lg hover:bg-[#006b4f] hover:text-white transition-all duration-300 hover:scale-110 active:scale-95 flex items-center justify-center group"
-              aria-label="Voltar à página anterior"
-              title="Voltar"
-            >
-              <ArrowLeft className="h-5 w-5 sm:h-6 sm:w-6" />
-              <span className="absolute left-14 sm:left-16 whitespace-nowrap bg-[#1b1b1b] text-white px-3 py-1.5 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                Voltar
-              </span>
-            </button>
-          )}
-          
-          {/* Botão Home - Sempre visível (exceto na home) */}
-          <button
-            onClick={() => navigateToPage("home")}
-            className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border-2 border-[#caa34b] text-[#caa34b] shadow-lg hover:bg-[#caa34b] hover:text-white transition-all duration-300 hover:scale-110 active:scale-95 flex items-center justify-center group"
-            aria-label="Ir para a página inicial"
-            title="Página Inicial"
-          >
-            <Home className="h-5 w-5 sm:h-6 sm:w-6" />
-            <span className="absolute left-14 sm:left-16 whitespace-nowrap bg-[#1b1b1b] text-white px-3 py-1.5 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-              Página Inicial
-            </span>
-          </button>
-        </div>
-      )}
-      
-      {renderPage()}
+      <NavigationProvider
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        pageHistory={pageHistory}
+        setPageHistory={setPageHistory}
+      >
+        {renderPage()}
+      </NavigationProvider>
     </div>
   );
 }

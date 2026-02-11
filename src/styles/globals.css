@@ -40,28 +40,12 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
   
-  /* GemLab Custom Colors - Paleta Oficial */
+  /* GemLab Custom Colors */
   --emerald-green: #006b4f;
   --emerald-dark: #014733;
   --gold-soft: #caa34b;
   --mineral-black: #1b1b1b;
   --technical-gray: #e5e7eb;
-  --pure-white: #ffffff;
-  
-  /* GemLab Extended Colors - Tons Derivados */
-  --emerald-light: #059669;
-  --emerald-hover: #005a41;
-  --gold-hover: #b8923f;
-  --gray-50: #f9fafb;
-  --gray-100: #f3f4f6;
-  --gray-200: #e5e7eb;
-  --gray-300: #d1d5db;
-  --gray-400: #9ca3af;
-  --gray-500: #6b7280;
-  --gray-600: #4b5563;
-  --gray-700: #374151;
-  --gray-800: #1f2937;
-  --gray-900: #111827;
 }
 
 .dark {
@@ -226,13 +210,34 @@ body {
 /* Mobile-specific optimizations */
 @media (max-width: 768px) {
   :root {
-    --font-size: 14px; /* Slightly smaller base on mobile */
+    --font-size: 15px; /* Slightly smaller base on mobile for better readability */
   }
   
-  /* Ensure touch targets are at least 44x44px */
-  button, a, input[type="button"], input[type="submit"] {
+  /* Ensure touch targets are at least 44x44px (Apple HIG / Android Material) */
+  button, a, input[type="button"], input[type="submit"], [role="button"] {
     min-height: 44px;
     min-width: 44px;
+  }
+  
+  /* Larger tap targets for mobile */
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+  
+  /* Prevent text size adjustment on device rotation */
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  
+  /* Better spacing for mobile cards */
+  .card {
+    margin-bottom: 1rem;
+  }
+  
+  /* Full width buttons on mobile */
+  .mobile-full-width {
+    width: 100%;
   }
 }
 

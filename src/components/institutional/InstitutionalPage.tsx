@@ -1,23 +1,20 @@
-import { HeaderComponent } from "../HeaderComponent";
-import { Footer } from "../Footer";
-import { ManifestoSection } from "./ManifestoSection";
-import { RamanSpectroscopy } from "./RamanSpectroscopy";
-import { TraceabilityMockup } from "./TraceabilityMockup";
-import { DocumentationSection } from "./DocumentationSection";
-import { TeamSection } from "./TeamSection";
-import { FiscalOracleSection } from "./FiscalOracleSection";
-import { Badge } from "../ui/badge";
-import { Button } from "../ui/button";
-import { Card } from "../ui/card";
 import {
   Sparkles,
   Award,
   Users,
   TrendingUp,
   Shield,
-  ExternalLink,
   BookOpen,
 } from "lucide-react";
+import { Button } from "../ui/button";
+import { Badge } from "../ui/badge";
+import { Card } from "../ui/card";
+import { ManifestoSection } from "./ManifestoSection";
+import { RamanSpectroscopy } from "./RamanSpectroscopy";
+import { TraceabilityMockup } from "./TraceabilityMockup";
+import { DocumentationSection } from "./DocumentationSection";
+import { InstitutionalPartnersSection } from "./InstitutionalPartnersSection";
+import { Footer } from "../Footer";
 
 export function InstitutionalPage() {
   const stats = [
@@ -50,8 +47,6 @@ export function InstitutionalPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <HeaderComponent />
-
       {/* Hero Institucional */}
       <section className="relative bg-gradient-to-br from-[#006b4f] via-[#014733] to-[#1b1b1b] text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -120,13 +115,6 @@ export function InstitutionalPage() {
       <main>
         <ManifestoSection />
         <RamanSpectroscopy />
-        
-        {/* Oracle Fiscal - NOVO */}
-        <FiscalOracleSection />
-        
-        {/* Equipe Interdisciplinar - NOVO */}
-        <TeamSection />
-        
         <TraceabilityMockup />
 
         {/* Partners & Ecosystem */}
@@ -242,9 +230,9 @@ export function InstitutionalPage() {
         </section>
 
         {/* Portfólio de Projetos Campos Verdes 2050 */}
-        <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+        <section className="py-20 bg-gradient-to-b from-gray-50 to-white" id="portfolio-projetos">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-16">
+            <div className="text-center max-w-3xl mx-auto mb-12">
               <Badge className="mb-4 bg-[#caa34b] text-white">
                 Campos Verdes 2050
               </Badge>
@@ -256,8 +244,74 @@ export function InstitutionalPage() {
               </p>
             </div>
 
+            {/* Navegação Interna - Índice */}
+            <div className="max-w-5xl mx-auto mb-16">
+              <div className="bg-white border-2 border-[#e5e7eb] rounded-2xl p-6 shadow-sm">
+                <div className="flex items-center gap-2 mb-4">
+                  <BookOpen className="h-5 w-5 text-[#006b4f]" />
+                  <h3 className="font-['Inter'] font-semibold text-[#1b1b1b]">
+                    Navegação Rápida
+                  </h3>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+                  <a
+                    href="#tecnologia-governanca"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document.getElementById('tecnologia-governanca')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className="flex items-center gap-3 p-3 rounded-lg border-2 border-transparent hover:border-[#006b4f] hover:bg-[#006b4f]/5 transition-all group"
+                  >
+                    <div className="w-1 h-10 bg-[#006b4f] rounded-full" />
+                    <span className="font-['Inter'] text-sm font-medium text-gray-700 group-hover:text-[#006b4f]">
+                      Tecnologia & Governança
+                    </span>
+                  </a>
+                  <a
+                    href="#educacao-capacitacao"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document.getElementById('educacao-capacitacao')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className="flex items-center gap-3 p-3 rounded-lg border-2 border-transparent hover:border-[#014733] hover:bg-[#014733]/5 transition-all group"
+                  >
+                    <div className="w-1 h-10 bg-[#014733] rounded-full" />
+                    <span className="font-['Inter'] text-sm font-medium text-gray-700 group-hover:text-[#014733]">
+                      Educação & Capacitação
+                    </span>
+                  </a>
+                  <a
+                    href="#ambiental-sustentabilidade"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document.getElementById('ambiental-sustentabilidade')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className="flex items-center gap-3 p-3 rounded-lg border-2 border-transparent hover:border-[#caa34b] hover:bg-[#caa34b]/5 transition-all group"
+                  >
+                    <div className="w-1 h-10 bg-[#caa34b] rounded-full" />
+                    <span className="font-['Inter'] text-sm font-medium text-gray-700 group-hover:text-[#caa34b]">
+                      Ambiental & Sustentabilidade
+                    </span>
+                  </a>
+                  <a
+                    href="#financeiro-mercado"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document.getElementById('financeiro-mercado')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className="flex items-center gap-3 p-3 rounded-lg border-2 border-transparent hover:border-[#1b1b1b] hover:bg-[#1b1b1b]/5 transition-all group"
+                  >
+                    <div className="w-1 h-10 bg-[#1b1b1b] rounded-full" />
+                    <span className="font-['Inter'] text-sm font-medium text-gray-700 group-hover:text-[#1b1b1b]">
+                      Financeiro & Mercado
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
             {/* Tecnologia & Governança */}
-            <div className="mb-12">
+            <div className="mb-12" id="tecnologia-governanca">
               <h3 className="font-['Inter'] text-2xl font-bold text-[#1b1b1b] mb-6 flex items-center">
                 <div className="w-2 h-8 bg-[#006b4f] mr-4" />
                 Tecnologia & Governança
@@ -299,7 +353,7 @@ export function InstitutionalPage() {
             </div>
 
             {/* Educação & Capacitação */}
-            <div className="mb-12">
+            <div className="mb-12" id="educacao-capacitacao">
               <h3 className="font-['Inter'] text-2xl font-bold text-[#1b1b1b] mb-6 flex items-center">
                 <div className="w-2 h-8 bg-[#014733] mr-4" />
                 Educação & Capacitação
@@ -333,7 +387,7 @@ export function InstitutionalPage() {
             </div>
 
             {/* Ambiental & Sustentabilidade */}
-            <div className="mb-12">
+            <div className="mb-12" id="ambiental-sustentabilidade">
               <h3 className="font-['Inter'] text-2xl font-bold text-[#1b1b1b] mb-6 flex items-center">
                 <div className="w-2 h-8 bg-[#caa34b] mr-4" />
                 Ambiental & Sustentabilidade
@@ -359,7 +413,7 @@ export function InstitutionalPage() {
             </div>
 
             {/* Financeiro & Mercado */}
-            <div>
+            <div id="financeiro-mercado">
               <h3 className="font-['Inter'] text-2xl font-bold text-[#1b1b1b] mb-6 flex items-center">
                 <div className="w-2 h-8 bg-[#1b1b1b] mr-4" />
                 Financeiro & Mercado
@@ -391,6 +445,9 @@ export function InstitutionalPage() {
           </div>
         </section>
 
+        {/* Parceiros Institucionais */}
+        <InstitutionalPartnersSection />
+
         {/* Documentação Oficial */}
         <DocumentationSection />
 
@@ -414,7 +471,7 @@ export function InstitutionalPage() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-2 border-white/30 text-white hover:bg-white/20 hover:border-[#caa34b] px-8 font-semibold backdrop-blur-sm transition-all duration-300"
+                  className="border-2 border-[#caa34b] text-white bg-[#caa34b]/20 hover:bg-[#caa34b] hover:border-[#caa34b] px-8 font-semibold backdrop-blur-sm transition-all duration-300"
                 >
                   Conhecer a Tecnologia
                 </Button>

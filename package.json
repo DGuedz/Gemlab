@@ -1,11 +1,12 @@
 {
-      "name": "GemLab Platform Design (Copy)",
+      "name": "GemLab Platform",
       "version": "0.1.0",
       "private": true,
       "dependencies": {
             "@eslint/js": "*",
             "@ethereum-attestation-service/eas-contracts": "^1.8.0",
             "@ethereum-attestation-service/eas-sdk": "^2.9.0",
+            "@jsr/supabase__supabase-js": "^2.49.8",
             "@radix-ui/react-accordion": "^1.2.3",
             "@radix-ui/react-alert-dialog": "^1.1.6",
             "@radix-ui/react-aspect-ratio": "^1.1.2",
@@ -41,6 +42,7 @@
             "eslint-plugin-react-refresh": "*",
             "framer-motion": "*",
             "globals": "*",
+            "hono": "*",
             "input-otp": "^1.4.2",
             "lucide-react": "^0.487.0",
             "motion": "*",

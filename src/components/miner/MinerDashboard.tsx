@@ -104,7 +104,7 @@ export function MinerDashboard() {
                 Garimpeiro Formalizado #MINER-042 - João Silva
               </p>
             </div>
-            <Button className="bg-[#006b4f] text-white hover:bg-[#014733]">
+            <Button className="bg-[#006b4f] text-white hover:bg-[#014733] text-sm">
               <Send className="h-4 w-4 mr-2" />
               Enviar Novo Lote
             </Button>

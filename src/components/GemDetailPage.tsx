@@ -2,12 +2,6 @@ import { Button } from "./ui/button";
 import { Card } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { Separator } from "./ui/separator";
-import { EASVerificationBadge } from "./verification/EASVerificationBadge";
-import { SpectralHashViewer } from "./verification/SpectralHashViewer";
-import { ShareCertificateModal } from "./modals/ShareCertificateModal";
-import { QRCodeGenerator } from "./ui/qr-code-generator";
-import { generateCertificatePDF } from "../utils/certificateGenerator";
-import { toast } from "sonner";
 import {
   ArrowLeft,
   CheckCircle2,
@@ -25,7 +19,6 @@ import {
   QrCode,
 } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { useState } from "react";
 import emeraldImage1 from "figma:asset/f7f9158f729120c00ef8e711014954ebdd6e6678.png";
 import emeraldImage2 from "figma:asset/7afd83b00f931b4b28c7832cd46b3851eb11afb2.png";
 import emeraldImage3 from "figma:asset/64352e7879bd0c0122555126b1aa7e87c30ecead.png";
@@ -189,26 +182,6 @@ export function GemDetailPage({ gemId, onBack }: GemDetailPageProps) {
     },
   ];
 
-  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
-  const [showQRCode, setShowQRCode] = useState(false);
-
-  const handleDownloadPDF = () => {
-    generateCertificatePDF({
-      gemId: gem.id,
-      weight: gem.weight,
-      color: gem.color,
-      clarity: gem.clarity,
-      origin: gem.origin,
-      spectralHash: gem.spectralHash,
-      certificationDate: gem.certificationDate,
-      nftContract: gem.nftContract,
-      tokenId: gem.tokenId,
-    });
-    toast.success("Certificado pronto para impressão!", {
-      description: "Use Ctrl+P ou Cmd+P para salvar como PDF"
-    });
-  };
-
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
@@ -264,7 +237,6 @@ export function GemDetailPage({ gemId, onBack }: GemDetailPageProps) {
               <Button
                 variant="outline"
                 className="border-[#006b4f] text-[#006b4f] hover:bg-[#006b4f] hover:text-white"
-                onClick={handleDownloadPDF}
               >
                 <Download className="h-4 w-4 mr-2" />
                 Baixar Certificado
@@ -272,7 +244,6 @@ export function GemDetailPage({ gemId, onBack }: GemDetailPageProps) {
               <Button
                 variant="outline"
                 className="border-[#006b4f] text-[#006b4f] hover:bg-[#006b4f] hover:text-white"
-                onClick={() => setIsShareModalOpen(true)}
               >
                 <Share2 className="h-4 w-4 mr-2" />
                 Compartilhar
@@ -280,7 +251,6 @@ export function GemDetailPage({ gemId, onBack }: GemDetailPageProps) {
               <Button
                 variant="outline"
                 className="border-[#006b4f] text-[#006b4f] hover:bg-[#006b4f] hover:text-white"
-                onClick={() => setShowQRCode(true)}
               >
                 <QrCode className="h-4 w-4 mr-2" />
                 QR Code
@@ -467,48 +437,6 @@ export function GemDetailPage({ gemId, onBack }: GemDetailPageProps) {
           </div>
         </div>
 
-        {/* NOVO: EAS Verification Badge */}
-        <div className="mt-8">
-          <EASVerificationBadge 
-            attestations={[
-              {
-                type: "origin",
-                status: "active",
-                attester: "Prefeitura de Campos Verdes",
-                timestamp: "15/11/2024 14:32",
-                txHash: "0x8f2a3c5e7b9d1f4a6c8e0b2d4f6a8c0e2",
-                easUid: "0x1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d"
-              },
-              {
-                type: "science",
-                status: "active",
-                attester: "GEMLAB Tech",
-                timestamp: "15/11/2024 15:18",
-                txHash: "0x3c5e7b9d1f4a6c8e0b2d4f6a8c0e2f4a",
-                easUid: "0x2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e"
-              },
-              {
-                type: "custody",
-                status: "active",
-                attester: "Underground Vault",
-                timestamp: "15/11/2024 16:45",
-                txHash: "0x5e7b9d1f4a6c8e0b2d4f6a8c0e2f4a6c",
-                easUid: "0x3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f"
-              }
-            ]}
-          />
-        </div>
-
-        {/* NOVO: SpectralHash Viewer */}
-        <div className="mt-8">
-          <SpectralHashViewer 
-            spectralHash={gem.spectralHash}
-            ipfsCid={gem.ipfsCid}
-            arweaveTxId={gem.arweaveTxId}
-            certificationDate={gem.certificationDate}
-          />
-        </div>
-
         {/* Timeline de Rastreabilidade */}
         <Card className="mt-8 p-8 border-2 border-[#e5e7eb]">
           <h3 className="font-['Montserrat'] text-2xl font-bold text-[#1b1b1b] mb-8 flex items-center">
@@ -570,37 +498,6 @@ export function GemDetailPage({ gemId, onBack }: GemDetailPageProps) {
           </div>
         </Card>
       </div>
-
-      {/* Share Certificate Modal */}
-      <ShareCertificateModal
-        isOpen={isShareModalOpen}
-        onClose={() => setIsShareModalOpen(false)}
-        gemId={gem.id}
-        spectralHash={gem.spectralHash}
-        certificationDate={gem.certificationDate}
-      />
-
-      {/* QR Code Modal */}
-      {showQRCode && (
-        <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4">
-          <Card className="bg-white p-6 max-w-sm">
-            <h3 className="font-['Inter'] text-xl font-bold text-[#1b1b1b] mb-4 text-center">
-              QR Code - {gem.id}
-            </h3>
-            <QRCodeGenerator
-              value={`https://gemlab.tech/certificate/${gem.id}`}
-              size={256}
-              title="Escaneie para verificar"
-            />
-            <Button
-              className="mt-4 w-full bg-[#006b4f] hover:bg-[#014733] text-white"
-              onClick={() => setShowQRCode(false)}
-            >
-              Fechar
-            </Button>
-          </Card>
-        </div>
-      )}
     </div>
   );
 }

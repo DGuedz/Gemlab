@@ -111,7 +111,7 @@ export function UserProfile() {
                 </div>
               </div>
               <p className="font-['Inter'] text-xs text-gray-600 mt-2">
-                Esta wallet foi criada automaticamente para você. Você pode conectar sua própria wallet posteriormente.
+                💡 Esta wallet foi criada automaticamente para você. Você pode conectar sua própria wallet posteriormente.
               </p>
             </div>
           </div>

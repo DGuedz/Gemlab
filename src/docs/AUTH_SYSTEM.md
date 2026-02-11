@@ -9,26 +9,26 @@ O sistema de autenticação da plataforma GemLab implementa **Account Abstractio
 ## ✨ Funcionalidades
 
 ### 1️⃣ **Cadastro via Email**
--  Criação de conta com email e senha
--  **Wallet efêmera** gerada automaticamente
--  Armazenamento seguro no Supabase
--  Confirmação automática de email (para prototipagem)
+- ✅ Criação de conta com email e senha
+- ✅ **Wallet efêmera** gerada automaticamente
+- ✅ Armazenamento seguro no Supabase
+- ✅ Confirmação automática de email (para prototipagem)
 
 ### 2️⃣ **Login via Email**
--  Autenticação com email/senha
--  Sessão persistente
--  Acesso ao perfil do usuário
+- ✅ Autenticação com email/senha
+- ✅ Sessão persistente
+- ✅ Acesso ao perfil do usuário
 
 ### 3️⃣ **Conexão via Wallet**
--  Suporte para MetaMask
--  Assinatura de mensagem para autenticação
--  Criação automática de conta se wallet não existir
--  Vinculação de wallet a conta existente
+- ✅ Suporte para MetaMask
+- ✅ Assinatura de mensagem para autenticação
+- ✅ Criação automática de conta se wallet não existir
+- ✅ Vinculação de wallet a conta existente
 
 ### 4️⃣ **Wallet Efêmera**
--  Gerada automaticamente para cada nova conta via email
--  Permite acesso imediato às funcionalidades blockchain
--  Usuário pode conectar wallet própria posteriormente
+- ✅ Gerada automaticamente para cada nova conta via email
+- ✅ Permite acesso imediato às funcionalidades blockchain
+- ✅ Usuário pode conectar wallet própria posteriormente
 
 ---
 
@@ -164,12 +164,12 @@ user:wallet:{address}           → userId por endereço de wallet
 
 O componente `UserProfile` exibe:
 
--  Nome do usuário
--  Email
--  Wallet efêmera (com botão copiar)
--  Wallet conectada (se houver)
--  Status KYC (Pendente/Aprovado/Rejeitado)
--  Botão "Sair"
+- ✅ Nome do usuário
+- ✅ Email
+- ✅ Wallet efêmera (com botão copiar)
+- ✅ Wallet conectada (se houver)
+- ✅ Status KYC (Pendente/Aprovado/Rejeitado)
+- ✅ Botão "Sair"
 
 **Localização:** Aparece na página principal logo após o Hero, **apenas quando usuário está logado**.
 
@@ -178,12 +178,12 @@ O componente `UserProfile` exibe:
 ## 🔒 Segurança
 
 ### **Boas Práticas Implementadas:**
--  Senha com mínimo de 6 caracteres
--  Token JWT via Supabase Auth
--  Service Role Key **nunca** exposta ao frontend
--  Verificação de autorização em rotas protegidas
--  CORS configurado corretamente
--  Assinatura de mensagem para autenticação via wallet
+- ✅ Senha com mínimo de 6 caracteres
+- ✅ Token JWT via Supabase Auth
+- ✅ Service Role Key **nunca** exposta ao frontend
+- ✅ Verificação de autorização em rotas protegidas
+- ✅ CORS configurado corretamente
+- ✅ Assinatura de mensagem para autenticação via wallet
 
 ### **⚠️ Importante:**
 > O Figma Make **não é adequado** para coletar informações pessoalmente identificáveis (PII) ou dados sensíveis em produção. Esta implementação é para **prototipagem e demonstração**.

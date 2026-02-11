@@ -1,21 +1,36 @@
-import { serve } from 'https://deno.land/std@0.168.0/http/server.ts'
+import { Hono } from "npm:hono";
+import { cors } from "npm:hono/cors";
+import { logger } from "npm:hono/logger";
+import * as kv from "./kv_store.tsx";
+import auth from "./auth.tsx";
+import userData from "./user-data.tsx";
 
-// GemLab Platform - Minimal placeholder edge function
-// This function deploys successfully but is NOT used by the application
-// Application uses Supabase Auth natively (client-side)
+const app = new Hono();
 
-serve(async () => {
-  return new Response(
-    JSON.stringify({ 
-      message: 'GemLab - Frontend-only application',
-      status: 'This edge function is intentionally minimal',
-      auth: 'Uses Supabase Auth natively on client-side',
-      version: '1.0',
-      deployed: true
-    }),
-    { 
-      headers: { 'Content-Type': 'application/json' },
-      status: 200 
-    }
-  )
-})
+// Enable logger
+app.use('*', logger(console.log));
+
+// Enable CORS for all routes and methods
+app.use(
+  "/*",
+  cors({
+    origin: "*",
+    allowHeaders: ["Content-Type", "Authorization"],
+    allowMethods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    exposeHeaders: ["Content-Length"],
+    maxAge: 600,
+  }),
+);
+
+// Health check endpoint
+app.get("/make-server-6272b4ab/health", (c) => {
+  return c.json({ status: "ok" });
+});
+
+// Auth routes
+app.route("/make-server-6272b4ab/auth", auth);
+
+// User data routes
+app.route("/make-server-6272b4ab/user-data", userData);
+
+Deno.serve(app.fetch);
