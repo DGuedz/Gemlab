@@ -1,0 +1,67 @@
+STATUS ATUAL vs. DOCUMENTAÇÃO
+
+O QUE JÁ EXISTE (Frontend/UI - 30%)
+
+| Componente | Status | Localização | Observação |
+|------------|--------|-------------|------------|
+| Oracle Fiscal Dashboard | Mockup Visual | `/components/oracle/OracleFiscalDashboard.tsx` | Interface completa mas dados são hardcoded |
+| EAS Verification Badge | Mockup Visual | `/components/verification/EASVerificationBadge.tsx` | Mostra atestações mas são simuladas |
+| Spectral Hash Viewer | Mockup Visual | `/components/verification/SpectralHashViewer.tsx` | Exibe dados mas não valida on-chain |
+| QR Verification System | Mockup Visual | `/components/verification/QRVerificationSystem.tsx` | QR Code funciona mas não conecta blockchain |
+| Documentação Técnica | Completa | `/docs/EAS_GEMLAB_ARQUITETURA.md` | Acabei de criar |
+
+---
+
+O QUE NÃO EXISTE (Smart Contracts - 0%)
+
+Estrutura que DEVERIA existir mas NÃO existe:
+
+/contracts/
+├── GemlabBatch.sol          [Falta]
+├── GemlabNFT.sol            [Falta]
+├── GemlabResolver.sol       [Falta]
+├── TokenValidator.sol       [Falta]
+├── FiscalOracle.sol         [Falta]
+└── GemlabMetadata.sol       [Falta]
+
+/scripts/
+├── deploy_schemas.js        [Falta]
+├── deploy_contracts.js      [Falta]
+└── configure_rbac.js        [Falta]
+
+/test/
+├── GemlabNFT.test.js        [Falta]
+├── TokenValidator.test.js   [Falta]
+└── FiscalOracle.test.js     [Falta]
+
+hardhat.config.js            [Falta]
+package.json (hardhat deps)  [Falta]
+
+---
+
+EVIDÊNCIAS DO CÓDIGO ATUAL
+
+1. Oracle Fiscal Dashboard (Simulação)
+
+```typescript
+// /components/oracle/OracleFiscalDashboard.tsx:55-100
+
+// ATENÇÃO: Estes dados são HARDCODED (não vêm de blockchain)
+const [attestationLog, setAttestationLog] = useState([
+  {
+    uid: "0x1c8b...A1D1FE",  // UID inventado
+    schema: "PROVA DE ORIGEM",
+    data: "Batch ID: 8879",
+    attester: "Prefeitura Municipal",  // Texto estático, não endereço real
+    status: "valid",
+    timestamp: new Date("2024-11-20T10:30:00").toISOString(),
+  },
+  // ... mais dados hardcoded
+]);
+```
+
+Problema: Não há chamada `await eas.getAttestation(uid)` real.
+
+---
+
+2. EAS Verification Badge (Mock)
