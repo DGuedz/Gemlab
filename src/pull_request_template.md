@@ -15,7 +15,7 @@
 - [ ] 🎨 Estilo (formatação, ponto e vírgula, etc; sem mudança de código)
 - [ ] ♻️ Refatoração (mudança de código que não corrige bug nem adiciona feature)
 - [ ] ⚡ Performance (mudança que melhora performance)
-- [ ] ✅ Testes (adicionar testes faltando ou corrigir testes existentes)
+- [ ]  Testes (adicionar testes faltando ou corrigir testes existentes)
 - [ ] 🔧 Chore (mudanças no processo de build, ferramentas auxiliares, etc)
 
 ## 🔗 Issue Relacionada
@@ -36,7 +36,7 @@ Closes #(issue)
 
 <!-- Adicione screenshots para mudanças visuais -->
 
-## ✅ Checklist
+##  Checklist
 
 <!-- Marque com 'x' cada item completado -->
 
@@ -72,7 +72,7 @@ Closes #(issue)
 - [ ] Gas optimization considerada
 - [ ] Documentação técnica atualizada
 
-## 🔍 Revisão Adicional Necessária
+##  Revisão Adicional Necessária
 
 <!-- Marque áreas que precisam de atenção especial dos reviewers -->
 

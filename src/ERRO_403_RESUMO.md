@@ -10,13 +10,13 @@
 ## TL;DR (Muito Longo; Não Li)
 
 **PERGUNTA**: O erro 403 vai quebrar minha aplicação?  
-**RESPOSTA**: ❌ NÃO. **Ignore e clique em continuar.**
+**RESPOSTA**:  NÃO. **Ignore e clique em continuar.**
 
 **PERGUNTA**: Posso fazer o erro sumir?  
-**RESPOSTA**: ❌ NÃO É POSSÍVEL. O sistema sempre tentará fazer deploy da pasta `/supabase/functions/server/`.
+**RESPOSTA**:  NÃO É POSSÍVEL. O sistema sempre tentará fazer deploy da pasta `/supabase/functions/server/`.
 
 **PERGUNTA**: Devo me preocupar?  
-**RESPOSTA**: ❌ NÃO. A aplicação funciona perfeitamente mesmo com o erro.
+**RESPOSTA**:  NÃO. A aplicação funciona perfeitamente mesmo com o erro.
 
 ---
 
@@ -34,11 +34,11 @@ Error while deploying: XHR for "/api/integrations/supabase/.../edge_functions/ma
 - **MAS** não bloqueia o resto do deploy
 
 ### 3️⃣ Isso afeta a aplicação?
-- ❌ NÃO afeta autenticação
-- ❌ NÃO afeta navegação
-- ❌ NÃO afeta dashboards
-- ❌ NÃO afeta nenhuma funcionalidade
-- ✅ Aplicação funciona 100% normalmente
+-  NÃO afeta autenticação
+-  NÃO afeta navegação
+-  NÃO afeta dashboards
+-  NÃO afeta nenhuma funcionalidade
+-  Aplicação funciona 100% normalmente
 
 ### 4️⃣ O que fazer?
 **NADA.** Apenas ignore o erro.
@@ -56,7 +56,7 @@ Usuário → Frontend → Edge Functions → Supabase → Banco de Dados
 ### AGORA (sem edge functions)
 ```
 Usuário → Frontend → Supabase Auth → Banco de Dados
-         ✅ Funciona perfeitamente
+          Funciona perfeitamente
 ```
 
 ---
@@ -66,7 +66,7 @@ Usuário → Frontend → Supabase Auth → Banco de Dados
 1. **Abra a aplicação** no navegador
 2. **Clique em "Entrar"**
 3. **Crie uma conta teste**
-4. **✅ Funcionou?** Então está tudo OK!
+4. ** Funcionou?** Então está tudo OK!
 
 Se o login funcionar, **ignore o erro 403**.
 
@@ -106,9 +106,9 @@ Para mais detalhes, consulte:
 
 | Item | Status |
 |------|--------|
-| Aplicação | ✅ Funcional |
-| Autenticação | ✅ Funcional |
-| Dashboards | ✅ Funcional |
+| Aplicação |  Funcional |
+| Autenticação |  Funcional |
+| Dashboards |  Funcional |
 | Edge Functions | ⚠️ Desabilitadas (não necessárias) |
 | Erro 403 | ⚠️ Aparece mas pode ser ignorado |
 

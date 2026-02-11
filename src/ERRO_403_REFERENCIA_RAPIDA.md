@@ -14,7 +14,7 @@ Quando ver o erro:
 - [ ] Clique em "Continuar" se houver botão
 - [ ] Aguarde o deploy do frontend completar
 - [ ] Teste a aplicação
-- [ ] ✅ Se funcionar = está tudo OK
+- [ ]  Se funcionar = está tudo OK
 
 ---
 
@@ -22,12 +22,12 @@ Quando ver o erro:
 
 | Pergunta | Resposta |
 |----------|----------|
-| É grave? | ❌ Não |
-| Vai quebrar algo? | ❌ Não |
-| Precisa corrigir? | ❌ Não |
-| O que fazer? | ✅ Ignorar |
-| Vai sumir? | ❌ Não |
-| Posso usar a app? | ✅ Sim |
+| É grave? |  Não |
+| Vai quebrar algo? |  Não |
+| Precisa corrigir? |  Não |
+| O que fazer? |  Ignorar |
+| Vai sumir? |  Não |
+| Posso usar a app? |  Sim |
 
 ---
 
@@ -38,14 +38,14 @@ Quando ver o erro:
 1. Veja o erro 403
 2. Clique "Continuar" ou "Continue"
 3. Aguarde deploy completar
-4. ✅ Pronto!
+4.  Pronto!
 ```
 
 ### Ação 2: Ignorar (Se não houver botão)
 ```
 1. Veja o erro 403
 2. Aguarde automaticamente continuar
-3. ✅ Pronto!
+3.  Pronto!
 ```
 
 ### Ação 3: Tentar Novamente (Se travar)
@@ -53,7 +53,7 @@ Quando ver o erro:
 1. Veja o erro 403
 2. Espere 10 segundos
 3. Clique "Tentar Novamente"
-4. ✅ Pronto!
+4.  Pronto!
 ```
 
 ---
@@ -73,11 +73,11 @@ Para detalhes técnicos, consulte:
 
 | Componente | Status | Afetado por 403? |
 |------------|--------|------------------|
-| Frontend | ✅ Funcional | ❌ Não |
-| Autenticação | ✅ Funcional | ❌ Não |
-| Dashboard | ✅ Funcional | ❌ Não |
-| Navegação | ✅ Funcional | ❌ Não |
-| Edge Functions | ⚠️ Desabilitadas | ✅ Sim (mas não importa) |
+| Frontend |  Funcional |  Não |
+| Autenticação |  Funcional |  Não |
+| Dashboard |  Funcional |  Não |
+| Navegação |  Funcional |  Não |
+| Edge Functions | ⚠️ Desabilitadas |  Sim (mas não importa) |
 
 ---
 
@@ -93,4 +93,4 @@ Para detalhes técnicos, consulte:
 
 **Data**: 2024-12-08  
 **Versão**: 1.0  
-**Status**: ✅ Documentação completa
+**Status**:  Documentação completa

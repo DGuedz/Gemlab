@@ -244,7 +244,7 @@ Configure CORS no painel Pinata para permitir requests do domínio.
 
 ---
 
-## ✅ Checklist Final de Deploy
+##  Checklist Final de Deploy
 
 - [ ] Frontend deployado no Vercel/Netlify
 - [ ] Domínio configurado e SSL ativo

@@ -8,10 +8,10 @@ Obrigado por considerar contribuir com o GEMLAB! Este documento fornece diretriz
 
 Ao participar deste projeto, você concorda em manter um ambiente respeitoso e inclusivo. Esperamos que todos os colaboradores:
 
-- ✅ Sejam respeitosos e inclusivos
-- ✅ Aceitem críticas construtivas
-- ✅ Foquem no que é melhor para a comunidade
-- ✅ Demonstrem empatia com outros membros da comunidade
+-  Sejam respeitosos e inclusivos
+-  Aceitem críticas construtivas
+-  Foquem no que é melhor para a comunidade
+-  Demonstrem empatia com outros membros da comunidade
 
 ---
 
@@ -106,18 +106,18 @@ refactor: reorganiza componentes de verificação
 
 ### **TypeScript**
 
-- ✅ Use **TypeScript** para todo código novo
-- ✅ Defina **interfaces** para props de componentes
-- ✅ Evite `any` - use tipos específicos
-- ✅ Use **type inference** quando possível
+-  Use **TypeScript** para todo código novo
+-  Defina **interfaces** para props de componentes
+-  Evite `any` - use tipos específicos
+-  Use **type inference** quando possível
 
 ### **React Components**
 
-- ✅ Use **Function Components** com hooks
-- ✅ Nomeie componentes em **PascalCase**
-- ✅ Um componente por arquivo
-- ✅ Props devem ter interface tipada
-- ✅ Use **React.memo** para componentes que renderizam frequentemente
+-  Use **Function Components** com hooks
+-  Nomeie componentes em **PascalCase**
+-  Um componente por arquivo
+-  Props devem ter interface tipada
+-  Use **React.memo** para componentes que renderizam frequentemente
 
 **Exemplo:**
 
@@ -139,10 +139,10 @@ export function Button({ label, onClick, variant = 'primary' }: ButtonProps) {
 
 ### **Styling (Tailwind CSS)**
 
-- ✅ Use **Tailwind classes** em vez de CSS customizado
-- ✅ Para estilos repetitivos, crie componentes
-- ✅ Mantenha classes organizadas (layout → spacing → colors → typography)
-- ❌ **NÃO** use classes de `font-size`, `font-weight` ou `line-height` (temos defaults em `globals.css`)
+-  Use **Tailwind classes** em vez de CSS customizado
+-  Para estilos repetitivos, crie componentes
+-  Mantenha classes organizadas (layout → spacing → colors → typography)
+-  **NÃO** use classes de `font-size`, `font-weight` ou `line-height` (temos defaults em `globals.css`)
 
 ### **Organização de Arquivos**
 
@@ -184,9 +184,9 @@ import logo from '../../assets/logo.png';
 
 ## 🧪 **Testes**
 
-- ✅ Adicione testes para novas features
-- ✅ Certifique-se que todos os testes passam antes de submeter PR
-- ✅ Use **React Testing Library** para testes de componentes
+-  Adicione testes para novas features
+-  Certifique-se que todos os testes passam antes de submeter PR
+-  Use **React Testing Library** para testes de componentes
 
 ```bash
 npm run test          # Roda todos os testes
@@ -198,22 +198,22 @@ npm run test:coverage # Coverage report
 
 ## 📚 **Documentação**
 
-- ✅ Documente funções complexas com **JSDoc**
-- ✅ Atualize o README.md se necessário
-- ✅ Adicione comentários em código não-óbvio
-- ✅ Crie/atualize docs em `/docs` para features maiores
+-  Documente funções complexas com **JSDoc**
+-  Atualize o README.md se necessário
+-  Adicione comentários em código não-óbvio
+-  Crie/atualize docs em `/docs` para features maiores
 
 ---
 
-## 🔍 **Code Review**
+##  **Code Review**
 
 Todos os PRs passam por code review. Esperamos:
 
-- ✅ **Código limpo** e **legível**
-- ✅ **Testes passando**
-- ✅ **Sem warnings** de lint/TypeScript
-- ✅ **Documentação** atualizada
-- ✅ **Commits** bem organizados
+-  **Código limpo** e **legível**
+-  **Testes passando**
+-  **Sem warnings** de lint/TypeScript
+-  **Documentação** atualizada
+-  **Commits** bem organizados
 
 ---
 

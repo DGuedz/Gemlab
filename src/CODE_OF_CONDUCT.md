@@ -8,21 +8,21 @@ No interesse de promover um ambiente aberto e acolhedor, nós, como colaboradore
 
 Exemplos de comportamento que contribuem para criar um ambiente positivo incluem:
 
-* ✅ Usar linguagem acolhedora e inclusiva
-* ✅ Respeitar pontos de vista e experiências diferentes
-* ✅ Aceitar críticas construtivas com elegância
-* ✅ Focar no que é melhor para a comunidade
-* ✅ Mostrar empatia com outros membros da comunidade
-* ✅ Reconhecer e valorizar contribuições de todos os tipos
-* ✅ Manter discussões técnicas e profissionais
+*  Usar linguagem acolhedora e inclusiva
+*  Respeitar pontos de vista e experiências diferentes
+*  Aceitar críticas construtivas com elegância
+*  Focar no que é melhor para a comunidade
+*  Mostrar empatia com outros membros da comunidade
+*  Reconhecer e valorizar contribuições de todos os tipos
+*  Manter discussões técnicas e profissionais
 
 Exemplos de comportamento inaceitável por participantes incluem:
 
-* ❌ Uso de linguagem ou imagens sexualizadas e atenção ou avanços sexuais indesejados
-* ❌ Comentários insultuosos/depreciativos e ataques pessoais ou políticos (*trolling*)
-* ❌ Assédio público ou privado
-* ❌ Publicar informações privadas de outros, como endereço físico ou eletrônico, sem permissão explícita
-* ❌ Outra conduta que poderia razoavelmente ser considerada inadequada em um ambiente profissional
+*  Uso de linguagem ou imagens sexualizadas e atenção ou avanços sexuais indesejados
+*  Comentários insultuosos/depreciativos e ataques pessoais ou políticos (*trolling*)
+*  Assédio público ou privado
+*  Publicar informações privadas de outros, como endereço físico ou eletrônico, sem permissão explícita
+*  Outra conduta que poderia razoavelmente ser considerada inadequada em um ambiente profissional
 
 ## Contexto Específico: Projeto GEMLAB
 

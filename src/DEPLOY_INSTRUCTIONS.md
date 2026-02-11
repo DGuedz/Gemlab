@@ -8,10 +8,10 @@ Este documento contém as instruções passo a passo para fazer o deploy do proj
 
 Antes de começar, certifique-se de ter:
 
-- ✅ Git instalado (versão 2.0+)
-- ✅ Conta no GitHub
-- ✅ Node.js 18+ instalado
-- ✅ npm ou yarn configurado
+-  Git instalado (versão 2.0+)
+-  Conta no GitHub
+-  Node.js 18+ instalado
+-  npm ou yarn configurado
 
 ---
 
@@ -39,12 +39,12 @@ git config --list
 Certifique-se de que os seguintes arquivos foram criados:
 
 ```bash
-✅ README.md              # Documentação principal
-✅ CHANGELOG.md           # Histórico de mudanças
-✅ .gitignore             # Arquivos a ignorar
-✅ CONTRIBUTING.md        # Guia de contribuição
-✅ PROJECT_OVERVIEW.md    # Visão técnica completa
-✅ PLATFORM_COMPLETE.md   # Status de conclusão
+ README.md              # Documentação principal
+ CHANGELOG.md           # Histórico de mudanças
+ .gitignore             # Arquivos a ignorar
+ CONTRIBUTING.md        # Guia de contribuição
+ PROJECT_OVERVIEW.md    # Visão técnica completa
+ PLATFORM_COMPLETE.md   # Status de conclusão
 ```
 
 ### 2. Verifique a estrutura
@@ -313,9 +313,9 @@ npm run deploy
 2. Clique em **"Add rule"**
 3. Configure:
    - **Branch name pattern:** `main`
-   - ✅ Require pull request reviews before merging
-   - ✅ Require status checks to pass before merging
-   - ✅ Require branches to be up to date before merging
+   -  Require pull request reviews before merging
+   -  Require status checks to pass before merging
+   -  Require branches to be up to date before merging
 4. Salve as alterações
 
 ---
@@ -357,7 +357,7 @@ jobs:
 
 ---
 
-## 🔍 Comandos Úteis
+##  Comandos Úteis
 
 ### Verificar histórico
 
@@ -455,7 +455,7 @@ Se precisar de ajuda:
 
 ---
 
-## ✅ Checklist Final
+##  Checklist Final
 
 Antes de fazer o push:
 

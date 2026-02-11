@@ -1,34 +1,34 @@
 # ⚡ Erro 403 - Referência Rápida (v2.0)
 
 > **Última Atualização:** Dezembro 2024  
-> **Status:** ✅ MITIGADO - Arquivos limpos e documentados
+> **Status:**  MITIGADO - Arquivos limpos e documentados
 
 ---
 
 ## 🚨 Vendo o Erro 403?
 
 ```bash
-❌ Error while deploying: XHR for "/api/integrations/supabase/.../edge_functions/make-server/deploy" failed with status 403
+ Error while deploying: XHR for "/api/integrations/supabase/.../edge_functions/make-server/deploy" failed with status 403
 ```
 
-### ✅ Ação Imediata: IGNORE
+###  Ação Imediata: IGNORE
 
 **1 linha de resposta:**
 > O erro não afeta nada. A aplicação funciona 100%. Ignore completamente.
 
 ---
 
-## 🔍 Checklist Rápido (30 segundos)
+##  Checklist Rápido (30 segundos)
 
 | Pergunta | Resposta Esperada |
 |----------|-------------------|
-| A aplicação carregou? | ✅ SIM |
-| Login funciona? | ✅ SIM |
-| Navegação funciona? | ✅ SIM |
-| Certificados aparecem? | ✅ SIM |
+| A aplicação carregou? |  SIM |
+| Login funciona? |  SIM |
+| Navegação funciona? |  SIM |
+| Certificados aparecem? |  SIM |
 
 **Se todas as respostas são SIM:**
-→ ✅ **Aplicação está perfeita. Ignore o erro 403.**
+→  **Aplicação está perfeita. Ignore o erro 403.**
 
 **Se alguma resposta é NÃO:**
 → ⚠️ **O problema NÃO É o erro 403. Verifique console do browser.**
@@ -70,9 +70,9 @@ server/
 └── README.md         ← Documentação explicativa
 ```
 
-✅ **Limpeza:** 12 arquivos deletados  
-✅ **Arquivos protegidos:** Esvaziados  
-✅ **Documentação:** Criada  
+ **Limpeza:** 12 arquivos deletados  
+ **Arquivos protegidos:** Esvaziados  
+ **Documentação:** Criada  
 
 ---
 
@@ -81,7 +81,7 @@ server/
 ### Arquitetura Atual (Frontend-Only)
 
 ```typescript
-// ✅ Como funciona AGORA (sem edge functions)
+//  Como funciona AGORA (sem edge functions)
 
 import { supabase } from '@/utils/supabase/client';
 
@@ -94,22 +94,22 @@ const { data, error } = await supabase.auth.signUp({
   }
 });
 
-// ✅ Supabase Auth gerencia tudo server-side
-// ✅ JWT retorna para o cliente
-// ✅ Estado gerenciado via React Context
-// ❌ NENHUMA edge function intermediária necessária
+//  Supabase Auth gerencia tudo server-side
+//  JWT retorna para o cliente
+//  Estado gerenciado via React Context
+//  NENHUMA edge function intermediária necessária
 ```
 
 ### O Que a Supabase Faz Por Nós (Nativo)
 
 | Funcionalidade | Como Funciona | Edge Function Necessária? |
 |----------------|---------------|---------------------------|
-| Sign Up | Supabase Auth Server | ❌ NÃO |
-| Sign In | Supabase Auth Server | ❌ NÃO |
-| JWT Token | Gerado pelo Supabase | ❌ NÃO |
-| Session Management | Supabase SDK | ❌ NÃO |
-| Password Reset | Supabase Auth Server | ❌ NÃO |
-| OAuth (Google, etc) | Supabase Auth Server | ❌ NÃO |
+| Sign Up | Supabase Auth Server |  NÃO |
+| Sign In | Supabase Auth Server |  NÃO |
+| JWT Token | Gerado pelo Supabase |  NÃO |
+| Session Management | Supabase SDK |  NÃO |
+| Password Reset | Supabase Auth Server |  NÃO |
+| OAuth (Google, etc) | Supabase Auth Server |  NÃO |
 
 **Conclusão:** Edge functions são completamente desnecessárias para nossa stack.
 
@@ -121,13 +121,13 @@ const { data, error } = await supabase.auth.signUp({
 
 | Componente | Afetado? | Status |
 |------------|----------|--------|
-| Frontend (React) | ❌ NÃO | ✅ Funciona |
-| Supabase Auth | ❌ NÃO | ✅ Funciona |
-| Login/Registro | ❌ NÃO | ✅ Funciona |
-| Navegação | ❌ NÃO | ✅ Funciona |
-| Database | ❌ NÃO | ✅ Funciona |
-| Deploy do Frontend | ❌ NÃO | ✅ Funciona |
-| **Edge Functions** | ✅ SIM | ❌ Falha (intencional) |
+| Frontend (React) |  NÃO |  Funciona |
+| Supabase Auth |  NÃO |  Funciona |
+| Login/Registro |  NÃO |  Funciona |
+| Navegação |  NÃO |  Funciona |
+| Database |  NÃO |  Funciona |
+| Deploy do Frontend |  NÃO |  Funciona |
+| **Edge Functions** |  SIM |  Falha (intencional) |
 
 **Resultado:** 0 funcionalidades críticas afetadas.
 
@@ -189,13 +189,13 @@ R: Adicione arquivos novos e configure permissões. Documentação em `/supabase
 
 ---
 
-## ✅ Conclusão de 10 Segundos
+##  Conclusão de 10 Segundos
 
-1. ✅ Erro 403 é esperado e ignorável
-2. ✅ Aplicação funciona 100% sem edge functions
-3. ✅ Arquivos limpos e documentados
-4. ✅ Foco em desenvolvimento de features
-5. ✅ Nenhuma ação necessária
+1.  Erro 403 é esperado e ignorável
+2.  Aplicação funciona 100% sem edge functions
+3.  Arquivos limpos e documentados
+4.  Foco em desenvolvimento de features
+5.  Nenhuma ação necessária
 
 ---
 
@@ -203,4 +203,4 @@ R: Adicione arquivos novos e configure permissões. Documentação em `/supabase
 > Se a aplicação funciona, ignore o erro 403.  
 > Se a aplicação NÃO funciona, o problema NÃO É o erro 403.
 
-**Status:** ✅ RESOLVIDO POR DESABILITAÇÃO INTENCIONAL
+**Status:**  RESOLVIDO POR DESABILITAÇÃO INTENCIONAL

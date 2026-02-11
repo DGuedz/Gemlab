@@ -118,7 +118,7 @@ Escolha sua plataforma (marque a escolhida):
 
 ---
 
-## ✅ Pós-Deploy
+##  Pós-Deploy
 
 ### Verificação Imediata
 - [ ] Site acessível via URL de produção
@@ -254,7 +254,7 @@ Em caso de problemas críticos:
 
 ---
 
-## ✅ Checklist Final
+##  Checklist Final
 
 Antes de marcar como completo:
 

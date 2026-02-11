@@ -17,11 +17,11 @@ Uma descrição clara e concisa do bug.
 3. Role até '...'
 4. Veja o erro
 
-## ✅ Comportamento Esperado
+##  Comportamento Esperado
 
 Uma descrição clara do que você esperava que acontecesse.
 
-## ❌ Comportamento Atual
+##  Comportamento Atual
 
 Uma descrição clara do que realmente aconteceu.
 

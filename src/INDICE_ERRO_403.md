@@ -25,7 +25,7 @@ Se você está vendo o erro 403 pela primeira vez, comece aqui:
    - Perguntas frequentes
    - Status da aplicação
 
-4. **[ERROR_403_EXPLANATION.md](./ERROR_403_EXPLANATION.md)** 🔍
+4. **[ERROR_403_EXPLANATION.md](./ERROR_403_EXPLANATION.md)** 
    - Explicação técnica detalhada
    - Arquitetura antes/depois
    - Impacto na aplicação
@@ -36,7 +36,7 @@ Se você está vendo o erro 403 pela primeira vez, comece aqui:
 
 ### Processo de Deploy
 
-5. **[DEPLOY_STATUS.md](./DEPLOY_STATUS.md)** ✅
+5. **[DEPLOY_STATUS.md](./DEPLOY_STATUS.md)** 
    - Checklist completo
    - Fluxo de deploy
    - Resolução de problemas
@@ -87,7 +87,7 @@ Se você está vendo o erro 403 pela primeira vez, comece aqui:
 
 ---
 
-## 🔍 Busca Rápida por Tema
+##  Busca Rápida por Tema
 
 ### "Como faço deploy?"
 → **[COMO_IGNORAR_ERRO_403.md](./COMO_IGNORAR_ERRO_403.md)**
@@ -128,7 +128,7 @@ Vai fazer deploy?
        ↓
 DEPLOY_STATUS.md (20 min)
        ↓
-✅ Tudo entendido!
+ Tudo entendido!
 ```
 
 ---
@@ -199,4 +199,4 @@ Se após ler a documentação ainda tiver dúvidas:
 **Total de documentos**: 12  
 **Tempo de leitura (tudo)**: ~2 horas  
 **Tempo de leitura (essencial)**: ~15 minutos  
-**Status**: ✅ Documentação completa e organizada
+**Status**:  Documentação completa e organizada

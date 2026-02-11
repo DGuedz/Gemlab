@@ -106,9 +106,9 @@ For questions or support:
 ## 📌 Documentation Standards
 
 All documentation in this project follows:
-- ✅ Clear headings and structure
-- ✅ Code examples where applicable
-- ✅ Links to related documents
-- ✅ Updated with each release
+-  Clear headings and structure
+-  Code examples where applicable
+-  Links to related documents
+-  Updated with each release
 
 Last updated: December 2024

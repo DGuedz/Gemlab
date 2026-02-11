@@ -5,12 +5,12 @@
 Você está fazendo deploy e vê:
 
 ```
-❌ Error while deploying: XHR for "/api/integrations/supabase/rehTmSQvUMegDNc8VNkcA1/edge_functions/make-server/deploy" failed with status 403
+ Error while deploying: XHR for "/api/integrations/supabase/rehTmSQvUMegDNc8VNkcA1/edge_functions/make-server/deploy" failed with status 403
 ```
 
 ---
 
-## ✅ Passo a Passo: O Que Fazer
+##  Passo a Passo: O Que Fazer
 
 ### 1️⃣ Respire Fundo
 Este erro é **normal, esperado e não quebra nada**.
@@ -19,20 +19,20 @@ Este erro é **normal, esperado e não quebra nada**.
 
 #### Se aparecer um botão "Continuar" ou "Continue":
 ```
-✅ CLIQUE EM "CONTINUAR"
+ CLIQUE EM "CONTINUAR"
 ```
 O deploy do frontend continuará e será bem-sucedido.
 
 #### Se aparecer apenas como um log/aviso:
 ```
-✅ IGNORE COMPLETAMENTE
+ IGNORE COMPLETAMENTE
 ```
 O sistema já continuou automaticamente.
 
 #### Se o deploy parar esperando ação:
 ```
-✅ FECHE O MODAL DE ERRO (se houver)
-✅ CLIQUE EM "TENTAR NOVAMENTE" ou "DEPLOY"
+ FECHE O MODAL DE ERRO (se houver)
+ CLIQUE EM "TENTAR NOVAMENTE" ou "DEPLOY"
 ```
 O sistema tentará novamente e eventualmente continuará com o frontend.
 
@@ -41,17 +41,17 @@ O sistema tentará novamente e eventualmente continuará com o frontend.
 Você verá algo como:
 ```
 ⚠️  Edge functions: Failed (403)
-✅ Frontend build: Success
-✅ Assets: Uploaded
-✅ Deploy: Complete
+ Frontend build: Success
+ Assets: Uploaded
+ Deploy: Complete
 ```
 
 ### 4️⃣ Acesse a Aplicação
 
 Clique no link da aplicação deployada e verifique:
-- ✅ Página carrega?
-- ✅ Login funciona?
-- ✅ Navegação funciona?
+-  Página carrega?
+-  Login funciona?
+-  Navegação funciona?
 
 **Se SIM para todas → Deploy bem-sucedido!** 🎉
 
@@ -62,17 +62,17 @@ Clique no link da aplicação deployada e verifique:
 ```
 [Início Deploy]
       ↓
-[Build Frontend] → ✅ Sucesso
+[Build Frontend] →  Sucesso
       ↓
-[Tentar Deploy Edge Functions] → ❌ Erro 403
+[Tentar Deploy Edge Functions] →  Erro 403
       ↓
 [⚠️ VOCÊ ESTÁ AQUI]
       ↓
 [Continuar?] → Clique "Sim" ou "Continuar"
       ↓
-[Upload Assets] → ✅ Sucesso
+[Upload Assets] →  Sucesso
       ↓
-[Deploy Frontend] → ✅ Sucesso
+[Deploy Frontend] →  Sucesso
       ↓
 [🎉 APLICAÇÃO NO AR]
 ```
@@ -111,7 +111,7 @@ Após ignorar o erro 403 e o deploy completar:
 - [ ] Menu de navegação funciona
 - [ ] Páginas institucionais abrem
 
-**Todos marcados?** → ✅ **Deploy 100% bem-sucedido!**
+**Todos marcados?** →  **Deploy 100% bem-sucedido!**
 
 ---
 
@@ -139,21 +139,21 @@ Se após ignorar o erro 403 a aplicação não carregar:
 
 ## 📝 Notas Finais
 
-### ✅ O que é NORMAL:
-- Erro 403 aparece ✅
-- Deploy continua após o erro ✅
-- Aplicação funciona perfeitamente ✅
+###  O que é NORMAL:
+- Erro 403 aparece 
+- Deploy continua após o erro 
+- Aplicação funciona perfeitamente 
 
-### ❌ O que NÃO é normal:
-- Deploy falhar completamente ❌
-- Aplicação não carregar ❌
-- Login não funcionar ❌
+###  O que NÃO é normal:
+- Deploy falhar completamente 
+- Aplicação não carregar 
+- Login não funcionar 
 
-Se algo na lista "❌ NÃO é normal" acontecer, **isso não é culpa do erro 403** - é outro problema que precisa ser investigado.
+Se algo na lista " NÃO é normal" acontecer, **isso não é culpa do erro 403** - é outro problema que precisa ser investigado.
 
 ---
 
 **Última atualização**: 2024-12-08  
 **Aplicação**: GemLab Platform  
 **Erro**: 403 em edge functions (ignorável)  
-**Status**: ✅ Solução documentada
+**Status**:  Solução documentada

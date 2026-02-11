@@ -140,7 +140,7 @@ Use Personal Access Token: [docs.github.com/tokens](https://docs.github.com/en/a
 
 ---
 
-## ✅ Checklist
+##  Checklist
 
 - [ ] Git configurado
 - [ ] Repositório criado no GitHub

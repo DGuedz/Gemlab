@@ -304,11 +304,11 @@ Prêmio de 15-40% no mercado internacional devido à certificação ética.
 ## 🚀 Roadmap
 
 ### Fase 1: MVP (Concluída)
-- ✅ Landing page institucional
-- ✅ Dashboard Gemólogo + Wizard
-- ✅ Marketplace com filtros
-- ✅ Painel Garimpeiro + Simulador
-- ✅ Admin Panel completo
+-  Landing page institucional
+-  Dashboard Gemólogo + Wizard
+-  Marketplace com filtros
+-  Painel Garimpeiro + Simulador
+-  Admin Panel completo
 
 ### Fase 2: Integração Blockchain
 - [ ] Deploy dos contratos (ERC-1155, ERC-721)

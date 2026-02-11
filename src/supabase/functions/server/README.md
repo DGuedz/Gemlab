@@ -1,7 +1,7 @@
 # Edge Functions - Minimal Placeholders
 
-**Status:** ✅ DEPLOYED (placeholders válidos)  
-**Uso pela aplicação:** ❌ NÃO UTILIZADAS
+**Status:**  DEPLOYED (placeholders válidos)  
+**Uso pela aplicação:**  NÃO UTILIZADAS
 
 ---
 
@@ -18,17 +18,17 @@ As edge functions foram convertidas em **placeholders HTTP válidos** que fazem 
 
 ---
 
-## ✅ Vantagens
+##  Vantagens
 
 ### Deploy Limpo
-- ✅ Sem erros 403
-- ✅ Pipeline totalmente verde
-- ✅ Log de deploy limpo
+-  Sem erros 403
+-  Pipeline totalmente verde
+-  Log de deploy limpo
 
 ### Aplicação Inalterada
-- ✅ Frontend continua 100% independente
-- ✅ Supabase Auth nativo funciona
-- ✅ Edge functions **não são chamadas**
+-  Frontend continua 100% independente
+-  Supabase Auth nativo funciona
+-  Edge functions **não são chamadas**
 
 ---
 
@@ -56,6 +56,6 @@ Edge Functions (placeholders) ← Deploy OK, mas não são usadas
 
 ---
 
-**Status:** ✅ PROBLEMA RESOLVIDO  
-**Erro 403:** ✅ ELIMINADO  
-**Deploy:** ✅ SUCESSO
+**Status:**  PROBLEMA RESOLVIDO  
+**Erro 403:**  ELIMINADO  
+**Deploy:**  SUCESSO

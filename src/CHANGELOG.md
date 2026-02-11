@@ -74,7 +74,7 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 - `✨ Adicionado` - para novas funcionalidades
 - `🔄 Alterado` - para mudanças em funcionalidades existentes
 - `🗑️ Depreciado` - para funcionalidades que serão removidas
-- `❌ Removido` - para funcionalidades removidas
+- ` Removido` - para funcionalidades removidas
 - `🐛 Corrigido` - para correção de bugs
 - `🔐 Segurança` - para correções de vulnerabilidades
 - `📚 Documentação` - para mudanças na documentação

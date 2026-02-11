@@ -16,7 +16,7 @@
 │  2. Clique "Continuar" (se houver)  │
 │  3. Aguarde deploy completar        │
 │  4. Teste a aplicação               │
-│  5. ✅ Funcionou? Tudo certo!       │
+│  5.  Funcionou? Tudo certo!       │
 └─────────────────────────────────────┘
 ```
 
@@ -32,12 +32,12 @@ Se quiser entender melhor, leia nesta ordem:
 
 ---
 
-## ✅ Garantia
+##  Garantia
 
-- ✅ A aplicação funciona 100%
-- ✅ Login funciona
-- ✅ Dashboard funciona
-- ✅ Todas as páginas funcionam
+-  A aplicação funciona 100%
+-  Login funciona
+-  Dashboard funciona
+-  Todas as páginas funcionam
 - ⚠️ Erro 403 aparece (mas pode ignorar)
 
 ---
@@ -58,7 +58,7 @@ Se quiser entender melhor, leia nesta ordem:
 
 ---
 
-**Status**: ✅ Aplicação 100% funcional  
+**Status**:  Aplicação 100% funcional  
 **Erro 403**: ⚠️ Aparece mas é ignorável  
 **Última atualização**: 2024-12-08
 

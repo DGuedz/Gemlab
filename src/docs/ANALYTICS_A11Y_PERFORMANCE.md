@@ -145,7 +145,7 @@ import { AnalyticsDashboard } from '@/components/analytics/AnalyticsDashboard';
 
 #### 2. **Navegação por Teclado**
 
-✅ **Totalmente Funcional:**
+ **Totalmente Funcional:**
 - `Tab`: Navega entre elementos interativos
 - `Enter` / `Space`: Ativa botões
 - `Esc`: Fecha o Sheet mobile (comportamento nativo do shadcn/ui)
@@ -204,10 +204,10 @@ import { lazy, Suspense } from 'react';
 
 | Métrica | Target | Status |
 |---------|--------|--------|
-| First Contentful Paint | < 1.8s | ✅ |
-| Time to Interactive | < 3.5s | ✅ |
-| Cumulative Layout Shift | < 0.1 | ✅ |
-| Lighthouse Score | > 90 | ✅ |
+| First Contentful Paint | < 1.8s |  |
+| Time to Interactive | < 3.5s |  |
+| Cumulative Layout Shift | < 0.1 |  |
+| Lighthouse Score | > 90 |  |
 
 ---
 

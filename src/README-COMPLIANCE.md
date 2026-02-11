@@ -407,7 +407,7 @@ Sensitive data stored in **encrypted databases** with access controls:
 
 ---
 
-## ✅ Compliance Certification Statement
+##  Compliance Certification Statement
 
 **GEMLAB Protocol affirms that:**
 
