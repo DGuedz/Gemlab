@@ -18,10 +18,10 @@ import { Footer } from "../Footer";
 
 export function InstitutionalPage() {
   const stats = [
-    { label: "Certificados Emitidos", value: "500+", icon: Award },
-    { label: "Garimpeiros Formalizados", value: "150+", icon: Users },
-    { label: "Rastreabilidade", value: "100%", icon: Shield },
-    { label: "Esmeraldas Certificadas", value: "1.247", icon: TrendingUp },
+    { label: "Parceiros Acadêmicos", value: "UFG / IFG", icon: BookOpen },
+    { label: "Arquitetura", value: "VSC Compliant", icon: Shield },
+    { label: "Fomento", value: "Centelha/FAPEG", icon: Award },
+    { label: "Modelo", value: "Regenerativo", icon: TrendingUp },
   ];
 
   const documents = [
@@ -66,11 +66,11 @@ export function InstitutionalPage() {
               <span className="text-[#caa34b]">Rastreabilidade de Esmeraldas</span>
             </h1>
             <p className="font-['Inter'] text-xl lg:text-2xl text-gray-200 mb-8 leading-relaxed">
-              Protocolo de certificação científica que conecta a geologia de Campos Verdes ao mercado global com{" "}
+              Protocolo de certificação científica baseado na arquitetura <strong className="text-[#caa34b]">VSC (Value-Separated Control)</strong>, conectando a geologia de Campos Verdes ao mercado global com{" "}
               <strong className="text-white">
-                transparência absoluta
+                economia de dados
               </strong>{" "}
-              através de espectrometria Raman, blockchain e governança institucional
+              e validação via espectrometria Raman e blockchain.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4">
               <Button

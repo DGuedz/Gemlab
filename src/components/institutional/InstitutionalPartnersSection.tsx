@@ -175,11 +175,11 @@ const partners: Partner[] = [
     ]
   },
   {
-    id: "coopesmeralda",
-    name: "COOPESMERALDA - Cooperativa de Garimpeiros",
-    acronym: "COOPESMERALDA",
+    id: "cooperativa-apl",
+    name: "Cooperativas do APL",
+    acronym: "COOPERATIVAS",
     category: "cooperativo",
-    description: "Cooperativa local de garimpeiros e produtores de esmeraldas.",
+    description: "Rede de cooperativas locais de garimpeiros e produtores de esmeraldas.",
     role: "Oráculo Operacional e Custodiante no Protocolo GEMLAB. Responsável pela organização da cadeia produtiva, certificação de origem, e gestão compartilhada do sistema de rastreabilidade.",
     icon: Users,
     color: "#006b4f",

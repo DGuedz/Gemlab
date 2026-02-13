@@ -2,7 +2,7 @@ import { Card } from "../ui/card";
 import { Badge } from "../ui/badge";
 import { Shield, Building2, Vault, CheckCircle2 } from "lucide-react";
 
-export function CoopesmeraldaHighlight() {
+export function CooperativesHighlight() {
   return (
     <section className="py-20 bg-gradient-to-b from-[var(--emerald-green)] to-[#014733]/50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -24,7 +24,7 @@ export function CoopesmeraldaHighlight() {
             <div className="text-center mb-8 relative z-10">
               <Badge className="bg-[#014733] text-white px-8 py-3 text-lg mb-6">
                 <Shield className="h-6 w-6 mr-3" />
-                ORÁCULO OPERACIONAL ÚNICO
+                APL DE CAMPOS VERDES
               </Badge>
             </div>
 
@@ -32,21 +32,21 @@ export function CoopesmeraldaHighlight() {
             <div className="relative z-10 space-y-8">
               <div className="text-center">
                 <h2 className="font-['Montserrat'] text-4xl lg:text-5xl font-bold text-white mb-4">
-                  COOPESMERALDA
+                  COOPERATIVAS DO APL
                 </h2>
                 <p className="font-['Inter'] text-2xl font-mono text-[#caa34b] mb-6">
-                  CNPJ: 34.926.901/0001-20
+                  Arranjo Produtivo Local
                 </p>
                 <p className="font-['Inter'] text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-                  Único{" "}
+                  Rede de{" "}
                   <span className="font-bold text-[#caa34b]">
-                    Custodiante Autorizado
+                    Cooperativas Credenciadas
                   </span>{" "}
                   e{" "}
                   <span className="font-bold text-[#caa34b]">
-                    Emissor de Prova de Origem (EAS #1)
+                    Produtores Locais
                   </span>{" "}
-                  no Protocolo GEMLAB
+                  integrados ao Protocolo GEMLAB
                 </p>
               </div>
 
@@ -73,10 +73,10 @@ export function CoopesmeraldaHighlight() {
                       <Vault className="h-8 w-8 text-white" />
                     </div>
                     <h3 className="font-['Montserrat'] text-lg font-bold text-white">
-                      Custódia Física
+                      Custódia Distribuída
                     </h3>
                     <p className="font-['Inter'] text-sm text-white/80">
-                      Gestão do Underground Vault com auditoria IoT + Blockchain
+                      Gestão de cofres credenciados com auditoria IoT + Blockchain
                     </p>
                   </div>
                 </Card>
@@ -90,7 +90,7 @@ export function CoopesmeraldaHighlight() {
                       Organização Produtiva
                     </h3>
                     <p className="font-['Inter'] text-sm text-white/80">
-                      Cooperativa que reúne garimpeiros e estrutura a cadeia de
+                      Rede que reúne garimpeiros e estrutura a cadeia de
                       valor
                     </p>
                   </div>

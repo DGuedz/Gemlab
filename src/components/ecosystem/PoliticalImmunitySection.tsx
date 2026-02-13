@@ -7,8 +7,8 @@ export function PoliticalImmunitySection() {
     {
       number: "1",
       title: "Prova de Origem",
-      actor: "COOPESMERALDA",
-      cnpj: "CNPJ: 34.926.901/0001-20",
+      actor: "Cooperativa do APL",
+      cnpj: "Entidade Credenciada",
       description:
         "Atestado de que a esmeralda foi extraída legalmente em Campos Verdes - GO",
       color: "#006b4f",

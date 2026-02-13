@@ -65,7 +65,7 @@ export function CommercialPortal() {
       color: "Verde Intenso",
       clarity: "VS1",
       cut: "Esmeralda",
-      origin: "COOPESMERALDA - Lote A-001",
+      origin: "Cooperativa APL - Lote A-001",
       certificationDate: "15/12/2024",
       status: "Disponível",
       availability: "Imediata",
@@ -78,7 +78,7 @@ export function CommercialPortal() {
       color: "Verde Médio",
       clarity: "VVS2",
       cut: "Oval",
-      origin: "COOPESMERALDA - Lote A-001",
+      origin: "Cooperativa APL - Lote A-001",
       certificationDate: "14/12/2024",
       status: "Disponível",
       availability: "15 dias",
@@ -91,7 +91,7 @@ export function CommercialPortal() {
       color: "Verde Vivo",
       clarity: "VS2",
       cut: "Redondo",
-      origin: "COOPESMERALDA - Lote B-015",
+      origin: "Cooperativa APL - Lote B-015",
       certificationDate: "13/12/2024",
       status: "Reservado",
       availability: "30 dias",
@@ -106,7 +106,7 @@ export function CommercialPortal() {
       color: "Verde Intenso",
       clarity: "VVS1",
       cut: "Esmeralda",
-      origin: "COOPESMERALDA - Lote C-007",
+      origin: "Cooperativa APL - Lote C-007",
       certificationDate: "12/12/2024",
       status: "Disponível",
       availability: "Imediata",
@@ -251,60 +251,7 @@ export function CommercialPortal() {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Stats Dashboard */}
-        <div className="grid md:grid-cols-4 gap-6 mb-8">
-          <Card className="p-6 border-2 border-[#e5e7eb]">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="font-['Inter'] text-sm text-gray-600 mb-1">
-                  Disponíveis
-                </p>
-                <p className="font-['Inter'] text-3xl font-bold text-[#006b4f]">
-                  {commercialEmeralds.filter((e) => e.status === "Disponível").length}
-                </p>
-              </div>
-              <CheckCircle2 className="h-10 w-10 text-[#006b4f]" />
-            </div>
-          </Card>
-
-          <Card className="p-6 border-2 border-[#e5e7eb]">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="font-['Inter'] text-sm text-gray-600 mb-1">
-                  Reservados
-                </p>
-                <p className="font-['Inter'] text-3xl font-bold text-[#caa34b]">
-                  {commercialEmeralds.filter((e) => e.status === "Reservado").length}
-                </p>
-              </div>
-              <Clock className="h-10 w-10 text-[#caa34b]" />
-            </div>
-          </Card>
-
-          <Card className="p-6 border-2 border-[#e5e7eb]">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="font-['Inter'] text-sm text-gray-600 mb-1">
-                  Minhas Reservas
-                </p>
-                <p className="font-['Inter'] text-3xl font-bold text-[#1b1b1b]">2</p>
-              </div>
-              <Package className="h-10 w-10 text-[#1b1b1b]" />
-            </div>
-          </Card>
-
-          <Card className="p-6 border-2 border-[#e5e7eb]">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="font-['Inter'] text-sm text-gray-600 mb-1">
-                  Consultas Ativas
-                </p>
-                <p className="font-['Inter'] text-3xl font-bold text-[#1b1b1b]">5</p>
-              </div>
-              <TrendingUp className="h-10 w-10 text-[#1b1b1b]" />
-            </div>
-          </Card>
-        </div>
+        {/* Stats Dashboard Removed */}
 
         {/* Main Content Tabs */}
         <Tabs defaultValue="available" className="space-y-6">
@@ -312,7 +259,7 @@ export function CommercialPortal() {
             <TabsTrigger value="available">Disponíveis</TabsTrigger>
             <TabsTrigger value="reserved">Minhas Reservas</TabsTrigger>
             <TabsTrigger value="consultations">Consultas</TabsTrigger>
-            <TabsTrigger value="contact">Contato COOPESMERALDA</TabsTrigger>
+            <TabsTrigger value="contact">Contato Cooperativa</TabsTrigger>
           </TabsList>
 
           {/* Available Tab */}
@@ -324,7 +271,7 @@ export function CommercialPortal() {
                   <p className="font-['Inter'] text-sm text-gray-700">
                     <strong>Importante:</strong> As reservas de consulta têm validade de 72
                     horas. Durante este período, você terá prioridade para negociação
-                    direta com a COOPESMERALDA.
+                    direta com a Cooperativa.
                   </p>
                 </div>
               </div>
@@ -448,7 +395,7 @@ export function CommercialPortal() {
                   </h3>
                   <p className="font-['Inter'] text-sm text-gray-600">
                     Você possui 2 reservas de consulta ativas. Entre em contato com a
-                    COOPESMERALDA para prosseguir com a negociação.
+                    Cooperativa para prosseguir com a negociação.
                   </p>
                 </div>
               </div>
@@ -532,7 +479,7 @@ export function CommercialPortal() {
                         <div className="flex gap-2">
                           <Button className="bg-[#006b4f] text-white hover:bg-[#014733]">
                             <Phone className="h-4 w-4 mr-2" />
-                            Contatar COOPESMERALDA
+                            Contatar Cooperativa
                           </Button>
                           <Button variant="outline" className="border-[#e5e7eb]">
                             <Download className="h-4 w-4 mr-2" />
@@ -614,7 +561,7 @@ export function CommercialPortal() {
                 </div>
                 <div>
                   <h3 className="font-['Inter'] font-bold text-[#1b1b1b] mb-1">
-                    Contato Direto com COOPESMERALDA
+                    Contato Direto com a Cooperativa
                   </h3>
                   <p className="font-['Inter'] text-sm text-gray-600">
                     Entre em contato para negociações comerciais e esclarecimento de dúvidas
@@ -724,7 +671,7 @@ export function CommercialPortal() {
                 <Mail className="h-8 w-8 text-[#006b4f] mx-auto mb-3" />
                 <p className="font-['Inter'] text-sm text-gray-600 mb-1">E-mail</p>
                 <p className="font-['Inter'] text-sm font-medium text-[#1b1b1b]">
-                  comercial@coopesmeralda.coop.br
+                  comercial@cooperativa-apl.br
                 </p>
               </Card>
 

@@ -14,7 +14,7 @@ import { CertifiedGemsRegistry } from "./registry/CertifiedGemsRegistry";
 import { MinerDashboard } from "./miner/MinerDashboard";
 import { AdminPanel } from "./admin/AdminPanel";
 import { UserDashboard } from "./dashboard/UserDashboard";
-import { GemDetailPage } from "./gem-detail/GemDetailPage";
+import { GemDetailPage } from "./GemDetailPage";
 import { RoadmapPage } from "./RoadmapPage";
 import { Navbar } from "./Navbar";
 import { Hero } from "./Hero";

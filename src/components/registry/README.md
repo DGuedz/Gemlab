@@ -15,7 +15,7 @@ Este diretório contém o sistema completo de **Registry Público + Portal Comer
 ### Modelo de Negócio
 A plataforma atua exclusivamente como:
 1. **Registry Científico** - Catálogo público de certificações
-2. **Intermediação B2B** - Conexão entre COOPESMERALDA e joalheiros credenciados
+2. **Intermediação B2B** - Conexão entre Cooperativa do APL e joalheiros credenciados
 3. **Infraestrutura SaaS** - Ferramentas de rastreabilidade e verificação
 
 **NÃO há transações financeiras na plataforma** ✅
@@ -69,7 +69,7 @@ A plataforma atua exclusivamente como:
 
 **Timeline de Rastreabilidade**:
 1. Extração na Jazida
-2. Recebimento COOPESMERALDA
+2. Recebimento na Cooperativa
 3. Validação Fiscal (Prefeitura)
 4. Análise Laboratorial (Raman + XRF)
 5. Certificação Emitida (+ Blockchain)
@@ -91,7 +91,7 @@ A plataforma atua exclusivamente como:
   - **Disponíveis**: Catálogo com informações de disponibilidade comercial
   - **Minhas Reservas**: Gestão de reservas ativas (validade 72h)
   - **Consultas**: Histórico de solicitações
-  - **Contato COOPESMERALDA**: Formulário direto + info de contato
+  - **Contato Cooperativa**: Formulário direto + info de contato
 - ✅ Sistema de "Reserva de Consulta" (não carrinho de compras)
 - ✅ Badges de disponibilidade: Imediata / 15 dias / 30 dias
 - ✅ Download de documentação técnica
@@ -99,7 +99,7 @@ A plataforma atua exclusivamente como:
 **Acesso**: Joalheiros/varejistas credenciados (requer login)
 
 **Compliance**:
-- ✅ Intermediação 100% via COOPESMERALDA
+- ✅ Intermediação 100% via Cooperativa
 - ✅ Sem preços ou transações financeiras na UI
 - ✅ Sistema de reserva temporária (prioridade negociação)
 - ✅ Contato direto com custodiante operacional
@@ -187,7 +187,7 @@ interface CertifiedEmerald {
   color: string;                 // "Verde Intenso", "Verde Médio", "Verde Vivo"
   clarity: string;               // "VS1", "VVS2", etc.
   cut: string;                   // "Esmeralda", "Oval", "Redondo"
-  origin: string;                // "COOPESMERALDA - Lote A-001"
+  origin: string;                // "Cooperativa APL - Lote A-001"
   certificationDate: string;     // "15/12/2024"
   batchId: string;               // "#3184"
   status: "Disponível" | "Reservado" | "Custodiado";
@@ -206,11 +206,11 @@ interface CertifiedEmerald {
 - [ ] Sistema de notificações para reservas
 - [ ] PDF generation para certificados
 - [ ] QR Code generator para verificação mobile
-- [ ] API integration com COOPESMERALDA
+- [ ] API integration com Cooperativa
 
 ### Funcionalidades Avançadas
 - [ ] Sistema de leilão reverso B2B
-- [ ] Chat direto com COOPESMERALDA
+- [ ] Chat direto com Cooperativa
 - [ ] Upload de documentação adicional
 - [ ] Sistema de rating/reviews (pós-negociação)
 - [ ] Analytics dashboard para credenciados
@@ -222,7 +222,7 @@ interface CertifiedEmerald {
 ✅ **SIM - Implementado**:
 - Registry público de certificações científicas
 - Terminologia compliance ("manifestar interesse", não "comprar")
-- Intermediação 100% via COOPESMERALDA
+- Intermediação 100% via Cooperativa
 - Sem exibição de preços/valores
 - Sistema de credenciamento B2B
 - Rastreabilidade científica completa
@@ -243,7 +243,7 @@ interface CertifiedEmerald {
 Para dúvidas sobre implementação ou compliance:
 - **Tech Lead**: [Definir contato]
 - **Compliance Officer**: [Definir contato]
-- **COOPESMERALDA**: comercial@coopesmeralda.coop.br
+- **Cooperativa**: comercial@cooperativa-apl.br
 
 ---
 

@@ -1,9 +1,8 @@
 import { EAS, SchemaEncoder } from "@ethereum-attestation-service/eas-sdk";
-import { Wallet, JsonRpcProvider } from "ethers";
+import { KMSFactory } from "../kms/KMSFactory";
 
 export async function emitScienceAttestation(cfg: {
   rpcUrl: string;
-  privateKey: string;
   easAddress: string;
   schemaUID: string;
   recipient: string;
@@ -11,11 +10,11 @@ export async function emitScienceAttestation(cfg: {
   ramanSignature: string;
   qualityGrade: number;
 }) {
-  const provider = new JsonRpcProvider(cfg.rpcUrl);
-  const signer = new Wallet(cfg.privateKey, provider);
+  const signer = await KMSFactory.getKMS().getSigner(cfg.rpcUrl);
   const eas = new EAS(cfg.easAddress);
   eas.connect(signer);
   const enc = new SchemaEncoder("bytes32 spectralHash, string ramanSignature, uint8 qualityGrade");
+
   const data = enc.encodeData([
     { name: "spectralHash", value: cfg.spectralHash, type: "bytes32" },
     { name: "ramanSignature", value: cfg.ramanSignature, type: "string" },

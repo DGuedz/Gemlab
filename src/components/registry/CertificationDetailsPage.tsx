@@ -39,6 +39,7 @@ interface CertificationData {
   status: "Disponível" | "Reservado" | "Custodiado";
   availability: "Público" | "Credenciado";
   blockchainTx: string;
+  easUID: string;
   ramanSpectrum: string;
   xrfAnalysis: string;
   gemologist: string;
@@ -69,6 +70,7 @@ export function CertificationDetailsPage() {
     status: "Disponível",
     availability: "Público",
     blockchainTx: "0x9f4b3a8e7c2d1f6a5b9c8d3e2f1a7b6c5d4e3f2a1b9c8d7e6f5a4b3c2d1e",
+    easUID: "0x4f2d3a1b5c6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2",
     ramanSpectrum: "Espectro Raman SHA-256: a8f3b2c1d9e4f5a6b7c8...",
     xrfAnalysis: "Be: 0.14%, Cr: 0.08%, Fe: 0.23%, V: 0.05%",
     gemologist: "Dr. Ana Silva (CRQ 12345)",
@@ -382,7 +384,7 @@ export function CertificationDetailsPage() {
             <TabsTrigger value="analysis">Análises</TabsTrigger>
             <TabsTrigger value="timeline">Rastreabilidade</TabsTrigger>
             <TabsTrigger value="documents">Documentos</TabsTrigger>
-            <TabsTrigger value="verification">Verificação</TabsTrigger>
+
           </TabsList>
 
           {/* Blockchain Tab */}
@@ -438,6 +440,31 @@ export function CertificationDetailsPage() {
                   Ver no Block Explorer
                   <ExternalLink className="ml-2 h-4 w-4" />
                 </Button>
+
+                <div className="p-4 bg-[#f9fafb] rounded-lg border-2 border-[#caa34b]/20 mt-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="font-['Inter'] text-xs font-bold text-[#caa34b]">
+                      EAS Attestation (On-Chain)
+                    </p>
+                    <Badge className="bg-[#caa34b] text-white text-[10px]">
+                      Verificado
+                    </Badge>
+                  </div>
+                  <p className="font-['Inter'] text-xs text-gray-500 mb-2">
+                    UID
+                  </p>
+                  <code className="font-['Inter'] text-xs font-mono text-[#1b1b1b] break-all mb-3 block">
+                    {certification.easUID}
+                  </code>
+                  <Button
+                    className="w-full bg-[#caa34b] text-white hover:bg-[#b8933a]"
+                    size="sm"
+                    onClick={() => window.open(`https://easscan.org/offchain/attestation/view/${certification.easUID}`, '_blank')}
+                  >
+                    Verificar no EAS Scan
+                    <CheckCircle2 className="ml-2 h-4 w-4" />
+                  </Button>
+                </div>
               </div>
             </Card>
           </TabsContent>
@@ -586,65 +613,7 @@ export function CertificationDetailsPage() {
             </div>
           </TabsContent>
 
-          {/* Verification Tab */}
-          <TabsContent value="verification" className="space-y-4">
-            <Card className="p-6 border-2 border-[#006b4f] bg-gradient-to-br from-[#006b4f]/5 to-white">
-              <div className="flex items-start gap-4 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-[#006b4f] flex items-center justify-center">
-                  <Shield className="h-6 w-6 text-white" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-['Inter'] font-bold text-[#1b1b1b] mb-2">
-                    Sistema de Verificação Multi-Camada
-                  </h3>
-                  <p className="font-['Inter'] text-sm text-gray-600">
-                    Esta certificação passou por múltiplas camadas de validação científica
-                    e fiscal
-                  </p>
-                </div>
-              </div>
 
-              <div className="space-y-3">
-                {[
-                  {
-                    label: "Análise Científica (Raman + XRF)",
-                    status: "Verificado",
-                  },
-                  {
-                    label: "Validação Fiscal (Prefeitura)",
-                    status: "Verificado",
-                  },
-                  {
-                    label: "Registro Blockchain",
-                    status: "Verificado",
-                  },
-                  {
-                    label: "Custódia Física Segregada",
-                    status: "Verificado",
-                  },
-                  {
-                    label: "Auditoria COOPESMERALDA",
-                    status: "Verificado",
-                  },
-                ].map((item, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center justify-between p-3 bg-white rounded-lg border border-[#e5e7eb]"
-                  >
-                    <span className="font-['Inter'] text-sm text-[#1b1b1b]">
-                      {item.label}
-                    </span>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-[#006b4f]" />
-                      <span className="font-['Inter'] text-sm font-medium text-[#006b4f]">
-                        {item.status}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </Card>
-          </TabsContent>
         </Tabs>
 
         {/* Bottom CTA */}

@@ -56,26 +56,26 @@ export function Hero({ onNavigateToVerification }: HeroProps = {}) {
             <div className="grid grid-cols-3 gap-3 sm:gap-6 pt-6 sm:pt-8 border-t border-[#e5e7eb]">
               <div>
                 <div className="font-['Inter'] text-xl sm:text-2xl font-bold text-[#006b4f]">
-                  1,247
+                  Fase 2
                 </div>
                 <div className="font-['Inter'] text-xs sm:text-sm text-gray-600">
-                  Esmeraldas Certificadas
+                  Programa Centelha
                 </div>
               </div>
               <div>
                 <div className="font-['Inter'] text-xl sm:text-2xl font-bold text-[#006b4f]">
-                  23
+                  VSC
                 </div>
                 <div className="font-['Inter'] text-xs sm:text-sm text-gray-600">
-                  Labs Credenciados
+                  Arquitetura Compliant
                 </div>
               </div>
               <div>
                 <div className="font-['Inter'] text-xl sm:text-2xl font-bold text-[#006b4f]">
-                  342
+                  Piloto
                 </div>
                 <div className="font-['Inter'] text-xs sm:text-sm text-gray-600">
-                  Lotes Rastreados
+                  Campos Verdes - GO
                 </div>
               </div>
             </div>

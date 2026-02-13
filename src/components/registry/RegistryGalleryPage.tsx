@@ -39,6 +39,7 @@ interface CertifiedEmerald {
   batchId: string;
   status: "Disponível" | "Reservado" | "Custodiado";
   availability: "Público" | "Credenciado";
+  easUID?: string;
 }
 
 export function RegistryGalleryPage() {
@@ -67,6 +68,7 @@ export function RegistryGalleryPage() {
       batchId: "#3184",
       status: "Disponível",
       availability: "Público",
+      easUID: "0x4f2d3a1b5c6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2",
     },
     {
       id: "GML-ESM-2024-00002",
@@ -235,49 +237,8 @@ export function RegistryGalleryPage() {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Stats Row */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          <Card className="p-4 border-2 border-[#e5e7eb]">
-            <div className="text-center">
-              <p className="font-['Inter'] text-3xl font-bold text-[#006b4f]">
-                {filteredEmeralds.length}
-              </p>
-              <p className="font-['Inter'] text-xs text-gray-600 mt-1">
-                Certificações
-              </p>
-            </div>
-          </Card>
-          <Card className="p-4 border-2 border-[#e5e7eb]">
-            <div className="text-center">
-              <p className="font-['Inter'] text-3xl font-bold text-[#006b4f]">
-                {certifiedEmeralds.filter((e) => e.status === "Disponível").length}
-              </p>
-              <p className="font-['Inter'] text-xs text-gray-600 mt-1">
-                Disponíveis
-              </p>
-            </div>
-          </Card>
-          <Card className="p-4 border-2 border-[#e5e7eb]">
-            <div className="text-center">
-              <p className="font-['Inter'] text-3xl font-bold text-[#caa34b]">
-                {certifiedEmeralds.filter((e) => e.status === "Reservado").length}
-              </p>
-              <p className="font-['Inter'] text-xs text-gray-600 mt-1">
-                Reservados
-              </p>
-            </div>
-          </Card>
-          <Card className="p-4 border-2 border-[#e5e7eb]">
-            <div className="text-center">
-              <p className="font-['Inter'] text-3xl font-bold text-[#1b1b1b]">
-                {certifiedEmeralds.filter((e) => e.status === "Custodiado").length}
-              </p>
-              <p className="font-['Inter'] text-xs text-gray-600 mt-1">
-                Custodiados
-              </p>
-            </div>
-          </Card>
-        </div>
+        {/* Stats Row Removed for Simplification */}
+
 
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Filters Sidebar */}
@@ -507,6 +468,14 @@ export function RegistryGalleryPage() {
                             {emerald.spectralHash}
                           </code>
                         </div>
+                        {emerald.easUID && (
+                          <div className="flex items-center gap-1 mt-1">
+                            <CheckCircle2 className="h-3 w-3 text-[#caa34b]" />
+                            <span className="font-['Inter'] text-[10px] text-[#caa34b] font-medium">
+                              EAS Verified
+                            </span>
+                          </div>
+                        )}
                       </div>
 
                       {/* Details Grid */}
@@ -600,6 +569,14 @@ export function RegistryGalleryPage() {
                                     {emerald.spectralHash}
                                   </code>
                                 </div>
+                                {emerald.easUID && (
+                                  <div className="flex items-center gap-1 mt-1">
+                                    <CheckCircle2 className="h-3 w-3 text-[#caa34b]" />
+                                    <span className="font-['Inter'] text-[10px] text-[#caa34b] font-medium">
+                                      EAS Verified
+                                    </span>
+                                  </div>
+                                )}
                               </div>
                               <Badge className={getStatusColor(emerald.status)}>
                                 {emerald.status}

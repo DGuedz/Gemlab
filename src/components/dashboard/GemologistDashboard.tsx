@@ -78,6 +78,7 @@ export function GemologistDashboard({
       status: "Certificado",
       spectralHash: "0x7f3a92c4",
       txHash: "0x9b2f..3c8d",
+      easUID: "0x4f2d..1f2",
     },
     {
       id: "GEM-2024-1246",
@@ -87,6 +88,7 @@ export function GemologistDashboard({
       status: "Tokenizado",
       spectralHash: "0x4b2d81f3",
       txHash: "0x7a4e..5f2b",
+      easUID: "0x8a1b..3e4",
     },
     {
       id: "GEM-2024-1245",
@@ -96,6 +98,7 @@ export function GemologistDashboard({
       status: "Certificado",
       spectralHash: "0x9c5e73a1",
       txHash: "0x3d8b..9a1f",
+      easUID: "0x5c6d..9a0",
     },
   ];
 
@@ -123,128 +126,9 @@ export function GemologistDashboard({
       />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Quick Actions */}
-        {(onNavigateToRegistry || onNavigateToMiner || onNavigateToAdmin) && (
-          <div className="mb-8">
-            <QuickActions
-              title="Navegação Rápida"
-              actions={[
-                ...(onNavigateToRegistry
-                  ? [
-                      {
-                        label: "Ver Registry",
-                        description: "Consultar certificados públicos",
-                        icon: ShoppingBag,
-                        onClick: onNavigateToRegistry,
-                        variant: "default" as const,
-                      },
-                    ]
-                  : []),
-                ...(onNavigateToMiner
-                  ? [
-                      {
-                        label: "Painel Garimpeiro",
-                        description: "Simular e enviar lotes",
-                        icon: Mountain,
-                        onClick: onNavigateToMiner,
-                        variant: "default" as const,
-                      },
-                    ]
-                  : []),
-                ...(onNavigateToAdmin
-                  ? [
-                      {
-                        label: "Painel Admin",
-                        description: "Gerenciar sistema",
-                        icon: Shield,
-                        onClick: onNavigateToAdmin,
-                        variant: "default" as const,
-                      },
-                    ]
-                  : []),
-              ]}
-            />
-          </div>
-        )}
+        {/* Quick Actions Removed */}
 
-        {/* Stats Cards */}
-        <div className="grid md:grid-cols-4 gap-6 mb-8">
-          <Card className="p-6 border-2 border-[#e5e7eb]">
-            <div className="flex items-center justify-between mb-4">
-              <div
-                className="w-12 h-12 rounded-xl bg-[#006b4f]/10 flex items-center justify-center"
-              >
-                <Clock className="h-6 w-6 text-[#006b4f]" />
-              </div>
-              <Badge className="bg-orange-100 text-orange-700">
-                Pendentes
-              </Badge>
-            </div>
-            <div className="font-['Inter'] text-3xl font-bold text-[#1b1b1b] mb-1">
-              3
-            </div>
-            <div className="font-['Inter'] text-sm text-gray-600">
-              Análises aguardando
-            </div>
-          </Card>
-
-          <Card className="p-6 border-2 border-[#e5e7eb]">
-            <div className="flex items-center justify-between mb-4">
-              <div
-                className="w-12 h-12 rounded-xl bg-[#caa34b]/10 flex items-center justify-center"
-              >
-                <Microscope className="h-6 w-6 text-[#caa34b]" />
-              </div>
-              <Badge className="bg-blue-100 text-blue-700">
-                Em Análise
-              </Badge>
-            </div>
-            <div className="font-['Inter'] text-3xl font-bold text-[#1b1b1b] mb-1">
-              5
-            </div>
-            <div className="font-['Inter'] text-sm text-gray-600">
-              Em processamento
-            </div>
-          </Card>
-
-          <Card className="p-6 border-2 border-[#e5e7eb]">
-            <div className="flex items-center justify-between mb-4">
-              <div
-                className="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center"
-              >
-                <CheckCircle2 className="h-6 w-6 text-green-600" />
-              </div>
-              <Badge className="bg-green-100 text-green-700">
-                Este Mês
-              </Badge>
-            </div>
-            <div className="font-['Inter'] text-3xl font-bold text-[#1b1b1b] mb-1">
-              42
-            </div>
-            <div className="font-['Inter'] text-sm text-gray-600">
-              Certificados emitidos
-            </div>
-          </Card>
-
-          <Card className="p-6 border-2 border-[#e5e7eb]">
-            <div className="flex items-center justify-between mb-4">
-              <div
-                className="w-12 h-12 rounded-xl bg-[#014733]/10 flex items-center justify-center"
-              >
-                <Award className="h-6 w-6 text-[#014733]" />
-              </div>
-              <Badge className="bg-purple-100 text-purple-700">
-                Total
-              </Badge>
-            </div>
-            <div className="font-['Inter'] text-3xl font-bold text-[#1b1b1b] mb-1">
-              328
-            </div>
-            <div className="font-['Inter'] text-sm text-gray-600">
-              Certificações completas
-            </div>
-          </Card>
-        </div>
+        {/* Stats Cards Removed */}
 
         {/* Main Content */}
         <Tabs value={activeTab} onValueChange={setActiveTab}>
@@ -406,6 +290,12 @@ export function GemologistDashboard({
                               <span className="text-gray-500">TX: </span>
                               <code className="text-[#006b4f] font-mono text-xs">
                                 {cert.txHash}
+                              </code>
+                            </div>
+                            <div>
+                              <span className="text-gray-500">EAS: </span>
+                              <code className="text-[#006b4f] font-mono text-xs">
+                                {cert.easUID}
                               </code>
                             </div>
                           </div>

@@ -1,9 +1,8 @@
 import { EAS, SchemaEncoder } from "@ethereum-attestation-service/eas-sdk";
-import { Wallet, JsonRpcProvider } from "ethers";
+import { KMSFactory } from "../kms/KMSFactory";
 
 export async function emitOriginAttestation(cfg: {
   rpcUrl: string;
-  privateKey: string;
   easAddress: string;
   schemaUID: string;
   recipient: string;
@@ -12,11 +11,11 @@ export async function emitOriginAttestation(cfg: {
   extractionDate: number;
   mineLocationID: string;
 }) {
-  const provider = new JsonRpcProvider(cfg.rpcUrl);
-  const signer = new Wallet(cfg.privateKey, provider);
+  const signer = await KMSFactory.getKMS().getSigner(cfg.rpcUrl);
   const eas = new EAS(cfg.easAddress);
   eas.connect(signer);
   const enc = new SchemaEncoder("uint256 minerCNPJ, bytes32 invoiceHash, uint48 extractionDate, string mineLocationID");
+
   const data = enc.encodeData([
     { name: "minerCNPJ", value: cfg.minerCNPJ, type: "uint256" },
     { name: "invoiceHash", value: cfg.invoiceHash, type: "bytes32" },

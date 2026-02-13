@@ -26,8 +26,8 @@ export function CVMDisclaimer() {
               Os tokens ERC-721 emitidos pelo protocolo são{" "}
               <span className="font-bold">representações digitais de certificados gemológicos</span>{" "}
               emitidos pela{" "}
-              <span className="font-bold font-mono">COOPESMERALDA (CNPJ: 34.926.901/0001-20)</span>,
-              único Oráculo Operacional e Custodiante autorizado.
+              <span className="font-bold font-mono">Cooperativa Credenciada do APL</span>,
+              Oráculo Operacional e Custodiante autorizado.
             </p>
             <p>
               <span className="font-bold">Nosso modelo de negócio:</span> Fornecimento de infraestrutura Web3 + laboratório gemológico
