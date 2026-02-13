@@ -3,11 +3,15 @@
       "version": "0.1.0",
       "private": true,
       "dependencies": {
+            "@aws-sdk/client-kms": "^3.989.0",
+            "@aws-sdk/credential-providers": "^3.989.0",
             "@eslint/js": "*",
             "@ethereum-attestation-service/eas-contracts": "^1.8.0",
             "@ethereum-attestation-service/eas-sdk": "^2.9.0",
             "@hono/node-server": "^1.19.9",
+            "@hono/zod-validator": "^0.7.6",
             "@jsr/supabase__supabase-js": "^2.49.8",
+            "@nexusmutual/ethers-v6-aws-kms-signer": "^0.0.3",
             "@radix-ui/react-accordion": "^1.2.3",
             "@radix-ui/react-alert-dialog": "^1.1.6",
             "@radix-ui/react-aspect-ratio": "^1.1.2",
@@ -61,7 +65,8 @@
             "tailwind-merge": "*",
             "typescript-eslint": "*",
             "vaul": "^1.1.2",
-            "vite": "*"
+            "vite": "*",
+            "zod": "^4.3.6"
       },
       "devDependencies": {
             "@nomicfoundation/hardhat-chai-matchers": "^2.1.0",

@@ -3,9 +3,8 @@ import { serve } from "@hono/node-server";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { config } from "dotenv";
-// import { emitScienceAttestation } from "./services/attestation/scienceService";
-// import { emitOriginAttestation } from "./services/attestation/originService";
-// import { emitCustodyAttestation } from "./services/attestation/custodyService";
+import { z } from "zod";
+import { zValidator } from "@hono/zod-validator";
 
 console.log("Starting Server...");
 
@@ -26,9 +25,14 @@ app.get("/health", (c) => {
 const api = new Hono();
 
 // Certification Routes
-api.post("/certification/spectral-hash", async (c) => {
+const spectralHashSchema = z.object({
+  ramanData: z.array(z.number()),
+  timestamp: z.number().optional()
+});
+
+api.post("/certification/spectral-hash", zValidator("json", spectralHashSchema), async (c) => {
   try {
-    const body = await c.req.json();
+    const body = c.req.valid("json");
     // In a real scenario, this would validate the spectrum data integrity
     // For now, we simulate a hash calculation
     const hash = "0x" + Buffer.from(JSON.stringify(body)).toString("hex").substring(0, 64);
@@ -39,16 +43,16 @@ api.post("/certification/spectral-hash", async (c) => {
   }
 });
 
-api.post("/certification/attest", async (c) => {
-  try {
-    const body = await c.req.json();
-    
-    // Validate required fields
-    if (!body.spectralHash || !body.easUID) {
-      // Note: In frontend we call it easUID in state, but backend service might expect something else
-      // Let's assume frontend sends the data needed for science attestation
-    }
+const attestSchema = z.object({
+  spectralHash: z.string().startsWith("0x"),
+  easUID: z.string().optional(),
+  recipient: z.string().startsWith("0x").length(42).optional()
+});
 
+api.post("/certification/attest", zValidator("json", attestSchema), async (c) => {
+  try {
+    const body = c.req.valid("json");
+    
     // Check if we have private key configured
     if (!process.env.GEMLAB_PRIVATE_KEY && !process.env.PRIVATE_KEY) {
       console.warn("No private key found. Running in MOCK mode for attestation.");
@@ -58,16 +62,6 @@ api.post("/certification/attest", async (c) => {
       });
     }
 
-    // Call the real service if keys are present
-    // const uid = await emitScienceAttestation({
-    //   rpcUrl: process.env.SEPOLIA_RPC_URL || "",
-    //   easAddress: process.env.EAS_ADDRESS || "",
-    //   schemaUID: process.env.SCIENCE_SCHEMA_UID || "",
-    //   recipient: body.recipient || "0x0000000000000000000000000000000000000000",
-    //   spectralHash: body.spectralHash,
-    //   ramanSignature: "Signed by GemLab", // Simplified for now
-    //   qualityGrade: 1
-    // });
     const uid = "0xMockedUIDForDebug";
 
     return c.json({ uid });
@@ -81,9 +75,16 @@ api.post("/certification/attest", async (c) => {
   }
 });
 
-api.post("/certification/mint", async (c) => {
+const mintSchema = z.object({
+  attestationUID: z.string().startsWith("0x"),
+  metadata: z.object({
+    name: z.string()
+  })
+});
+
+api.post("/certification/mint", zValidator("json", mintSchema), async (c) => {
   try {
-    // const body = await c.req.json();
+    // const body = c.req.valid("json");
     // Here we would call the Smart Contract to mint the NFT
     // For now, return a mock response
     return c.json({
@@ -106,3 +107,4 @@ serve({
   fetch: app.fetch,
   port
 });
+
