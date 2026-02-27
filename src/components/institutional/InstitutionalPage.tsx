@@ -117,10 +117,10 @@ export function InstitutionalPage({ onNavigateToBlog }: InstitutionalPageProps) 
   ];
 
   const roadmap = [
-    { phase: "M1-M3", goal: "MVP técnico consolidado", kpi: "Fluxo completo validado" },
-    { phase: "M4-M6", goal: "Pilotos operacionais", kpi: "Primeiros casos de uso B2B/B2G" },
-    { phase: "M7-M9", goal: "Validação de campo", kpi: "Lotes rastreados com evidência técnica" },
-    { phase: "M10-M12", goal: "Demonstração pública", kpi: "Entrega do MVP na Feira das Esmeraldas 2026" },
+    { phase: "M1-M2", goal: "MVP técnico consolidado", kpi: "Fluxo completo validado" },
+    { phase: "M3-M4", goal: "Pilotos operacionais", kpi: "Primeiros casos B2B/B2G em Campos Verdes" },
+    { phase: "M5-M6", goal: "Validação de campo", kpi: "Lotes rastreados com evidência técnica" },
+    { phase: "M7", goal: "Demonstração pública", kpi: "Entrega do MVP na Feira das Esmeraldas 2026" },
   ];
 
   const whitepaperTopics = [
@@ -128,8 +128,10 @@ export function InstitutionalPage({ onNavigateToBlog }: InstitutionalPageProps) 
     "Arquitetura Raman + SpectralHash + EAS + smart contracts.",
     "Fluxo operacional fim a fim com trilha de compliance.",
     "Modelo de negocio B2B e limites regulatorios.",
-    "Roadmap de 12 meses com KPIs e evidencias EDD/PDT.",
+    "Roadmap de 7 meses com KPIs e evidencias EDD/PDT.",
   ];
+
+  const showExtendedInstitutionalBlocks = false;
 
   const whitepaperFlowSteps = [
     {
@@ -402,7 +404,7 @@ export function InstitutionalPage({ onNavigateToBlog }: InstitutionalPageProps) 
                 </div>
                 <div className="flex flex-wrap gap-3 pt-2">
                   <a
-                    href="/docs/whitepaper_tecnico_gemlab_fase2_centelha_2026-02-26.md"
+                    href="/docs/whitepaper_tecnico_gemlab_fase2_centelha_2026-02-26.pdf"
                     target="_blank"
                     rel="noreferrer"
                     className="w-full sm:w-auto"
@@ -487,6 +489,8 @@ export function InstitutionalPage({ onNavigateToBlog }: InstitutionalPageProps) 
           </div>
         </section>
 
+        {showExtendedInstitutionalBlocks && (
+          <>
         <section className="py-12 bg-white" id="arquitetura-operacional">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-10">
@@ -581,6 +585,9 @@ export function InstitutionalPage({ onNavigateToBlog }: InstitutionalPageProps) 
           </div>
         </section>
 
+          </>
+        )}
+
         <section className="py-12 bg-[#f9fafb]" id="fluxo-visual">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-10">
@@ -646,7 +653,8 @@ export function InstitutionalPage({ onNavigateToBlog }: InstitutionalPageProps) 
           </div>
         </section>
 
-        <section className="py-12 bg-gradient-to-b from-gray-50 to-white" id="ecossistema">
+        {showExtendedInstitutionalBlocks && (
+          <section className="py-12 bg-gradient-to-b from-gray-50 to-white" id="ecossistema">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-10">
               <Badge className="mb-4 bg-[#caa34b] text-white">Ecossistema</Badge>
@@ -676,14 +684,15 @@ export function InstitutionalPage({ onNavigateToBlog }: InstitutionalPageProps) 
               </Card>
             </div>
           </div>
-        </section>
+          </section>
+        )}
 
         <section className="py-12 bg-[#f9fafb]" id="roadmap-execucao">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-10">
               <Badge className="mb-4 bg-[#caa34b] text-white">Roadmap de Execução</Badge>
               <h2 className="font-['Inter'] text-3xl lg:text-4xl font-bold text-[#1b1b1b] mb-4">
-                Entregáveis até a Feira das Esmeraldas 2026
+                Roadmap de 7 meses até a Feira das Esmeraldas 2026
               </h2>
               <p className="font-['Inter'] text-lg text-gray-600">
                 Planejamento orientado a marcos verificáveis e evidência técnica.
@@ -780,35 +789,6 @@ export function InstitutionalPage({ onNavigateToBlog }: InstitutionalPageProps) 
           </div>
         </section>
 
-        <section className="py-20 bg-gradient-to-r from-[#006b4f] to-[#014733] text-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto text-center">
-              <h2 className="font-['Inter'] text-3xl lg:text-4xl font-bold mb-6">
-                Ciência Aplicada para Mercado Real
-              </h2>
-              <p className="font-['Inter'] text-xl text-gray-200 mb-8">
-                Consulte a documentação técnica e o registro público para validar a execução do MVP.
-              </p>
-              <div className="flex flex-wrap items-center justify-center gap-4">
-                <Button
-                  size="lg"
-                  className="bg-[#caa34b] text-white hover:bg-[#b8923f] px-8"
-                  onClick={() => scrollToSection("prova-tecnica")}
-                >
-                  Ver Prova Técnica
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-2 border-[#caa34b] text-white bg-[#caa34b]/20 hover:bg-[#caa34b] hover:border-[#caa34b] px-8 font-semibold backdrop-blur-sm transition-all duration-300"
-                  onClick={() => scrollToSection("resumo-executivo-fase2")}
-                >
-                  Revisar Resumo Executivo
-                </Button>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
 
       <Footer />

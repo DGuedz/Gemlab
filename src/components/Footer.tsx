@@ -1,35 +1,35 @@
-import { Gem, Mail, MapPin, Phone, Github, Twitter, Linkedin, Building2, GraduationCap, Shield, Users } from "lucide-react";
+import { Gem, Mail, MapPin, Phone, Github, Building2, GraduationCap, Shield, Users } from "lucide-react";
 import logo from "figma:asset/cde6329a6c4b255a7d190dd68be01f6589014264.png"; 
 
 export function Footer() {
   const footerLinks = {
     produto: [
-      { label: "Como Funciona", href: "#arquitetura-operacional" },
-      { label: "Fluxo de Certificação", href: "#fluxo-visual" },
-      { label: "Verificação de Autenticidade", href: "#prova-tecnica" },
-      { label: "Modelo Lab-as-a-Service", href: "#oportunidades-b2b" },
-      { label: "Roadmap de Execução", href: "#roadmap-execucao" },
+      { label: "Home", href: "/" },
+      { label: "Institucional", href: "/institucional" },
+      { label: "Verificação de Ativos", href: "/verificacao" },
+      { label: "Fluxo Operacional", href: "/?page=institutional&section=fluxo-visual" },
+      { label: "Roadmap de Execução", href: "/?page=institutional&section=roadmap-execucao" },
     ],
     projetos: [
-      { label: "Resumo Executivo", href: "#resumo-executivo-fase2" },
-      { label: "Tecnologia & Governança", href: "#ecossistema" },
-      { label: "Blog Técnico GEMLAB", href: "#blog-gemlab" },
-      { label: "Prova de Conceito", href: "#prova-tecnica" },
-      { label: "Arquitetura Operacional", href: "#arquitetura-operacional" },
+      { label: "Resumo Executivo", href: "/?page=institutional&section=resumo-executivo-fase2" },
+      { label: "Prova Técnica", href: "/?page=institutional&section=prova-tecnica" },
+      { label: "Whitepaper Oficial", href: "/whitepaper" },
+      { label: "Blog Técnico GEMLAB", href: "/blog" },
+      { label: "Aviso Legal", href: "/?page=institutional&section=aviso-legal" },
     ],
     recursos: [
-      { label: "Documentação Técnica", href: "#prova-tecnica" },
-      { label: "Whitepaper GEMLAB", href: "#whitepaper-oficial" },
-      { label: "Status do Protocolo", href: "#roadmap-execucao" },
-      { label: "Linha Editorial", href: "#blog-gemlab" },
-      { label: "Parceiros Institucionais", href: "#ecossistema" },
+      { label: "Documentação Técnica", href: "/?page=institutional&section=prova-tecnica" },
+      { label: "Whitepaper GEMLAB (PDF)", href: "/whitepaper" },
+      { label: "Whitepaper GEMLAB (MD)", href: "/docs/whitepaper_tecnico_gemlab_fase2_centelha_2026-02-26.md" },
+      { label: "Status do Protocolo", href: "/?page=institutional&section=roadmap-execucao" },
+      { label: "Linha Editorial", href: "/blog" },
       { label: "Contato Institucional", href: "mailto:contato@gemlab.com.br" },
     ],
     legal: [
-      { label: "Política de Privacidade", href: "#aviso-legal" },
-      { label: "Termos de Uso (SaaS)", href: "#aviso-legal" },
-      { label: "Compliance & PLD", href: "#aviso-legal" },
-      { label: "Declaração Regulatória", href: "#aviso-legal" },
+      { label: "Política de Privacidade", href: "/?page=institutional&section=aviso-legal" },
+      { label: "Termos de Uso (SaaS)", href: "/?page=institutional&section=aviso-legal" },
+      { label: "Compliance & PLD", href: "/?page=institutional&section=aviso-legal" },
+      { label: "Declaração Regulatória", href: "/?page=institutional&section=aviso-legal" },
     ],
   };
 
@@ -255,9 +255,15 @@ export function Footer() {
               © {new Date().getFullYear()} GemLab Tecnologia Ltda. Todos os direitos reservados.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="text-gray-500 hover:text-white transition-colors"><Github className="h-5 w-5" /></a>
-              <a href="#" className="text-gray-500 hover:text-white transition-colors"><Twitter className="h-5 w-5" /></a>
-              <a href="#" className="text-gray-500 hover:text-white transition-colors"><Linkedin className="h-5 w-5" /></a>
+              <a
+                href="https://github.com/DGuedz/Gemlab"
+                target="_blank"
+                rel="noreferrer"
+                className="text-gray-500 hover:text-white transition-colors"
+                aria-label="GitHub oficial do projeto GemLab"
+              >
+                <Github className="h-5 w-5" />
+              </a>
             </div>
           </div>
         </div>

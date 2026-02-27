@@ -6,8 +6,6 @@ import { CoopDashboard } from "./coop/CoopDashboard";
 import LabPortal from "../LabPortal";
 import { useAuth } from "../contexts/AuthContext";
 import { NavigationProvider } from "../contexts/NavigationContext";
-import { Button } from "./ui/button";
-import { Menu, X, BookOpen, Gem, Microscope, ShoppingBag, Mountain, Shield } from "lucide-react";
 import { InstitutionalPage } from "./institutional/InstitutionalPage";
 import { GemologistDashboard } from "./dashboard/GemologistDashboard";
 import { CertifiedGemsRegistry } from "./registry/CertifiedGemsRegistry";
@@ -18,15 +16,8 @@ import { GemDetailPage } from "./GemDetailPage";
 import { RoadmapPage } from "./RoadmapPage";
 import { Navbar } from "./Navbar";
 import { Hero } from "./Hero";
-import { DashboardAccessCard } from "./DashboardAccessCard";
 import { SolutionSection } from "./SolutionSection";
 import { ProcessSteps } from "./ProcessSteps";
-import { TokenizationFlow } from "./TokenizationFlow";
-import { LifecycleTimeline } from "./LifecycleTimeline";
-import { WhyCamposVerdes } from "./WhyCamposVerdes";
-import { EconomicImpact } from "./EconomicImpact";
-import { MunicipalFund } from "./MunicipalFund";
-import { ComplianceSection } from "./ComplianceSection";
 import { LatestCertifications } from "./LatestCertifications";
 import { Footer } from "./Footer";
 import { EcosystemPage } from "./ecosystem/EcosystemPage";
@@ -41,11 +32,26 @@ import { PremiumTeamPage } from "./team/PremiumTeamPage";
 type Page = "home" | "institutional" | "lab-portal" | "gemologist" | "marketplace" | "miner" | "admin" | "user-dashboard" | "gem-detail" | "ecosystem" | "oracle-dashboard" | "governance" | "projects" | "coop-dashboard" | "museum" | "marketplace-infrastructure" | "tourism-routes" | "digital-platform" | "municipal-market" | "roadmap" | "emerald-verification" | "premium-team";
 
 export function MainApp() {
-  const { user, setOnAuthSuccess } = useAuth();
+  const { setOnAuthSuccess } = useAuth();
   const [currentPage, setCurrentPage] = useState<Page>("home");
   const [selectedGemId, setSelectedGemId] = useState<string | null>(null);
   const [pageHistory, setPageHistory] = useState<Page[]>([]);
-  const [quickMenuOpen, setQuickMenuOpen] = useState(false);
+
+  const syncPublicUrl = (page: Page) => {
+    switch (page) {
+      case "institutional":
+        window.history.replaceState({}, "", "/?page=institutional");
+        break;
+      case "marketplace":
+        window.history.replaceState({}, "", "/?page=marketplace");
+        break;
+      case "home":
+        window.history.replaceState({}, "", "/");
+        break;
+      default:
+        break;
+    }
+  };
 
   // Setup auth success callback to navigate to user dashboard
   useEffect(() => {
@@ -53,6 +59,26 @@ export function MainApp() {
       navigateToPage("user-dashboard");
     });
   }, [setOnAuthSuccess]);
+
+  // Deep links públicos para avaliação (institucional/blog/verificação)
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const pageParam = params.get("page");
+    const sectionParam = params.get("section");
+
+    if (pageParam === "institutional" || pageParam === "marketplace" || pageParam === "home") {
+      setCurrentPage(pageParam as Page);
+    }
+
+    if (sectionParam) {
+      window.setTimeout(() => {
+        const target = document.getElementById(sectionParam);
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 450);
+    }
+  }, []);
 
   // Função para navegar com histórico
   const navigateToPage = (page: Page, gemId?: string) => {
@@ -62,6 +88,7 @@ export function MainApp() {
     if (page !== currentPage) {
       setPageHistory([...pageHistory, currentPage]);
       setCurrentPage(page);
+      syncPublicUrl(page);
       // Scroll to top quando navegar para nova página
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -75,6 +102,7 @@ export function MainApp() {
       setPageHistory(newHistory);
       if (previousPage) {
         setCurrentPage(previousPage);
+        syncPublicUrl(previousPage);
         // Scroll to top quando voltar para página anterior
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
@@ -583,123 +611,11 @@ export function MainApp() {
             />
             <main>
               <Hero onNavigateToVerification={() => navigateToPage("emerald-verification")} />
-              {user && (
-                <DashboardAccessCard
-                  userName={user.name}
-                  onAccessDashboard={() => setCurrentPage("user-dashboard")}
-                />
-              )}
               <SolutionSection />
               <ProcessSteps />
-              <TokenizationFlow />
-              <LifecycleTimeline />
-              <WhyCamposVerdes />
-              <EconomicImpact />
-              <MunicipalFund 
-                onNavigateToOracleDashboard={() => setCurrentPage("oracle-dashboard")} 
-                onNavigateToGovernance={() => setCurrentPage("governance")}
-                onNavigateToProjects={() => setCurrentPage("projects")}
-              />
-              <ComplianceSection />
               <LatestCertifications onViewDetails={(gemId) => navigateToPage("gem-detail", gemId)} />
             </main>
             <Footer />
-            
-            {/* Quick Access Panel - Mobile Optimized */}
-            <div className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-50">
-              {!quickMenuOpen ? (
-                // Minimized - Single Icon
-                <button
-                  onClick={() => setQuickMenuOpen(true)}
-                  className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#006b4f] text-white shadow-2xl hover:bg-[#014733] transition-all duration-300 hover:scale-110 active:scale-95 flex items-center justify-center border-2 border-[#e5e7eb]"
-                  aria-label="Abrir menu de acesso rápido"
-                >
-                  <Menu className="h-5 w-5 sm:h-6 sm:w-6" />
-                </button>
-              ) : (
-                // Expanded - Full Menu (Mobile Optimized)
-                <div className="bg-white rounded-2xl shadow-2xl border-2 border-[#e5e7eb] p-3 sm:p-4 space-y-2 animate-in slide-in-from-bottom-5 duration-300 max-w-[260px] sm:max-w-none">
-                  <div className="flex items-center justify-between mb-2 sm:mb-3">
-                    <div className="font-['Inter'] text-[10px] sm:text-xs font-semibold text-gray-500">
-                      Acesso Rápido
-                    </div>
-                    <button
-                      onClick={() => setQuickMenuOpen(false)}
-                      className="w-6 h-6 rounded-full hover:bg-gray-100 active:bg-gray-200 flex items-center justify-center transition-colors"
-                      aria-label="Fechar menu"
-                    >
-                      <X className="h-4 w-4 text-gray-500" />
-                    </button>
-                  </div>
-                  <Button
-                    onClick={() => {
-                      navigateToPage("institutional");
-                      setQuickMenuOpen(false);
-                    }}
-                    className="w-full bg-[#014733] text-white hover:bg-[#006b4f] active:bg-[#003d2e] justify-start text-xs sm:text-sm"
-                    size="sm"
-                  >
-                    <BookOpen className="h-3.5 w-3.5 sm:h-4 sm:w-4 mr-2" />
-                    Portal Institucional
-                  </Button>
-                  <Button
-                    onClick={() => {
-                      navigateToPage("lab-portal");
-                      setQuickMenuOpen(false);
-                    }}
-                    className="w-full bg-[#006b4f] text-white hover:bg-[#014733] active:bg-[#003d2e] justify-start text-xs sm:text-sm"
-                    size="sm"
-                  >
-                    <Gem className="h-3.5 w-3.5 sm:h-4 sm:w-4 mr-2" />
-                    Portal Lab
-                  </Button>
-                  <Button
-                    onClick={() => {
-                      navigateToPage("gemologist");
-                      setQuickMenuOpen(false);
-                    }}
-                    className="w-full bg-[#006b4f] text-white hover:bg-[#014733] active:bg-[#003d2e] justify-start text-xs sm:text-sm"
-                    size="sm"
-                  >
-                    <Microscope className="h-3.5 w-3.5 sm:h-4 sm:w-4 mr-2" />
-                    Dashboard Gemólogo
-                  </Button>
-                  <Button
-                    onClick={() => {
-                      navigateToPage("marketplace");
-                      setQuickMenuOpen(false);
-                    }}
-                    className="w-full bg-[#014733] text-white hover:bg-[#006b4f] active:bg-[#003d2e] justify-start text-xs sm:text-sm"
-                    size="sm"
-                  >
-                    <ShoppingBag className="h-3.5 w-3.5 sm:h-4 sm:w-4 mr-2" />
-                    Registry
-                  </Button>
-                  <Button
-                    onClick={() => {
-                      navigateToPage("miner");
-                      setQuickMenuOpen(false);
-                    }}
-                    className="w-full bg-[#caa34b] text-white hover:bg-[#b8923f] active:bg-[#a67f30] justify-start text-xs sm:text-sm"
-                    size="sm"
-                  >
-                    <Mountain className="h-3.5 w-3.5 sm:h-4 sm:w-4 mr-2" />
-                    Painel Garimpeiro
-                  </Button>
-                  <Button
-                    onClick={() => {
-                      navigateToPage("admin");
-                      setQuickMenuOpen(false);
-                    }}
-                    className="w-full bg-[#1b1b1b] text-white hover:bg-[#2d2d2d] active:bg-[#0a0a0a] justify-start text-xs sm:text-sm"
-                    size="sm"
-                  >
-                    <Shield className="h-3.5 w-3.5 sm:h-4 sm:w-4 mr-2" />
-                    Admin
-                  </Button>
-                </div>
-              )}
-            </div>
           </>
         );
     }
