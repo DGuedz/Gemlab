@@ -250,42 +250,39 @@ O mercado de esmeraldas brasileiro, especialmente na região de Campos Verdes-GO
 
 ## 8. ROADMAP E PRÓXIMOS PASSOS
 
-### 8.1 Fase Atual (Q1 2025)
+### 8.1 Fase Atual (Q1 2026): Planejamento e Estruturação Técnica
 
-✅ MVP 100% completo e funcional
-✅ Design system implementado
-✅ 5 perfis do LabPortal operacionais
-✅ Registry Público + Portal Comercial
-✅ Documentação técnica completa
+✅ Termo de Outorga e setup de execução em andamento no fluxo Centelha/FAPEG  
+✅ Requisitos do MVP e protocolo de triagem, validação e certificação definidos  
+✅ Planejamento de CAPEX e infraestrutura de processamento SpectralHash concluído  
+✅ Modelagem de dados e arquitetura da plataforma estruturadas  
+✅ Artefatos de certificação especificados (ID único, certificado digital e QR Code verificável)
 
-### 8.2 Próximas Etapas
+### 8.2 Roadmap Estratégico 2026 - Alinhado ao Programa Centelha Goiás
 
-**Q2 2025 - Validação e Piloto:**
-- Formalização de parceria com COOPESMERALDA
-- Definição de percentuais de participação
-- Piloto com 50-100 primeiras esmeraldas certificadas
-- Validação do protocolo em ambiente real
-- Ajustes baseados em feedback
+**Q1 2026 - Desenvolvimento Centelha (Planejamento e Estruturação Técnica)**
+- Formalização operacional do projeto (governança, cronograma e trilha documental)
+- Refinamento final dos requisitos do MVP e lock-in do protocolo técnico
+- Aquisição/configuração de infraestrutura crítica (hardware + ambiente de desenvolvimento)
+- Definição dos padrões de dados e layout dos artefatos de certificação
 
-**Q3 2025 - Lançamento Comercial:**
-- Go-to-market com COOPESMERALDA
-- Campanha de onboarding dos cooperados
-- Ativação do Registry Público
-- Início de operação comercial
-- Primeiras receitas recorrentes
+**Q2 2026 - Estruturação e Validação Testnet (Desenvolvimento do MVP e Integração)**
+- Desenvolvimento core: backend de cadastro/rastreabilidade + frontend de operação/consulta
+- Deploy em testnet/homologação com foco em integridade, auditoria e segurança dos registros
+- Motor de emissão digital (certificado + QR Code verificável)
+- Testes ponta a ponta do fluxo completo e estabilização do ambiente piloto
 
-**Q4 2025 - Escala Inicial:**
-- Expansão para mais cooperados
-- 500+ esmeraldas certificadas
-- Métricas de retenção e satisfação
-- Otimização de processos
-- Preparação para expansão geográfica
+**Q3 2026 - MVP Feira das Esmeraldas (Validação em Campo e Pilotos Reais)**
+- Onboarding de parceiros piloto (lapidários, comerciantes e joalheiros)
+- Cadastro de lotes físicos e emissão dos primeiros certificados em ambiente real
+- Coleta estruturada de feedback (valor percebido, usabilidade e confiança comercial)
+- Ajustes finais de produto para apresentação na Feira das Esmeraldas 2026 (setembro)
 
-**2026 - Crescimento e Expansão:**
-- Outras cooperativas de esmeraldas
-- Início de expansão para outras gemas
-- Licenciamento white-label
-- Consolidação como padrão do setor
+**Q4 2026 - Lançamento GTM e Continuidade Pós-Centelha**
+- Estruturação comercial (planos de assinatura, pricing por certificação e materiais de venda)
+- Fortalecimento da operação em produção (governança, monitoramento e processo de onboarding)
+- Consolidação dos KPIs técnicos e comerciais do ciclo MVP
+- Relatório técnico final Centelha e plano de expansão para novos polos minerários B2B
 
 ---
 
