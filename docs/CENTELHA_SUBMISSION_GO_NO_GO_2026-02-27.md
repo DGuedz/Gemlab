@@ -32,8 +32,12 @@ Objetivo: validar se o repositorio publico do GEMLAB esta seguro e coerente para
 
 ## 5) Itens manuais antes da submissao
 
-- Confirmar branch protection em `main` e `release/*`
-- Confirmar PR com status checks obrigatorios
+- Branch protection (`main` e `release/*`) bloqueada por plano/visibilidade:
+  - retorno API: `HTTP 403 - Upgrade to GitHub Pro or make this repository public`
+  - status atual do repo: `PRIVATE`
+  - acao recomendada: tornar repo publico e executar:
+    - `bash scripts/configure_branch_protection.sh DGuedz/Gemlab release/institutional-2026-02-27`
+- Confirmar PR com status checks obrigatorios apos branch protection ativa
 - Revisar menu/rotas em modo avaliacao (somente paginas jurado)
 
 ## 6) Decisao atual
@@ -41,5 +45,5 @@ Objetivo: validar se o repositorio publico do GEMLAB esta seguro e coerente para
 **GO TECNICO** (repositorio e deploy aptos para avaliacao).
 
 Pendencias de governanca para GO administrativo final:
-1. Branch protection confirmada no GitHub.
+1. Branch protection aplicada no GitHub (apos resolver bloqueio de plano/visibilidade).
 2. Checklist documental Centelha final revisado (cartas/anuencias/anexos).
