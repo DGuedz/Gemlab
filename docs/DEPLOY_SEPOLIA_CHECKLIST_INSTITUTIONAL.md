@@ -1,5 +1,13 @@
 # Checklist de Deploy Institucional - GEMLAB (Sepolia Testnet)
 
+> Documento público. Nunca versionar credenciais reais no Git.
+>
+> Exemplo seguro de placeholders em `.env.local` (não commitar):
+> - `SEPOLIA_RPC_URL=https://sepolia.infura.io/v3/<YOUR_PROJECT_KEY>`
+> - `PRIVATE_KEY=0x...`
+> - `AWS_ACCESS_KEY_ID=<YOUR_AWS_ACCESS_KEY_ID>`
+> - `AWS_SECRET_ACCESS_KEY=<YOUR_AWS_SECRET_ACCESS_KEY>`
+
 ## 1. Pré-Requisitos de Infraestrutura
 - [ ] **AWS KMS Key**: Validar se a chave existe e está configurada como `ECC_SECG_P256K1` (Sign and Verify).
 - [ ] **Variáveis de Ambiente**:
@@ -29,7 +37,7 @@
 - [ ] **Pausable Check**: Testar `pause()` e `unpause()` para garantir controle de emergência.
 
 ## 4. Integração Backend
-- [ ] Atualizar `.env` com os novos endereços de contrato (`GEMLAB_NFT_ADDRESS`, `GEMLAB_RESOLVER_ADDRESS`).
+- [ ] Atualizar `.env.local` (não versionado) com os novos endereços de contrato (`GEMLAB_NFT_ADDRESS`, `GEMLAB_RESOLVER_ADDRESS`).
 - [ ] Reiniciar serviço Backend.
 - [ ] Verificar endpoint `/health`.
 - [ ] Verificar endpoint `/system/status` (deve retornar `contractsPaused: false`).

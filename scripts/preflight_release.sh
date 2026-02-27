@@ -39,6 +39,22 @@ fi
 echo "OK: no high-confidence credential patterns in tracked files."
 
 echo
+echo "[3.1/6] Scanning for filled sensitive env vars in tracked files..."
+ENV_ASSIGN_REGEX='(PRIVATE_KEY|GEMLAB_PRIVATE_KEY|AWS_SECRET_ACCESS_KEY|SUPABASE_SERVICE_ROLE_KEY|GITHUB_PERSONAL_ACCESS_TOKEN)\s*=\s*["'\'']?[^"'\''[:space:]#]+'
+ENV_SCAN_OUTPUT="$(git ls-files -z | xargs -0 rg -n -S "$ENV_ASSIGN_REGEX" || true)"
+if [[ -n "$ENV_SCAN_OUTPUT" ]]; then
+  SAFE_PLACEHOLDERS='(0x\.\.\.|<YOUR_|YOUR_|SUA_|mock-secret-key|mock-access-key|""$)'
+  SAFE_PATHS='^(scripts/generate_wallet\.js|test-offchain-flow\.ts):'
+  FILTERED_ENV_SCAN="$(echo "$ENV_SCAN_OUTPUT" | rg -v "$SAFE_PLACEHOLDERS" | rg -v "$SAFE_PATHS" || true)"
+  if [[ -n "$FILTERED_ENV_SCAN" ]]; then
+    echo "ERROR: filled sensitive env var(s) found in tracked files:"
+    echo "$FILTERED_ENV_SCAN"
+    exit 1
+  fi
+fi
+echo "OK: no filled sensitive env vars in tracked files."
+
+echo
 echo "[4/6] Checking deploy-critical files..."
 CRITICAL_FILES=(
   "src/components/Hero.tsx"
