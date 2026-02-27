@@ -18,16 +18,17 @@ export class LocalKMS implements IKMS {
   }
 
   async getSigner(providerUrl?: string): Promise<Signer> {
-    if (!providerUrl) {
-      // Default to a known provider or throw if strict
-      if (process.env.RPC_URL) {
-        providerUrl = process.env.RPC_URL;
-      } else {
-        throw new Error("KMS Error: No provider URL specified and RPC_URL env var is missing.");
-      }
+    if (!this.privateKey) {
+        throw new Error("Local KMS Error: GEMLAB_PRIVATE_KEY or PRIVATE_KEY is missing.");
     }
 
-    const provider = new JsonRpcProvider(providerUrl);
+    const rpcUrl = providerUrl || process.env.RPC_URL || process.env.SEPOLIA_RPC_URL;
+    
+    if (!rpcUrl) {
+        throw new Error("Local KMS Error: Missing RPC URL. Please set RPC_URL or SEPOLIA_RPC_URL in .env");
+    }
+
+    const provider = new JsonRpcProvider(rpcUrl);
     return new Wallet(this.privateKey, provider);
   }
 

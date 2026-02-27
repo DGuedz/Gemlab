@@ -4,7 +4,7 @@ require("dotenv").config();
 
 // Helper to determine account type (Private Key vs Mnemonic)
 function getAccounts() {
-  const key = process.env.PRIVATE_KEY;
+  const key = process.env.PRIVATE_KEY || process.env.GEMLAB_PRIVATE_KEY;
   if (!key) return [];
   
   // If key contains spaces, treat as mnemonic
@@ -39,6 +39,10 @@ module.exports = {
     sepolia: {
       url: process.env.SEPOLIA_RPC_URL || "https://ethereum-sepolia-rpc.publicnode.com", // Fallback to public RPC
       accounts: getAccounts(),
+      chainId: 11155111,
+      // Gas Strategy for Reliable Deployment
+      // These values are safer defaults for testnet to avoid "replacement transaction underpriced" or stuck txs
+      gasPrice: "auto", 
     },
   },
   etherscan: {

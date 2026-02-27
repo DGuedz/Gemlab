@@ -3,6 +3,7 @@
 .env.generated
 .env.*.local
 node_modules/
+build/
 coverage/
 cache/
 artifacts/

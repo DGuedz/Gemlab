@@ -52,4 +52,8 @@ export class ApiCertificationService implements ICertificationService {
     // Calls the backend to pin to IPFS and mint the NFT via the secure minter contract
     return await this.request<{ ipfsCid: string; nftTokenId: string }>("/certification/mint", "POST", data);
   }
+
+  async checkSystemStatus(): Promise<{ contractsPaused: boolean; maintenanceMode: boolean }> {
+    return await this.request<{ contractsPaused: boolean; maintenanceMode: boolean }>("/system/status", "GET");
+  }
 }

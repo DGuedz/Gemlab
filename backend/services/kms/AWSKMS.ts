@@ -5,14 +5,16 @@ import { Signer, JsonRpcProvider } from "ethers";
 export class AWSKMS implements IKMS {
   private keyId: string;
   private region: string;
+  private accessKeyId: string;
+  private secretAccessKey: string;
 
   constructor() {
     this.keyId = process.env.AWS_KMS_KEY_ID || "";
     this.region = process.env.AWS_REGION || "us-east-1";
+    this.accessKeyId = process.env.AWS_ACCESS_KEY_ID || "";
+    this.secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY || "";
 
     if (!this.keyId) {
-      // We don't throw here to allow instantiation in factory, 
-      // but methods will fail if keys are missing when used.
       console.warn("AWS KMS Config Warning: AWS_KMS_KEY_ID is missing.");
     }
   }
@@ -24,9 +26,15 @@ export class AWSKMS implements IKMS {
 
     const provider = providerUrl ? new JsonRpcProvider(providerUrl) : undefined;
     
-    // Credentials are automatically loaded from AWS_ACCESS_KEY_ID/SECRET in env
-    // or standard AWS credential chain (profiles, roles).
-    return new AwsKmsSigner(this.region, this.keyId, provider);
+    // Credentials object as expected by @nexusmutual/ethers-v6-aws-kms-signer
+    const credentials = {
+      kmsKeyId: this.keyId,
+      region: this.region,
+      accessKeyId: this.accessKeyId,
+      secretAccessKey: this.secretAccessKey
+    };
+
+    return new AwsKmsSigner(credentials, provider);
   }
 
   async signMessage(message: string | Uint8Array): Promise<string> {

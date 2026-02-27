@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card } from "../ui/card";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
@@ -12,15 +12,16 @@ import {
   Upload,
   Image,
   Fingerprint,
-  Award,
+  Shield,
   Send,
   ChevronRight,
   ChevronLeft,
   Check,
   AlertCircle,
   Loader2,
+  Lock
 } from "lucide-react";
-import { Alert, AlertDescription } from "../ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "../ui/alert";
 
 interface CertificationData {
   // Step 1
@@ -59,8 +60,21 @@ export function CertificationWizard({ onClose }: { onClose: () => void }) {
   const [currentStep, setCurrentStep] = useState(1);
   const [isProcessing, setIsProcessing] = useState(false);
   const [data, setData] = useState<Partial<CertificationData>>({});
+  const [systemStatus, setSystemStatus] = useState<{ contractsPaused: boolean; maintenanceMode: boolean } | null>(null);
   
   const certService = CertificationServiceFactory.getInstance();
+
+  useEffect(() => {
+    const checkStatus = async () => {
+      try {
+        const status = await certService.checkSystemStatus();
+        setSystemStatus(status);
+      } catch (error) {
+        console.error("Failed to check system status:", error);
+      }
+    };
+    checkStatus();
+  }, []);
 
   const steps = [
     { number: 1, title: "Identificação", icon: FileText },
@@ -71,6 +85,8 @@ export function CertificationWizard({ onClose }: { onClose: () => void }) {
     { number: 6, title: "Atestado EAS", icon: Shield },
     { number: 7, title: "Tokenização", icon: Send },
   ];
+
+  const isPaused = systemStatus?.contractsPaused || systemStatus?.maintenanceMode;
 
   const progress = (currentStep / steps.length) * 100;
 
@@ -131,7 +147,25 @@ export function CertificationWizard({ onClose }: { onClose: () => void }) {
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <Card className="w-full max-w-4xl max-h-[90vh] overflow-y-auto">
+      <Card className="w-full max-w-4xl max-h-[90vh] overflow-y-auto relative">
+        {/* Paused/Maintenance Banner */}
+        {isPaused && (
+          <div className="absolute inset-0 bg-white/80 z-50 flex flex-col items-center justify-center backdrop-blur-sm p-8 text-center">
+            <div className="bg-amber-50 border border-amber-200 p-8 rounded-2xl max-w-md">
+              <Lock className="h-16 w-16 text-amber-600 mx-auto mb-4" />
+              <h3 className="text-xl font-bold text-amber-900 mb-2">
+                Sistema em Manutenção
+              </h3>
+              <p className="text-amber-700 mb-6">
+                A emissão de novos certificados está temporariamente pausada para atualizações de segurança ou manutenção da rede. Por favor, tente novamente mais tarde.
+              </p>
+              <Button onClick={onClose} variant="outline" className="border-amber-600 text-amber-700 hover:bg-amber-100">
+                Fechar Assistente
+              </Button>
+            </div>
+          </div>
+        )}
+
         {/* Header */}
         <div className="sticky top-0 bg-white border-b p-6 z-10">
           <div className="flex items-center justify-between mb-4">

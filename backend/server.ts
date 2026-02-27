@@ -5,6 +5,7 @@ import { cors } from "hono/cors";
 import { config } from "dotenv";
 import { z } from "zod";
 import { zValidator } from "@hono/zod-validator";
+import { ethers } from "ethers";
 
 console.log("Starting Server...");
 
@@ -23,6 +24,34 @@ app.get("/health", (c) => {
 
 // API V1 Routes
 const api = new Hono();
+
+// System Status Endpoint
+api.get("/system/status", async (c) => {
+  try {
+    // In a real scenario, we read from the contract
+    // const provider = new ethers.JsonRpcProvider(process.env.RPC_URL);
+    // const contract = new ethers.Contract(process.env.GEMLAB_NFT_ADDRESS, ["function paused() view returns (bool)"], provider);
+    // const paused = await contract.paused();
+    
+    // For now, we mock based on env var or default to false (active)
+    // This simulates the institutional readiness check
+    const isMaintenance = process.env.MAINTENANCE_MODE === "true";
+    const contractsPaused = process.env.CONTRACTS_PAUSED === "true";
+
+    return c.json({
+      contractsPaused,
+      maintenanceMode: isMaintenance,
+      version: "1.0.0",
+      network: process.env.NODE_ENV === "production" ? "Sepolia" : "Localhost"
+    });
+  } catch (e) {
+    return c.json({ 
+      contractsPaused: false, 
+      maintenanceMode: false,
+      error: "Could not fetch system status" 
+    });
+  }
+});
 
 // Certification Routes
 const spectralHashSchema = z.object({

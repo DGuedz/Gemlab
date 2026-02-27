@@ -1,5 +1,6 @@
 // Service interface for certification operations
 export interface ICertificationService {
+  checkSystemStatus(): Promise<{ contractsPaused: boolean; maintenanceMode: boolean }>;
   generateSpectralHash(data: any): Promise<string>;
   generateAttestation(data: any): Promise<string>;
   mintNFT(data: any): Promise<{ ipfsCid: string; nftTokenId: string }>;
@@ -7,6 +8,10 @@ export interface ICertificationService {
 
 // Mock implementation for frontend development/preview
 export class MockCertificationService implements ICertificationService {
+  async checkSystemStatus(): Promise<{ contractsPaused: boolean; maintenanceMode: boolean }> {
+    return { contractsPaused: false, maintenanceMode: false };
+  }
+
   async generateSpectralHash(data: any): Promise<string> {
     return new Promise((resolve) => {
       setTimeout(() => {
