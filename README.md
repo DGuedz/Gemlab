@@ -1,45 +1,99 @@
-# GEMLAB PROTOCOL (VSC Core)
+# GEMLAB - Infraestrutura de Confianca para Ativos Gemologicos Rastreaveis
 
-![Status](https://img.shields.io/badge/status-Stealth%20Mode-grey)
-![Architecture](https://img.shields.io/badge/architecture-VSC%20Compliant-blue)
-![Security](https://img.shields.io/badge/security-Enterprise%20Grade-red)
+![Status](https://img.shields.io/badge/Status-Centelha%20Fase%202-006b4f)
+![Deploy](https://img.shields.io/badge/Deploy-Vercel%20Prod-111111?logo=vercel)
+![Stack](https://img.shields.io/badge/Stack-React%20%7C%20TypeScript%20%7C%20Solidity-0ea5e9)
+![EAS](https://img.shields.io/badge/Attestation-Ethereum%20EAS-627eea)
+![Network](https://img.shields.io/badge/Network-Sepolia%20Testnet-f59e0b)
+![Security](https://img.shields.io/badge/Security-Secret%20Scan%20Enabled-16a34a)
 
-> **Economy-First Blockchain Protocol for Real World Assets (RWA)**
+Repositorio tecnico do projeto GEMLAB na Fase 2 do Programa Centelha GO.
+A proposta integra ciencia aplicada (Raman), criptografia deterministica (SpectralHash), atestacao EAS e trilha auditavel para certificacao de esmeraldas.
 
----
+## 1) Tese do Projeto
 
-## 🔒 VSC (Value-Separated Control) Architecture
+A cadeia de esmeraldas em Campos Verdes-GO sofre com baixa padronizacao tecnica, fragilidade documental e dificuldade de due diligence.
+O GEMLAB atua como infraestrutura B2B de certificacao e rastreabilidade, com separacao entre dado sensivel off-chain e prova de integridade on-chain.
 
-This repository contains the core implementation of the GEMLAB Protocol, architected under strict **VSC principles**:
+## 2) Arquitetura Tecnica (Resumo)
 
-1.  **Value Layer (The Truth):** Off-chain scientific validation (Raman Spectroscopy) anchored via cryptographic hashes.
-2.  **Control Layer (The Rules):** Smart Contracts ensuring atomic settlement and fiscal compliance.
-3.  **Interface Layer (The View):** Decoupled front-ends for privacy and performance.
+Fluxo alvo de verificacao:
 
-### Core Features
+`Origem do lote -> Analise Raman -> SpectralHash -> EAS Attestation -> Certificado digital + QR -> Verificacao institucional`
 
-*   **Fail-Fast Validation:** Transactions revert immediately if required attestations (EAS) are missing.
-*   **Data Economy:** Heavy data (images, spectra) stored off-chain; only `bytes32` hashes touch the blockchain.
-*   **Zero-Trust Security:** Private keys managed via KMS/Env variables; strict role separation between Origin, Science, and Custody actors.
+Invariantes do protocolo:
+- Determinismo: mesma entrada normalizada gera mesmo hash.
+- Auditabilidade: atualizacao de status gera novo evento verificavel.
+- Segregacao: dado tecnico sensivel off-chain, prova de integridade on-chain.
 
----
+## 3) Evidencias Publicas
 
-## 🛠 Tech Stack
+- Whitepaper tecnico: `public/docs/whitepaper_tecnico_gemlab_fase2_centelha_2026-02-26.pdf`
+- Whitepaper (fonte): `public/docs/whitepaper_tecnico_gemlab_fase2_centelha_2026-02-26.md`
+- Apresentacao do projeto: `src/GEMLAB_PROJECT_PRESENTATION.md`
+- Pitchdeck operacional: consolidado no dossie de submissao Centelha (ambiente interno de operacao).
+- Checklist de submissao (GO/NO-GO): `docs/CENTELHA_SUBMISSION_GO_NO_GO_2026-02-27.md`
+- Deploy institucional: https://gemlab-platform.vercel.app
 
-*   **Smart Contracts:** Solidity ^0.8.20 (OpenZeppelin + EAS)
-*   **Validation:** Ethereum Attestation Service (EAS)
-*   **Framework:** Hardhat
-*   **Network:** Ethereum Sepolia (Testnet) / Mainnet
+## 4) Modelo de Negocio e Limites
 
----
+Modelo: Lab-as-a-Service B2B + compliance middleware.
 
-## ⚠️ Private Repository Notice
+Linhas de receita:
+- Certificacao por unidade/lote.
+- Assinatura SaaS para operacao recorrente.
+- Relatorios tecnicos para diligencia institucional.
 
-This project is currently in **Stealth Mode**.
-Access to source code, documentation, and deployment scripts is restricted to authorized personnel only.
+Limite regulatorio explicito:
+- Nao e oferta de investimento.
+- Nao promete rentabilidade.
+- Nao atua como instituicao financeira.
 
-**Unauthorized use, copying, or distribution of this code is strictly prohibited.**
+## 5) Maturidade Tecnologica (TRL)
 
----
+Posicionamento atual (estimado): TRL 4-5
+- Arquitetura definida e prototipo funcional em ambiente de teste.
+- Componentes de integracao e trilha de evidencias em consolidacao.
 
-*© 2026 GEMLAB Protocol. All Rights Reserved.*
+Meta Centelha (M1-M7): TRL 5-6
+- Piloto com lotes reais e verificacao publica orientada por QR.
+
+## 6) Capacidade de Execucao
+
+Equipe executora cadastrada no Centelha:
+- Diego Guedes (Founder/CTO/Produto)
+- Carlos Vaz (articulacao institucional)
+- Raiane Coelho (conformidade ambiental)
+- Caroline Miranda (licenciamento e governanca hidrica)
+- Marcelo Silva (governanca regulatoria e risco)
+
+Sobre lideranca tecnica:
+- A capacidade do projeto e demonstrada por entregas tecnicas verificaveis (repo, deploy, whitepaper, scripts de seguranca).
+- Track record do fundador inclui execucao competitiva em Web3/IA (5+ hackathons em 2025, conforme dossie institucional).
+
+## 7) Seguranca e Boas Praticas
+
+Gates operacionais para release publico:
+
+```bash
+SKIP_BUILD=1 bash scripts/preflight_release.sh
+bash scripts/security_audit_history.sh
+bash scripts/pii_audit_public.sh
+```
+
+Documentacao de hardening:
+- `docs/GITHUB_PUBLIC_HARDENING_CHECKLIST.md`
+- `docs/CENTELHA_SUBMISSION_GO_NO_GO_2026-02-27.md`
+
+## 8) Execucao Local
+
+```bash
+npm install
+npm run dev
+npm run build
+```
+
+## 9) Nota de Escopo
+
+Este repositorio publico mostra evidencias de maturidade tecnica para avaliacao institucional.
+Operacoes sensiveis de backend (chaves, pipelines privados, governanca interna) permanecem segregadas e fora da superficie publica.
