@@ -30,7 +30,7 @@ fi
 echo
 echo "[3/6] Scanning tracked files for credential patterns..."
 SECRET_REGEX='(github_pat_[A-Za-z0-9_]{20,}|ghp_[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|figd_[A-Za-z0-9_-]{20,}|AIza[0-9A-Za-z\-_]{35}|-----BEGIN (RSA|EC|OPENSSH|PRIVATE KEY)-----)'
-SCAN_OUTPUT="$(git ls-files -z | xargs -0 rg -n -S "$SECRET_REGEX" || true)"
+SCAN_OUTPUT="$(git ls-files -z | xargs -0 rg -n -S "$SECRET_REGEX" 2>/dev/null || true)"
 if [[ -n "$SCAN_OUTPUT" ]]; then
   echo "ERROR: potential secret(s) found in tracked files:"
   echo "$SCAN_OUTPUT"
@@ -41,7 +41,7 @@ echo "OK: no high-confidence credential patterns in tracked files."
 echo
 echo "[3.1/6] Scanning for filled sensitive env vars in tracked files..."
 ENV_ASSIGN_REGEX='(PRIVATE_KEY|GEMLAB_PRIVATE_KEY|AWS_SECRET_ACCESS_KEY|SUPABASE_SERVICE_ROLE_KEY|GITHUB_PERSONAL_ACCESS_TOKEN)\s*=\s*["'\'']?[^"'\''[:space:]#]+'
-ENV_SCAN_OUTPUT="$(git ls-files -z | xargs -0 rg -n -S "$ENV_ASSIGN_REGEX" || true)"
+ENV_SCAN_OUTPUT="$(git ls-files -z | xargs -0 rg -n -S "$ENV_ASSIGN_REGEX" 2>/dev/null || true)"
 if [[ -n "$ENV_SCAN_OUTPUT" ]]; then
   SAFE_PLACEHOLDERS='(0x\.\.\.|<YOUR_|YOUR_|SUA_|mock-secret-key|mock-access-key|""$)'
   SAFE_PATHS='^(scripts/generate_wallet\.js|test-offchain-flow\.ts):'
