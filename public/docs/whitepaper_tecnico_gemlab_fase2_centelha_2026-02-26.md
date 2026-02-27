@@ -53,6 +53,12 @@ Evidencia atual: protocolo tecnico definido e trilha de execucao desenhada para 
 
 Funcao: garantir integridade e rastreabilidade do identificador tecnico da amostra.
 
+Formalizacao (sem exposicao de segredo industrial):
+
+- Invariante I1 (determinismo): mesma entrada normalizada deve produzir mesmo hash.
+- Invariante I2 (auditabilidade): toda alteracao de status gera novo evento verificavel.
+- Invariante I3 (segregacao): dado sensivel off-chain, prova de integridade on-chain.
+
 ### 2.3 Camada de attestation - EAS
 
 Uso de Ethereum Attestation Service (EAS) para:
@@ -103,15 +109,31 @@ Modelo principal: Lab-as-a-Service B2B + compliance middleware.
 
 Linhas de receita:
 
-- certificacao por lote;
+- certificacao por unidade/lote;
 - assinatura para operacao recorrente de mineradoras e laboratorios;
 - relatorios tecnicos premium para due diligence.
 
 ### 4.2 Hipotese financeira inicial
 
-- ticket por lote: R$ 2.500 a R$ 6.000;
-- meta ano 1: 5 a 10 clientes ativos;
-- faixa de receita projetada ano 1: R$ 150.000 a R$ 400.000.
+Premissas alinhadas ao plano comercial:
+
+- preco medio de certificacao por gema (Pc): R$ 150;
+- assinatura B2B de plataforma (As): R$ 2.500/mes;
+- base potencial territorial: 500 cooperados (adocao progressiva);
+- adocao estimada: 10% (ano 1), 30% (ano 2), 50% (ano 3).
+
+Formulas economicas:
+
+- ReceitaCert_t = Ncert_t x Pc
+- ReceitaSaaS_t = Nassin_t x As
+- MRR_t = ReceitaCert_t + ReceitaSaaS_t
+- ARR_t = 12 x MRRmedio_t
+
+Projecao de referencia:
+
+- Ano 1: Ncert = 200/mes, Nassin = 1, MRR = R$ 32.500, ARR = R$ 390.000
+- Ano 2: Ncert = 600/mes, Nassin = 1, MRR = R$ 92.500, ARR = R$ 1.110.000
+- Ano 3: Ncert = 1.000/mes, Nassin = 4 (1 operacao principal + expansoes), MRR >= R$ 160.000, ARR >= R$ 1.920.000
 
 ### 4.3 Conformidade regulatoria e limites
 
@@ -124,14 +146,15 @@ O GEMLAB:
 
 ---
 
-## 5. Roadmap de 12 Meses e KPIs
+## 5. Roadmap de 12 Meses e KPIs (Centelha + Pos-Centelha)
 
 | Fase | Marco | KPI principal |
 |---|---|---|
-| M1-M3 | MVP tecnico consolidado | 3 lotes de teste com trilha completa |
-| M4-M6 | Integracao EAS operante | 100% dos eventos criticos atestados |
-| M7-M9 | Piloto B2B de campo | 3 clientes piloto ativos |
-| M10-M12 | Demonstracao publica | MVP apresentado na Feira 2026 |
+| M1-M2 | Estruturacao tecnica e governanca | protocolo fechado + setup operacional |
+| M3-M4 | Integracao e testnet | 100% dos eventos criticos atestados |
+| M5-M6 | Pilotos operacionais | lotes reais com trilha fim a fim |
+| M7 | Demonstracao publica | MVP apresentado na Feira 2026 |
+| M8-M12 | GTM e continuidade | operacao comercial inicial + KPIs consolidados |
 
 ---
 
@@ -160,7 +183,7 @@ O GEMLAB:
 |---|---|---|---|
 | EDD - estagio de desenvolvimento | arquitetura e fluxo definidos | MVP validado | registros de teste + evidencias de fluxo |
 | PDT - potencial tecnologico | stack Raman + SpectralHash + EAS | trilha fim a fim operante | hash reproduzivel + atestacoes |
-| Execucao | equipe multidisciplinar | entrega em marcos M1-M12 | cronograma e aceite por marco |
+| Execucao | equipe multidisciplinar | entrega em marcos M1-M12 (M1-M7 Centelha) | cronograma e aceite por marco |
 | Consistencia | alinhamento tecnico-comercial | aderencia edital | coerencia formulario + orcamento + evidencias |
 
 ---
@@ -190,7 +213,7 @@ O GEMLAB:
 
 ## 10. Versao Executiva (1 Pagina)
 
-GEMLAB e uma infraestrutura tecnico-digital para rastreabilidade de esmeraldas baseada em ciencia aplicada e verificabilidade criptografica. A proposta combina analise Raman, SpectralHash, EAS e smart contracts para converter laudo tecnico em evidencia auditavel fim a fim. O modelo de negocio e B2B (Lab-as-a-Service + compliance middleware), com foco inicial em Campos Verdes-GO e escalabilidade progressiva por pilotos. A entrega da Fase 2 e um MVP funcional ate a Feira das Esmeraldas 2026, com trilha de evidencias, controles de governanca e aderencia regulatoria. O GEMLAB nao realiza oferta publica de investimento: atua como plataforma de certificacao, rastreabilidade e conformidade documental.
+GEMLAB e uma infraestrutura tecnico-digital para rastreabilidade de esmeraldas baseada em ciencia aplicada e verificabilidade criptografica. A proposta combina analise Raman, SpectralHash, EAS e smart contracts para converter laudo tecnico em evidencia auditavel fim a fim. O modelo de negocio e B2B (Lab-as-a-Service + compliance middleware), com receita recorrente por assinatura e certificacao unitária. A entrega da Fase 2 concentra os marcos M1-M7 ate a Feira das Esmeraldas 2026, com continuidade M8-M12 para GTM. O GEMLAB nao realiza oferta publica de investimento: atua como plataforma de certificacao, rastreabilidade e conformidade documental.
 
 ---
 
@@ -218,4 +241,3 @@ Para manter consistencia tecnica do documento e do produto, o responsavel pela e
 - fundamentos de gemologia e espectroscopia Raman;
 - modelagem de processos operacionais e compliance;
 - escrita tecnico-comercial orientada a edital e auditoria.
-

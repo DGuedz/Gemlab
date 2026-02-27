@@ -13,7 +13,7 @@
 
 **Status de Participação:** Percentuais em negociação com COOPESMERALDA (Cooperativa de Produtores) e demais parceiros estratégicos
 
-**Fase Atual:** MVP Completo e Funcional | Pronto para Validação de Mercado
+**Fase Atual:** MVP em consolidação técnica | Validação de campo planejada para 2026
 
 **Data de Início:** 2024
 
@@ -38,7 +38,7 @@ O mercado de esmeraldas brasileiro, especialmente na região de Campos Verdes-GO
 **GemLab** é uma plataforma SaaS enterprise de tecnologia e certificação científica que implementa:
 
 1. **Registry de Certificações Científicas** - Base de dados verificável e imutável
-2. **Protocolo GEMLAB** - Tokenização híbrida em duas camadas (física + digital)
+2. **Protocolo GEMLAB** - Evidência em duas camadas (física + digital verificável)
 3. **Rastreabilidade Completa** - Da jazida ao varejo com registro blockchain
 4. **Laboratório Digital** - Portal de análises gemológicas e emissão de certificados
 5. **Infraestrutura White-Label** - Tecnologia licenciável para cooperativas e laboratórios
@@ -65,7 +65,7 @@ O mercado de esmeraldas brasileiro, especialmente na região de Campos Verdes-GO
 
 ### 3.2 Compliance Regulatório
 
-- **Total compliance com CVM** - Sem características de valores mobiliários
+- **Arquitetura orientada à conformidade regulatória** - Sem características de valores mobiliários
 - **Terminologia técnica:** Registry, certificação científica, rastreabilidade verificada
 - **Modelo B2B SaaS:** Licenciamento de tecnologia + serviços de laboratório
 - **Foco em esmeraldas:** Escopo bem definido no MVP
@@ -109,7 +109,7 @@ O mercado de esmeraldas brasileiro, especialmente na região de Campos Verdes-GO
 - Design System proprietário GemLab
 
 **Backend & Blockchain:**
-- Protocolo GEMLAB (tokenização híbrida)
+- Protocolo GEMLAB (Raman + SpectralHash + EAS)
 - Integração com blockchain para imutabilidade
 - Sistema de oráculos operacionais
 - Custodiante verificado (COOPESMERALDA)
@@ -122,7 +122,7 @@ O mercado de esmeraldas brasileiro, especialmente na região de Campos Verdes-GO
 
 ### 4.2 Protocolo GEMLAB
 
-**Tokenização Híbrida em Duas Camadas:**
+**Evidência Técnica em Duas Camadas:**
 
 1. **Camada Física (Physical Layer)**
    - QR Code + NFC tag na gema física
@@ -130,9 +130,9 @@ O mercado de esmeraldas brasileiro, especialmente na região de Campos Verdes-GO
    - Lacre holográfico de autenticidade
 
 2. **Camada Digital (Digital Layer)**
-   - Token digital representando a certificação
-   - Hash criptográfico imutável no blockchain
-   - Histórico completo de custódia e verificações
+   - Identificador digital de certificação e trilha de eventos
+   - SpectralHash determinístico e atestações EAS
+   - Histórico completo de custódia, status e verificações
 
 **Ciclo de Vida Rastreável:**
 - Registro na jazida (origem)
@@ -167,7 +167,7 @@ O mercado de esmeraldas brasileiro, especialmente na região de Campos Verdes-GO
 ### 5.1 Inovação Tecnológica
 
 ✅ **Primeira plataforma brasileira** de certificação gemológica com blockchain
-✅ **Protocolo proprietário** GEMLAB com tokenização híbrida
+✅ **Protocolo proprietário** GEMLAB com SpectralHash + EAS
 ✅ **Rastreabilidade fim-a-fim** desde a jazida
 ✅ **Design system** profissional e identidade visual única
 ✅ **MVP funcional** com 40+ componentes implementados
@@ -363,7 +363,7 @@ O mercado de esmeraldas brasileiro, especialmente na região de Campos Verdes-GO
 | Atraso na parceria com cooperativa | Média | Alto | Prospecção paralela de outros cooperados |
 | Resistência de adoção tecnológica | Média | Médio | Programa de onboarding e treinamento |
 | Competição futura | Baixa | Médio | First-mover + barreiras proprietárias |
-| Mudanças regulatórias | Baixa | Alto | Modelo já em compliance total com CVM |
+| Mudanças regulatórias | Baixa | Alto | Revisão jurídica contínua e desenho não-financeiro do produto |
 | Dependência de parceiro único | Alta | Alto | Expansão para múltiplas cooperativas (roadmap) |
 
 ### 11.2 Estratégias de Mitigação
@@ -371,7 +371,7 @@ O mercado de esmeraldas brasileiro, especialmente na região de Campos Verdes-GO
 ✅ **Compliance preventivo:** Modelo já estruturado em conformidade regulatória
 ✅ **Diversificação gradual:** Roadmap prevê múltiplas cooperativas
 ✅ **Propriedade intelectual:** Tecnologia e protocolo proprietários
-✅ **Validação técnica:** MVP completo e testável
+✅ **Validação técnica:** MVP em homologação com trilha auditável
 ✅ **Escalabilidade:** Arquitetura preparada para crescimento
 
 ---
@@ -416,7 +416,7 @@ O **GemLab** representa uma oportunidade única de:
 ✅ **Gerar receita recorrente** através de modelo SaaS + serviços
 ✅ **Escalar para outros mercados** através de white-label
 
-Com MVP completo, compliance regulatório total, parceiro estratégico em negociação e mercado endereçável validado, o GemLab está pronto para a **fase de validação comercial e crescimento**.
+Com MVP em consolidação técnica, governança regulatória estruturada, parceiro estratégico em negociação e mercado endereçável validado, o GemLab está preparado para a **fase de validação em campo e crescimento gradual**.
 
 ### 13.2 Inserção no Portfólio Black Mindz Labs
 
@@ -427,9 +427,9 @@ Como parte do grupo seleto de projetos promissores da **Black Mindz Labs**, o Ge
 - **Escalabilidade comprovada** (white-label)
 - **Mercado com tração** (cooperativa parceira)
 - **Propriedade intelectual** protegida
-- **Compliance regulatório** total
+- **Compliance regulatório** estruturado e evolutivo
 
-O projeto está **pronto para captação de recursos, formalização de parcerias e início de operação comercial**, representando uma oportunidade de alto potencial para o portfólio Black Mindz Labs.
+O projeto está **pronto para validação em campo, formalização de parcerias e transição para operação comercial**, representando uma oportunidade de alto potencial para o portfólio Black Mindz Labs.
 
 ### 13.3 Contato e Próximos Passos
 
@@ -452,7 +452,7 @@ O projeto está **pronto para captação de recursos, formalização de parceria
 
 ### 14.1 Recursos Disponíveis
 
-- ✅ **MVP 100% funcional** com código-fonte completo
+- ✅ **Base funcional em homologação** com código-fonte estruturado
 - ✅ **Design System GemLab** com paleta e componentes
 - ✅ **40+ componentes React** desenvolvidos e testados
 - ✅ **5 perfis LabPortal** totalmente operacionais
@@ -489,9 +489,9 @@ O projeto está **pronto para captação de recursos, formalização de parceria
 
 **Projeto:** GemLab - Rastreabilidade e Certificação Científica de Esmeraldas
 
-**Versão:** 1.0 | **Data:** Janeiro 2025
+**Versão:** 1.1 | **Data:** Fevereiro 2026
 
-**Status:** MVP Completo | Pronto para Validação de Mercado
+**Status:** MVP em consolidação | Pronto para validação de campo
 
 ---
 
