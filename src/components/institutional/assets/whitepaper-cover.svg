@@ -1,0 +1,47 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="720" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#06231B"/>
+      <stop offset="0.5" stop-color="#014733"/>
+      <stop offset="1" stop-color="#0F1115"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(840 220) rotate(145) scale(380 280)">
+      <stop stop-color="#2BE3A4" stop-opacity="0.38"/>
+      <stop offset="1" stop-color="#2BE3A4" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="720" fill="url(#bg)"/>
+  <rect width="1200" height="720" fill="url(#glow)"/>
+
+  <g opacity="0.24" stroke="#66E2B8" stroke-width="1">
+    <path d="M120 120H1080"/>
+    <path d="M120 200H1080"/>
+    <path d="M120 280H1080"/>
+    <path d="M120 360H1080"/>
+    <path d="M120 440H1080"/>
+    <path d="M120 520H1080"/>
+    <path d="M120 600H1080"/>
+  </g>
+
+  <g>
+    <polygon points="860,160 970,220 920,360 790,320" fill="#00A778" fill-opacity="0.4" stroke="#5EF0C3"/>
+    <polygon points="760,250 860,290 830,430 700,390" fill="#00A778" fill-opacity="0.3" stroke="#5EF0C3"/>
+    <polygon points="940,260 1020,300 990,410 900,380" fill="#00A778" fill-opacity="0.28" stroke="#5EF0C3"/>
+  </g>
+
+  <g fill="#D4FFE8" font-family="Inter, Arial, sans-serif">
+    <text x="120" y="180" font-size="28" font-weight="700">GEMLAB</text>
+    <text x="120" y="220" font-size="48" font-weight="800">Whitepaper Tecnico</text>
+    <text x="120" y="268" font-size="24" opacity="0.9">Infraestrutura de Confianca para Ativos Gemologicos Rastreaveis</text>
+    <text x="120" y="330" font-size="18" opacity="0.85">Raman • SpectralHash • EAS • Smart Contracts • Compliance Middleware</text>
+  </g>
+
+  <g>
+    <rect x="120" y="390" width="420" height="180" rx="14" fill="#0E1E1A" fill-opacity="0.8" stroke="#2BE3A4" stroke-opacity="0.4"/>
+    <text x="150" y="435" fill="#A8F5D5" font-family="Inter, Arial" font-size="16" font-weight="700">Objetivo de avaliacao Centelha</text>
+    <text x="150" y="468" fill="#D6FCEB" font-family="Inter, Arial" font-size="14">• Evidencias EDD/PDT estruturadas</text>
+    <text x="150" y="495" fill="#D6FCEB" font-family="Inter, Arial" font-size="14">• Coerencia tecnica/comercial/regulatoria</text>
+    <text x="150" y="522" fill="#D6FCEB" font-family="Inter, Arial" font-size="14">• Roadmap com entrega de MVP em 12 meses</text>
+  </g>
+</svg>

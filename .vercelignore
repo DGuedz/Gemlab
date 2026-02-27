@@ -1,0 +1,24 @@
+# Local/runtime secrets
+.env
+.env.*
+!.env.example
+
+# Development artifacts
+node_modules
+coverage
+cache
+artifacts
+build
+dist
+
+# Tooling/meta
+.git
+.github
+.trae
+*.log
+.DS_Store
+
+# Non-deployment folders
+test
+scripts
+backend

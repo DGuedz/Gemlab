@@ -56,26 +56,26 @@ export function Hero({ onNavigateToVerification }: HeroProps = {}) {
             <div className="grid grid-cols-3 gap-3 sm:gap-6 pt-6 sm:pt-8 border-t border-[#e5e7eb]">
               <div>
                 <div className="font-['Inter'] text-xl sm:text-2xl font-bold text-[#006b4f]">
-                  Fase 2
-                </div>
-                <div className="font-['Inter'] text-xs sm:text-sm text-gray-600">
-                  Programa Centelha
-                </div>
-              </div>
-              <div>
-                <div className="font-['Inter'] text-xl sm:text-2xl font-bold text-[#006b4f]">
-                  VSC
-                </div>
-                <div className="font-['Inter'] text-xs sm:text-sm text-gray-600">
-                  Arquitetura Compliant
-                </div>
-              </div>
-              <div>
-                <div className="font-['Inter'] text-xl sm:text-2xl font-bold text-[#006b4f]">
                   Piloto
                 </div>
                 <div className="font-['Inter'] text-xs sm:text-sm text-gray-600">
-                  Campos Verdes - GO
+                  Certificação em validação
+                </div>
+              </div>
+              <div>
+                <div className="font-['Inter'] text-xl sm:text-2xl font-bold text-[#006b4f]">
+                  Labs
+                </div>
+                <div className="font-['Inter'] text-xs sm:text-sm text-gray-600">
+                  Integração técnica em andamento
+                </div>
+              </div>
+              <div>
+                <div className="font-['Inter'] text-xl sm:text-2xl font-bold text-[#006b4f]">
+                  Fase 2
+                </div>
+                <div className="font-['Inter'] text-xs sm:text-sm text-gray-600">
+                  Rastreabilidade auditável
                 </div>
               </div>
             </div>
@@ -354,7 +354,7 @@ export function Hero({ onNavigateToVerification }: HeroProps = {}) {
                       initial={{ scale: 0.95, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
                       transition={{ delay: 0.4, duration: 0.6 }}
-                      className="aspect-square bg-gradient-to-br from-[#006b4f]/20 to-[#014733]/20 rounded-2xl flex items-center justify-center overflow-hidden relative group/image cursor-pointer border border-cyan-500/30 shadow-lg shadow-cyan-500/10"
+                      className="aspect-square bg-gradient-to-br from-[#0a2e22]/30 via-[#0b221a]/30 to-[#081410]/55 rounded-2xl flex items-center justify-center overflow-hidden relative group/image cursor-pointer border border-cyan-500/30 shadow-lg shadow-cyan-500/10"
                     >
                       {/* Reflexo de luz superior */}
                       <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
@@ -363,12 +363,26 @@ export function Hero({ onNavigateToVerification }: HeroProps = {}) {
                       <ImageWithFallback
                         src={emeraldImage}
                         alt="Esmeralda certificada com SpectralHash"
-                        className="absolute inset-0 w-full h-full object-contain transition-all duration-700 ease-out group-hover/image:scale-110 group-hover/image:brightness-110 mix-blend-lighten"
+                        className="absolute inset-0 w-full h-full object-contain transition-all duration-700 ease-out group-hover/image:scale-110 group-hover/image:brightness-110 mix-blend-lighten drop-shadow-[0_20px_34px_rgba(16,185,129,0.35)]"
                         style={{ objectPosition: 'center' }}
                       />
                       
-                      {/* Overlay de rede criptográfica sobre a esmeralda */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#006b4f]/60 via-transparent to-cyan-500/10 group-hover/image:from-[#006b4f]/40 transition-all duration-700" />
+                      {/* Glow orgânico para evitar o "recorte quadrado" na base da gema */}
+                      <div className="absolute inset-0 pointer-events-none">
+                        <div className="absolute inset-x-[18%] -bottom-[7%] h-[34%] rounded-full bg-emerald-400/22 blur-3xl" />
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_70%,rgba(16,185,129,0.18)_0%,rgba(6,95,70,0.08)_34%,rgba(0,0,0,0)_64%)]" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-cyan-500/10" />
+              {/* Badge flutuante de impressão digital (coeso e sem conflito com "Validado") */}
+              <motion.div
+                initial={{ scale: 0, rotate: -10 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{ delay: 0.35, type: "spring", stiffness: 220 }}
+                whileHover={{ scale: 1.04 }}
+                className="absolute top-4 right-4 bg-gradient-to-br from-[#006b4f] to-[#014733] rounded-xl shadow-lg p-2.5 border border-white/80 cursor-pointer group/badge z-20"
+              >
+                <Fingerprint className="h-5 w-5 text-white group-hover/badge:scale-110 transition-transform" />
+              </motion.div>
+            </div>
                       
                       {/* Glow effect ao hover */}
                       <div className="absolute inset-0 opacity-0 group-hover/image:opacity-100 transition-opacity duration-700">
@@ -840,18 +854,6 @@ export function Hero({ onNavigateToVerification }: HeroProps = {}) {
                 </div>
               </motion.div>
 
-              {/* Floating Badge EAS */}
-              <motion.div
-                initial={{ scale: 0, rotate: -45 }}
-                animate={{ scale: 1, rotate: 0 }}
-                transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                className="absolute -top-4 -right-4 bg-gradient-to-br from-[#006b4f] to-[#014733] rounded-2xl shadow-2xl p-4 border-2 border-white cursor-pointer group/badge"
-              >
-                <Fingerprint className="h-8 w-8 text-white group-hover/badge:scale-110 transition-transform" />
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-pulse" />
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-green-400/20 to-cyan-400/20 opacity-0 group-hover/badge:opacity-100 transition-opacity blur" />
-              </motion.div>
             </div>
 
             {/* Background Decoration - Tech Style com profundidade */}

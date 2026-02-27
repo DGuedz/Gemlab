@@ -4,31 +4,32 @@ import logo from "figma:asset/cde6329a6c4b255a7d190dd68be01f6589014264.png";
 export function Footer() {
   const footerLinks = {
     produto: [
-      { label: "Como Funciona", href: "#how-it-works" },
-      { label: "Registry Certificado", href: "#registry" },
-      { label: "Verificação de Autenticidade", href: "#verificacao" },
-      { label: "Para Gemólogos", href: "#gemologists" },
-      { label: "Para Garimpeiros", href: "#miners" },
+      { label: "Como Funciona", href: "#arquitetura-operacional" },
+      { label: "Fluxo de Certificação", href: "#fluxo-visual" },
+      { label: "Verificação de Autenticidade", href: "#prova-tecnica" },
+      { label: "Modelo Lab-as-a-Service", href: "#oportunidades-b2b" },
+      { label: "Roadmap de Execução", href: "#roadmap-execucao" },
     ],
     projetos: [
-      { label: "Portfólio Campos Verdes 2050", href: "#portfolio-projetos" },
-      { label: "Tecnologia & Governança", href: "#tecnologia-governanca" },
-      { label: "Educação & Capacitação", href: "#educacao-capacitacao" },
-      { label: "Ambiental & Sustentabilidade", href: "#ambiental-sustentabilidade" },
-      { label: "Financeiro & Mercado", href: "#financeiro-mercado" },
+      { label: "Resumo Executivo", href: "#resumo-executivo-fase2" },
+      { label: "Tecnologia & Governança", href: "#ecossistema" },
+      { label: "Blog Técnico GEMLAB", href: "#blog-gemlab" },
+      { label: "Prova de Conceito", href: "#prova-tecnica" },
+      { label: "Arquitetura Operacional", href: "#arquitetura-operacional" },
     ],
     recursos: [
-      { label: "Documentação Técnica", href: "#docs" },
-      { label: "Whitepaper GEMLAB", href: "#whitepaper" },
-      { label: "Manifesto Institucional", href: "#manifesto" },
-      { label: "Parceiros Institucionais", href: "#parceiros" },
-      { label: "Status do Protocolo", href: "#status" },
+      { label: "Documentação Técnica", href: "#prova-tecnica" },
+      { label: "Whitepaper GEMLAB", href: "#whitepaper-oficial" },
+      { label: "Status do Protocolo", href: "#roadmap-execucao" },
+      { label: "Linha Editorial", href: "#blog-gemlab" },
+      { label: "Parceiros Institucionais", href: "#ecossistema" },
+      { label: "Contato Institucional", href: "mailto:contato@gemlab.com.br" },
     ],
     legal: [
-      { label: "Política de Privacidade", href: "#privacy" },
-      { label: "Termos de Uso (SaaS)", href: "#terms" },
-      { label: "Compliance & PLD", href: "#compliance" },
-      { label: "Certificações Científicas", href: "#certifications" },
+      { label: "Política de Privacidade", href: "#aviso-legal" },
+      { label: "Termos de Uso (SaaS)", href: "#aviso-legal" },
+      { label: "Compliance & PLD", href: "#aviso-legal" },
+      { label: "Declaração Regulatória", href: "#aviso-legal" },
     ],
   };
 
@@ -39,7 +40,7 @@ export function Footer() {
     { name: "IF Goiano", icon: GraduationCap, color: "#caa34b" },
     { name: "ANM", icon: Shield, color: "#1b1b1b" },
     { name: "SEMAD-GO", icon: Shield, color: "#006b4f" },
-    { name: "COOPESMERALDA", icon: Users, color: "#006b4f" },
+    { name: "Entidade Parceira Local", icon: Users, color: "#006b4f" },
   ];
 
   return (
@@ -83,13 +84,13 @@ export function Footer() {
                 <div className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center group-hover:bg-[#006b4f]/20 transition-colors">
                     <Mail className="h-4 w-4 text-[#006b4f]" />
                 </div>
-                <span className="font-['Inter']">contato@gemlab.com.br</span>
+                <a href="mailto:contato@gemlab.com.br" className="font-['Inter'] hover:text-[#006b4f] transition-colors">contato@gemlab.com.br</a>
               </div>
               <div className="flex items-center gap-3 text-sm text-gray-400 group">
                  <div className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center group-hover:bg-[#006b4f]/20 transition-colors">
                     <Phone className="h-4 w-4 text-[#006b4f]" />
                  </div>
-                <span className="font-['Inter']">+55 (62) 3000-0000</span>
+                <a href="tel:+556230000000" className="font-['Inter'] hover:text-[#006b4f] transition-colors">+55 (62) 3000-0000</a>
               </div>
             </div>
           </div>
@@ -185,10 +186,37 @@ export function Footer() {
           </div>
         </div>
 
+        <div className="border-t border-gray-800 pt-8 mb-8">
+          <div className="rounded-xl p-6 border border-gray-800 bg-[#171717]">
+            <h4 className="font-['Inter'] font-semibold text-white mb-2">Centro de Documentação do Rodapé</h4>
+            <p className="font-['Inter'] text-xs text-gray-400 mb-4">
+              Esta área consolida os elementos de governança do site institucional para avaliação técnica e regulatória.
+            </p>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="rounded-lg border border-gray-800 p-3">
+                <p className="font-['Inter'] text-xs text-gray-500">Versão</p>
+                <p className="font-['Inter'] text-sm text-gray-200 font-medium">Pré-submissão Fase 2</p>
+              </div>
+              <div className="rounded-lg border border-gray-800 p-3">
+                <p className="font-['Inter'] text-xs text-gray-500">Escopo</p>
+                <p className="font-['Inter'] text-sm text-gray-200 font-medium">PoC + Evidências + Roadmap</p>
+              </div>
+              <div className="rounded-lg border border-gray-800 p-3">
+                <p className="font-['Inter'] text-xs text-gray-500">Atualização</p>
+                <p className="font-['Inter'] text-sm text-gray-200 font-medium">26/02/2026</p>
+              </div>
+              <div className="rounded-lg border border-gray-800 p-3">
+                <p className="font-['Inter'] text-xs text-gray-500">Contato Oficial</p>
+                <p className="font-['Inter'] text-sm text-gray-200 font-medium">contato@gemlab.com.br</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Divider & Compliance Section */}
         <div className="border-t border-gray-800 pt-8">
           {/* Disclaimer Legal - Compliance CVM */}
-          <div className="mb-8 p-6 bg-[#151515] rounded-lg border border-gray-800/50 shadow-inner">
+          <div id="aviso-legal" className="mb-8 p-6 bg-[#151515] rounded-lg border border-gray-800/50 shadow-inner">
             <div className="flex items-center gap-2 mb-3">
                 <div className="h-2 w-2 rounded-full bg-[#caa34b]"></div>
                 <h4 className="font-['Inter'] font-semibold text-[#caa34b] text-xs uppercase tracking-widest">
@@ -205,7 +233,7 @@ export function Footer() {
                     <strong className="text-gray-200">Aquisição de Ativos:</strong> A comercialização de esmeraldas certificadas e a liquidação financeira ocorrem exclusivamente através de parceiros licenciados e plataformas autorizadas que operam em total conformidade com as regulações do Banco Central do Brasil e CVM.
                     </p>
                     <p className="font-['Inter'] text-xs text-gray-400 leading-relaxed text-justify">
-                    <strong className="text-gray-200">Governança Institucional:</strong> O Projeto Avança Campos Verdes 2050 conta com parcerias estratégicas com SUDECO, FCO/FDCO, ANM, SEMAD-GO, USP (NAP.Mineração), IF Goiano e COOPESMERALDA, garantindo compliance regulatório, validação científica e rastreabilidade verificada desde a jazida até o varejo.
+                    <strong className="text-gray-200">Governança Institucional:</strong> O Projeto Avança Campos Verdes 2050 conta com parcerias estratégicas com SUDECO, FCO/FDCO, ANM, SEMAD-GO, USP (NAP.Mineração), IF Goiano e Entidade Parceira Local, garantindo compliance regulatório, validação científica e rastreabilidade verificada desde a jazida até o varejo.
                     </p>
                 </div>
                 <div>
@@ -227,9 +255,9 @@ export function Footer() {
               © {new Date().getFullYear()} GemLab Tecnologia Ltda. Todos os direitos reservados.
             </p>
             <div className="flex gap-4">
-              <a href="#github" className="text-gray-500 hover:text-white transition-colors"><Github className="h-5 w-5" /></a>
-              <a href="#twitter" className="text-gray-500 hover:text-white transition-colors"><Twitter className="h-5 w-5" /></a>
-              <a href="#linkedin" className="text-gray-500 hover:text-white transition-colors"><Linkedin className="h-5 w-5" /></a>
+              <a href="#" className="text-gray-500 hover:text-white transition-colors"><Github className="h-5 w-5" /></a>
+              <a href="#" className="text-gray-500 hover:text-white transition-colors"><Twitter className="h-5 w-5" /></a>
+              <a href="#" className="text-gray-500 hover:text-white transition-colors"><Linkedin className="h-5 w-5" /></a>
             </div>
           </div>
         </div>

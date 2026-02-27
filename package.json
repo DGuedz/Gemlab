@@ -5,7 +5,7 @@
       "dependencies": {
             "@aws-sdk/client-kms": "^3.989.0",
             "@aws-sdk/credential-providers": "^3.989.0",
-            "@eslint/js": "*",
+            "@eslint/js": "^9.39.1",
             "@ethereum-attestation-service/eas-contracts": "^1.8.0",
             "@ethereum-attestation-service/eas-sdk": "^2.9.0",
             "@hono/node-server": "^1.19.9",
@@ -43,10 +43,10 @@
             "clsx": "*",
             "cmdk": "^1.1.1",
             "embla-carousel-react": "^8.6.0",
-            "eslint-plugin-react-hooks": "*",
-            "eslint-plugin-react-refresh": "*",
+            "eslint-plugin-react-hooks": "^7.0.1",
+            "eslint-plugin-react-refresh": "^0.4.22",
             "framer-motion": "*",
-            "globals": "*",
+            "globals": "^16.4.0",
             "hono": "*",
             "input-otp": "^1.4.2",
             "lucide-react": "^0.487.0",
@@ -63,9 +63,9 @@
             "recharts": "^2.15.2",
             "sonner": "^2.0.3",
             "tailwind-merge": "*",
-            "typescript-eslint": "*",
+            "typescript-eslint": "^8.55.0",
             "vaul": "^1.1.2",
-            "vite": "*",
+            "vite": "6.3.5",
             "zod": "^4.3.6"
       },
       "devDependencies": {
@@ -86,6 +86,7 @@
             "@vitejs/plugin-react-swc": "^3.10.2",
             "chai": "^4.5.0",
             "dotenv": "^16.6.1",
+            "eslint": "^9.39.1",
             "ethers": "^6.16.0",
             "find-up": "^8.0.0",
             "hardhat": "^2.28.5",
@@ -103,6 +104,12 @@
             "build": "vite build",
             "test:contracts": "hardhat test",
             "coverage": "hardhat coverage",
-            "api": "tsx backend/server.ts"
+            "api": "tsx backend/server.ts",
+            "test:offchain": "tsx test-offchain-flow.ts",
+            "preflight:release": "bash scripts/preflight_release.sh",
+            "stage:institutional": "bash scripts/stage_institutional_release.sh",
+            "vercel:pull": "npx vercel pull --yes --environment=preview",
+            "vercel:preview": "npx vercel --yes",
+            "vercel:prod": "npx vercel --prod --yes"
       }
 }
