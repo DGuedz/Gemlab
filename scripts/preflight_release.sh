@@ -10,7 +10,7 @@ echo "Repo: $ROOT"
 echo "Branch: $(git branch --show-current)"
 
 echo
-echo "[1/6] Checking tracked secret files..."
+echo "[1/7] Checking tracked secret files..."
 if git ls-files | rg -q '(^|/)\.env$|(^|/)\.env\.generated$'; then
   echo "ERROR: .env file is tracked. Remove it from Git before release."
   exit 1
@@ -18,7 +18,7 @@ fi
 echo "OK: no tracked .env files."
 
 echo
-echo "[2/6] Checking untracked sensitive files..."
+echo "[2/7] Checking untracked sensitive files..."
 SENSITIVE_UNTRACKED="$(git status --porcelain | awk '/^\?\? /{print $2}' | rg '(^|/)\.env($|\.|$)|gcp-oauth.keys.json|\.gdrive-server-credentials.json|\.pem$|\.key$' || true)"
 if [[ -n "$SENSITIVE_UNTRACKED" ]]; then
   echo "WARNING: sensitive untracked files detected:"
@@ -28,7 +28,7 @@ else
 fi
 
 echo
-echo "[3/6] Scanning tracked files for credential patterns..."
+echo "[3/7] Scanning tracked files for credential patterns..."
 SECRET_REGEX='(github_pat_[A-Za-z0-9_]{20,}|ghp_[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|figd_[A-Za-z0-9_-]{20,}|AIza[0-9A-Za-z\-_]{35}|-----BEGIN (RSA|EC|OPENSSH|PRIVATE KEY)-----)'
 SCAN_OUTPUT="$(git ls-files -z | xargs -0 rg -n -S "$SECRET_REGEX" 2>/dev/null || true)"
 if [[ -n "$SCAN_OUTPUT" ]]; then
@@ -39,7 +39,7 @@ fi
 echo "OK: no high-confidence credential patterns in tracked files."
 
 echo
-echo "[3.1/6] Scanning for filled sensitive env vars in tracked files..."
+echo "[3.1/7] Scanning for filled sensitive env vars in tracked files..."
 ENV_ASSIGN_REGEX='(PRIVATE_KEY|GEMLAB_PRIVATE_KEY|AWS_SECRET_ACCESS_KEY|SUPABASE_SERVICE_ROLE_KEY|GITHUB_PERSONAL_ACCESS_TOKEN)\s*=\s*["'\'']?[^"'\''[:space:]#]+'
 ENV_SCAN_OUTPUT="$(git ls-files -z | xargs -0 rg -n -S "$ENV_ASSIGN_REGEX" 2>/dev/null || true)"
 if [[ -n "$ENV_SCAN_OUTPUT" ]]; then
@@ -55,7 +55,7 @@ fi
 echo "OK: no filled sensitive env vars in tracked files."
 
 echo
-echo "[4/6] Checking deploy-critical files..."
+echo "[4/7] Checking deploy-critical files..."
 CRITICAL_FILES=(
   "src/components/Hero.tsx"
   "src/components/Footer.tsx"
@@ -72,7 +72,7 @@ done
 echo "OK: deploy-critical files present."
 
 echo
-echo "[5/6] NPM dependency check..."
+echo "[5/7] NPM dependency check..."
 if [[ ! -f "package-lock.json" ]]; then
   echo "ERROR: package-lock.json not found."
   exit 1
@@ -84,11 +84,19 @@ else
 fi
 
 echo
-echo "[6/6] Build check (set SKIP_BUILD=1 to skip)..."
+echo "[6/7] Build check (set SKIP_BUILD=1 to skip)..."
 if [[ "${SKIP_BUILD:-0}" == "1" ]]; then
   echo "SKIPPED: build check."
 else
   npm run build
+fi
+
+echo
+echo "[7/7] Dependency security gate (high/critical)..."
+if [[ "${SKIP_AUDIT:-0}" == "1" ]]; then
+  echo "SKIPPED: npm audit gate."
+else
+  npm audit --audit-level=high --omit=dev
 fi
 
 echo

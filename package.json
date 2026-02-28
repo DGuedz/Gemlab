@@ -3,8 +3,8 @@
       "version": "0.1.0",
       "private": true,
       "dependencies": {
-            "@aws-sdk/client-kms": "^3.989.0",
-            "@aws-sdk/credential-providers": "^3.989.0",
+            "@aws-sdk/client-kms": "^3.1000.0",
+            "@aws-sdk/credential-providers": "^3.1000.0",
             "@eslint/js": "^9.39.1",
             "@ethereum-attestation-service/eas-contracts": "^1.8.0",
             "@ethereum-attestation-service/eas-sdk": "^2.9.0",
@@ -47,6 +47,7 @@
             "eslint-plugin-react-refresh": "^0.4.22",
             "framer-motion": "*",
             "globals": "^16.4.0",
+            "googleapis": "^171.4.0",
             "hono": "*",
             "input-otp": "^1.4.2",
             "lucide-react": "^0.487.0",
@@ -65,7 +66,6 @@
             "tailwind-merge": "*",
             "typescript-eslint": "^8.55.0",
             "vaul": "^1.1.2",
-            "vite": "6.3.5",
             "zod": "^4.3.6"
       },
       "devDependencies": {
@@ -97,7 +97,13 @@
             "tsx": "^4.21.0",
             "typechain": "^8.3.2",
             "typescript": "^5.9.3",
-            "vite": "6.3.5"
+            "vite": "^6.4.1"
+      },
+      "overrides": {
+            "serialize-javascript": "^7.0.3",
+            "cookie": "^1.1.1",
+            "undici": "^7.22.0",
+            "tmp": "^0.2.5"
       },
       "scripts": {
             "dev": "vite",
@@ -107,7 +113,10 @@
             "api": "tsx backend/server.ts",
             "test:offchain": "tsx test-offchain-flow.ts",
             "preflight:release": "bash scripts/preflight_release.sh",
+            "security:check": "SKIP_BUILD=1 bash scripts/preflight_release.sh && bash scripts/security_audit_history.sh && bash scripts/pii_audit_public.sh",
             "stage:institutional": "bash scripts/stage_institutional_release.sh",
+            "calendar:sync": "tsx scripts/google_calendar_sync.ts --replace",
+            "calendar:dry-run": "tsx scripts/google_calendar_sync.ts --replace --dry-run",
             "vercel:pull": "npx vercel pull --yes --environment=preview",
             "vercel:preview": "npx vercel --yes",
             "vercel:prod": "npx vercel --prod --yes"

@@ -9,6 +9,7 @@ Run from repo root:
 ```bash
 SKIP_BUILD=1 bash scripts/preflight_release.sh
 bash scripts/security_audit_history.sh
+bash scripts/pii_audit_public.sh
 ```
 
 If either command fails, do not push.
@@ -37,6 +38,10 @@ If either command fails, do not push.
 
 Target response time: under 30 minutes from detection.
 
+Incident flow reference:
+
+- `security/INCIDENT_RESPONSE_PLAYBOOK.md`
+
 ## 5) PII hygiene before public release
 
 Run a quick scan and manually review hits:
@@ -62,3 +67,4 @@ GO only if all are true:
 - CI secret scan green
 - PII scan reviewed
 - Route allowlist aligned with evaluation scope
+- `npm audit --audit-level=high --omit=dev` passed
