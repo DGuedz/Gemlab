@@ -13,7 +13,7 @@ REPORT_FILE="$REPORT_DIR/pii_audit_public_${TS}.txt"
 PII_REGEX='([0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}|[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}|\+?55\s?\(?[0-9]{2}\)?\s?[0-9]{4,5}-?[0-9]{4})'
 
 ALLOW_PATH_REGEX='(^src/COMMIT_GUIDE\.md:|^src/DEPLOY_INSTRUCTIONS\.md:|^src/QUICK_START\.md:|^src/docs/AUTH_SYSTEM\.md:|^src/components/AuthModal\.tsx:|^src/components/commercial/CommercialPortal\.tsx:|^src/components/registry/README\.md:|^edital_text\.txt:|^package-lock\.json:)'
-ALLOW_VALUE_REGEX='(seu@email\.com|seu\.email@exemplo\.com|usuario@email\.com|contato@suajoalheria\.com|comercial@cooperativa-apl\.br|contato@programacentelha\.com\.br|atendimento\.fapeg@goias\.gov\.br|i@izs\.me|contato@gemlab\.com\.br|dev@gemlab\.com\.br|dev@gemlab\.tech|\+55\s?\(?62\)?\s?3000-?0000|git@github\.com:SEU-USUARIO/gemlab-platform\.git)'
+ALLOW_VALUE_REGEX='(seu@email\.com|seu\.email@exemplo\.com|usuario@email\.com|contato@suajoalheria\.com|comercial@cooperativa-apl\.br|contato@programacentelha\.com\.br|atendimento\.fapeg@goias\.gov\.br|i@izs\.me|contato@gemlab\.com\.br|dev@gemlab\.com\.br|dev@gemlab\.tech|seu_calendar_id@group\.calendar\.google\.com|\+55\s?\(?62\)?\s?3000-?0000|git@github\.com:SEU-USUARIO/gemlab-platform\.git)'
 
 raw_hits="$(git ls-files -z | xargs -0 rg -n -S "$PII_REGEX" 2>/dev/null || true)"
 
