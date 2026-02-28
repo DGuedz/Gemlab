@@ -195,7 +195,7 @@ export function OracleFiscalDashboard() {
       `[ENCODER] invoiceHash: ${invoiceHashFormatted} (bytes32)`,
       `[ENCODER] extractionDate: ${Math.floor(extractionTimestamp)} (uint48)`,
       `[ENCODER] mineLocationID: "${formData.mineLocationID}" (string)`,
-      "[ENCODER] Dados codificados com sucesso",
+      "[ENCODER] ✓ Dados codificados com sucesso",
     ]);
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
@@ -204,7 +204,7 @@ export function OracleFiscalDashboard() {
     setProcessLogs((prev) => [
       ...prev,
       "[SIGNER] Solicitando assinatura da carteira da Prefeitura...",
-      "[SIGNER] Assinatura confirmada",
+      "[SIGNER] ✓ Assinatura confirmada",
       "[TX] Transmitindo transação para a blockchain...",
       "[TX] Aguardando confirmação da rede (Sepolia Testnet)...",
     ]);
@@ -217,7 +217,7 @@ export function OracleFiscalDashboard() {
     
     setProcessLogs((prev) => [
       ...prev,
-      `[TX] Transação confirmada!`,
+      `[TX] ✓ Transação confirmada!`,
       `[TX] Gas Used: ${gasUsed.toLocaleString("pt-BR")} units`,
       `[TX] Block Number: ${blockNumber}`,
     ]);
@@ -228,7 +228,7 @@ export function OracleFiscalDashboard() {
     setProcessLogs((prev) => [
       ...prev,
       "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
-      "ATESTADO DE ORIGEM EMITIDO COM SUCESSO",
+      "✅ ATESTADO DE ORIGEM EMITIDO COM SUCESSO",
       "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
       `Novo UID: ${newUID}`,
       `Attester: 0xGovt...AE4C170eD35f4Cf77797`,
@@ -262,7 +262,7 @@ export function OracleFiscalDashboard() {
     await new Promise((resolve) => setTimeout(resolve, 500));
     setProcessLogs((prev) => [
       ...prev,
-      "[SYSTEM] Novo atestado adicionado à tabela",
+      "[SYSTEM] ✓ Novo atestado adicionado à tabela",
       "[SYSTEM] Atualizando Métricas Fiscais...",
     ]);
     
@@ -280,9 +280,9 @@ export function OracleFiscalDashboard() {
     await new Promise((resolve) => setTimeout(resolve, 500));
     setProcessLogs((prev) => [
       ...prev,
-      `[SYSTEM] Arrecadação atualizada: +R$ ${cfemImpact.toLocaleString("pt-BR")}`,
-      `[SYSTEM] Fundo 2050 atualizado: +R$ ${fundoImpact.toLocaleString("pt-BR")}`,
-      `[SYSTEM] Ativos Validados: +1`,
+      `[SYSTEM] ✓ Arrecadação atualizada: +R$ ${cfemImpact.toLocaleString("pt-BR")}`,
+      `[SYSTEM] ✓ Fundo 2050 atualizado: +R$ ${fundoImpact.toLocaleString("pt-BR")}`,
+      `[SYSTEM] ✓ Ativos Validados: +1`,
       "[SYSTEM] Sincronização completa!",
     ]);
 
@@ -296,7 +296,7 @@ export function OracleFiscalDashboard() {
     
     // Notificar outros atores do protocolo
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    toast.info("Notificação enviada para GEMLAB Tech", {
+    toast.info("🔔 Notificação enviada para GEMLAB Tech", {
       description: "Aguardando emissão de Prova Científica",
       duration: 4000,
     });
@@ -347,7 +347,7 @@ export function OracleFiscalDashboard() {
                 <div className="flex items-center gap-2">
                   <Activity className="h-4 w-4 text-green-400" />
                   <span className="font-['Inter'] text-sm font-semibold text-green-400">
-                    Operacional e Integrado ao Contrato EAS
+                    🟢 Operacional e Integrado ao Contrato EAS
                   </span>
                 </div>
               </div>
@@ -1018,7 +1018,7 @@ console.log("Atestado de Origem emitido:", tx.newAttestationUID);`}</code>
                   </div>
                   <div className="flex-1">
                     <h4 className="font-['Montserrat'] text-lg font-bold text-[#1b1b1b] mb-2">
-                      Atestado de Origem Emitido com Sucesso!
+                      ✅ Atestado de Origem Emitido com Sucesso!
                     </h4>
                     <div className="space-y-2">
                       <div className="flex items-center gap-2">

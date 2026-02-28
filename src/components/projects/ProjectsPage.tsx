@@ -24,14 +24,27 @@ import { Card } from "../ui/card";
 import { Badge } from "../ui/badge";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
 import camposVerdesMap from "figma:asset/91d8e4ef371a36b8ffd083fad2b972e4d137e6f5.png";
-import feiraCoopesmeraldaImage from "figma:asset/c6ed4c54c8ac12fc2d8d39bc29e01a41c47e9028.png";
+import miningTowerImage from "figma:asset/7cd4ad5e2a6de4b6ff974f1fa89cfeb5afcb3778.png";
 
 interface ProjectsPageProps {
   onNavigateToGovernance?: () => void;
   onNavigateToEcosystem?: () => void;
+  onNavigateToMuseum?: () => void;
+  onNavigateToMarketplace?: () => void;
+  onNavigateToTourism?: () => void;
+  onNavigateToDigitalPlatform?: () => void;
+  onNavigateToMunicipalMarket?: () => void;
 }
 
-export function ProjectsPage({ onNavigateToGovernance, onNavigateToEcosystem }: ProjectsPageProps = {}) {
+export function ProjectsPage({ 
+  onNavigateToGovernance, 
+  onNavigateToEcosystem, 
+  onNavigateToMuseum,
+  onNavigateToMarketplace,
+  onNavigateToTourism,
+  onNavigateToDigitalPlatform,
+  onNavigateToMunicipalMarket
+}: ProjectsPageProps = {}) {
   const socialProjects = [
     {
       id: "verdejar",
@@ -39,12 +52,15 @@ export function ProjectsPage({ onNavigateToGovernance, onNavigateToEcosystem }: 
       subtitle: "Capacitação + Geração de Renda",
       icon: Gem,
       color: "#006b4f",
+      budget: "R$ 100.000",
+      beneficiaries: "200 jovens",
+      duration: "6 meses (por turma)",
       image: "https://images.unsplash.com/photo-1624588057318-5f1b2eb81012?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhcnRpc2FuJTIwamV3ZWxyeSUyMG1ha2luZyUyMGdlbXN0b25lc3xlbnwxfHx8fDE3NjQwNjg1NTR8MA&ixlib=rb-4.1.0&q=80&w=1080",
       description: "Capacitação profissional em artesanato mineral, design, fabricação de joias, lapidação e beneficiamento de esmeraldas e dejetos minerais.",
       goals: [
-        "Qualificar adolescentes e jovens em lapidação, ourivesaria e artesanato mineral",
+        "Qualificar 200 adolescentes e jovens em lapidação, ourivesaria e artesanato mineral",
         "Criar loja local, site e loja virtual para comercializar as peças produzidas",
-        "Destinar parte do faturamento para compra de equipamentos para os alunos",
+        "Destinar 5% do faturamento para compra de equipamentos para os alunos",
         "Combater desemprego e doenças herdadas do garimpo (sílica pulmonar)"
       ],
       modules: [
@@ -61,6 +77,9 @@ export function ProjectsPage({ onNavigateToGovernance, onNavigateToEcosystem }: 
       subtitle: "Pilar do Lastro Social do RWA • Governança Regenerativa",
       icon: Users,
       color: "#014733",
+      budget: "R$ 100.000",
+      beneficiaries: "Garimpeiros e jovens",
+      duration: "Contínuo",
       image: "https://images.unsplash.com/photo-1526907279934-3c9d2e53170f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnZW1zdG9uZSUyMGZhY2V0aW5nJTIwbWFjaGluZSUyMGhhbmRzJTIwc3RvbmV8ZW58MXx8fHwxNzY0MDcwNjg4fDA&ixlib=rb-4.1.0&q=80&w=1080",
       description: "Escola de alta joalheria construída diretamente na mina. Capacitação profissional em lapidação, design, empreendedorismo e operação de equipamentos científicos (Operadores Raman). Transforma extração mineral em desenvolvimento humano, garantindo que o ativo bruto se torne um ativo certificado com +40% de valorização.",
       goals: [
@@ -85,6 +104,9 @@ export function ProjectsPage({ onNavigateToGovernance, onNavigateToEcosystem }: 
       subtitle: "Transformação Cultural de Longo Prazo",
       icon: GraduationCap,
       color: "#caa34b",
+      budget: "R$ 140.000",
+      beneficiaries: "Estudantes do Ensino Médio",
+      duration: "Anual (contínuo)",
       image: "https://images.unsplash.com/photo-1705727210721-961cc64a6895?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoaWdoJTIwc2Nob29sJTIwc3R1ZGVudHMlMjBzY2llbmNlJTIwbGFifGVufDF8fHx8MTc2NDA2ODczN3ww&ixlib=rb-4.1.0&q=80&w=1080",
       description: "Estimula interesse em Geociências e Mineração Sustentável no Ensino Médio, criando pipeline de futuros técnicos e Gemólogos Digitais.",
       goals: [
@@ -101,30 +123,59 @@ export function ProjectsPage({ onNavigateToGovernance, onNavigateToEcosystem }: 
     {
       name: "Museu de Mineração",
       icon: Landmark,
-      description: "Espaço cultural e educativo sobre a história mineral de Campos Verdes",
-      status: "Em planejamento",
-      image: "https://images.unsplash.com/photo-1735991088706-08d545e36ee6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdXN0YWluYWJsZSUyMHRvdXJpc20lMjBoZXJpdGFnZXxlbnwxfHx8fDE3NjQwNjY3NzZ8MA&ixlib=rb-4.1.0&q=80&w=1080"
+      description: "Centro de Referência Cultural e Educativo • Preservação da Memória Viva do Garimpo • Turismo Mineral Estratégico",
+      status: "Implementação prevista: Jun/2028",
+      timeline: "2025-2050",
+      budget: "Financiamento via CFEM/ISS + Receitas Turísticas",
+      image: "https://images.unsplash.com/photo-1713700743037-ebc94696d157?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbWVyYWxkJTIwbXVzZXVtJTIwY29sbGVjdGlvbiUyMGRpc3BsYXl8ZW58MXx8fHwxNzY0MTAxODQ5fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      details: {
+        objectives: [
+          "Preservar, valorizar e difundir a memória coletiva e identidade cultural de Campos Verdes",
+          "Centro de Referência integrando história do garimpo, técnicas, cultura e saberes tradicionais",
+          "Evitar perda de referências culturais entre novas gerações",
+          "Espaço educativo que transforma ciclo da esmeralda de extrativista para regenerativo"
+        ],
+        components: [
+          "Acervo: dados, fatos relevantes, itens e documentos sobre história do garimpo",
+          "Reprodução cenográfica e revitalização do trecho velho da mineração",
+          "Trilhas de contação de história sobre cultura e tradições",
+          "Museu Itinerante para projeto 'Mineração nas Escolas'",
+          "Integração com Centro Integrado da Mineração e Mercado de Artesanato"
+        ],
+        tourism: [
+          "Ponto estratégico das Rotas Turísticas de Campos Verdes",
+          "Experiência de Turismo Criativo e Geoturismo",
+          "Atração turística chave para desenvolvimento do APL Campos Verdes 2050",
+          "Polo cultural que valoriza história e atrai visitantes"
+        ],
+        governance: [
+          "Financiamento transparente via recuperação CFEM/ISS",
+          "Argumento de compliance ESG demonstrando retorno do lucro mineral para educação",
+          "Parte do Lastro Social do RWA lastreado em esmeraldas",
+          "Cooperação entre COOPESMERALDA (CNPJ 34.926.901/0001-20) e Prefeitura"
+        ]
+      }
     },
     {
       name: "Mercado Municipal de Artesanato Mineral",
       icon: Building2,
       description: "Centro de comercialização de joias e artesanato local",
       status: "Em desenvolvimento",
-      image: feiraCoopesmeraldaImage
+      image: "https://images.unsplash.com/photo-1655111379423-b85edc4da9ac?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxqZXdlbHJ5JTIwd29ya3Nob3AlMjBhcnRpc2FuJTIwaGFuZHN8ZW58MXx8fHwxNzY0MTAxODQ5fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
     },
     {
       name: "Rotas Turísticas",
       icon: MapPin,
       description: "Infraestrutura para turismo mineral e visitas técnicas",
       status: "Em planejamento",
-      image: "https://images.unsplash.com/photo-1705073703471-ce459a78097d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbWVyYWxkJTIwbWluaW5nJTIwc3VzdGFpbmFibGV8ZW58MXx8fHwxNzY0MDY2Nzc0fDA&ixlib=rb-4.1.0&q=80&w=1080"
+      image: "https://images.unsplash.com/photo-1590874685185-134330b0aebf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhYmFuZG9uZWQlMjBtaW5lJTIwZW50cmFuY2V8ZW58MXx8fHwxNzY0MTAwMjEwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
     },
     {
       name: "Plataforma Digital de Comercialização",
       icon: Sparkles,
       description: "Site, catálogo digital, rastreabilidade e marketing territorial",
       status: "Em desenvolvimento",
-      image: "https://images.unsplash.com/photo-1593079323074-f1d77349c998?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxncmVlbiUyMHN1c3RhaW5hYmxlJTIwZWNvbm9teXxlbnwxfHx8fDE3NjQwNjY3Nzd8MA&ixlib=rb-4.1.0&q=80&w=1080"
+      image: "https://images.unsplash.com/photo-1627549263593-5c537b83673e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkaWdpdGFsJTIwcGxhdGZvcm0lMjB0ZWNobm9sb2d5fGVufDF8fHx8MTc2NDA2MjkxM3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
     }
   ];
 
@@ -428,6 +479,24 @@ export function ProjectsPage({ onNavigateToGovernance, onNavigateToEcosystem }: 
                           <project.icon className="h-8 w-8 text-white" />
                         </div>
                       </div>
+
+                      {/* Stats Overlay - Mobile */}
+                      <div className="absolute bottom-6 left-6 right-6 lg:hidden">
+                        <div className="flex gap-4">
+                          <div className="flex-1 bg-white/95 backdrop-blur-md rounded-lg p-3">
+                            <div className="font-['Montserrat'] text-lg" style={{ color: project.color }}>
+                              {project.budget}
+                            </div>
+                            <div className="font-['Inter'] text-xs text-gray-600">Orçamento</div>
+                          </div>
+                          <div className="flex-1 bg-white/95 backdrop-blur-md rounded-lg p-3">
+                            <div className="font-['Montserrat'] text-lg text-gray-700">
+                              {project.beneficiaries}
+                            </div>
+                            <div className="font-['Inter'] text-xs text-gray-600">Beneficiários</div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
 
                     {/* Content */}
@@ -445,6 +514,29 @@ export function ProjectsPage({ onNavigateToGovernance, onNavigateToEcosystem }: 
                         <p className="font-['Inter'] text-gray-600 leading-relaxed">
                           {project.description}
                         </p>
+                      </div>
+
+                      {/* Stats - Desktop */}
+                      <div className="hidden lg:flex gap-6 pt-2 pb-4 border-t border-b border-gray-200">
+                        <div>
+                          <div className="font-['Montserrat'] text-2xl" style={{ color: project.color }}>
+                            {project.budget}
+                          </div>
+                          <div className="font-['Inter'] text-xs text-gray-500">Orçamento</div>
+                        </div>
+                        <div>
+                          <div className="font-['Montserrat'] text-2xl text-gray-700">
+                            {project.beneficiaries}
+                          </div>
+                          <div className="font-['Inter'] text-xs text-gray-500">Beneficiários</div>
+                        </div>
+                        <div>
+                          <div className="font-['Montserrat'] text-xl text-gray-700 flex items-center gap-2">
+                            <Calendar className="h-5 w-5" />
+                            {project.duration}
+                          </div>
+                          <div className="font-['Inter'] text-xs text-gray-500">Duração</div>
+                        </div>
                       </div>
 
                       {/* Goals */}
@@ -535,6 +627,13 @@ export function ProjectsPage({ onNavigateToGovernance, onNavigateToEcosystem }: 
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
+                  onClick={() => {
+                    if (index === 0 && onNavigateToMuseum) onNavigateToMuseum();
+                    if (index === 1 && onNavigateToMunicipalMarket) onNavigateToMunicipalMarket();
+                    if (index === 2 && onNavigateToTourism) onNavigateToTourism();
+                    if (index === 3 && onNavigateToDigitalPlatform) onNavigateToDigitalPlatform();
+                  }}
+                  className={[0, 1, 2, 3].includes(index) ? "cursor-pointer" : ""}
                 >
                   <Card className="overflow-hidden h-full border-2 border-[#006b4f]/20 hover:border-[#006b4f] transition-all duration-300 hover:shadow-xl group">
                     <div className="relative h-48 overflow-hidden">
@@ -559,6 +658,18 @@ export function ProjectsPage({ onNavigateToGovernance, onNavigateToEcosystem }: 
                           {project.description}
                         </p>
                       </div>
+                      {project.timeline && (
+                        <div className="flex items-center gap-2 text-sm">
+                          <Calendar className="h-4 w-4 text-[#006b4f]" />
+                          <span className="font-['Inter'] text-gray-600">{project.timeline}</span>
+                        </div>
+                      )}
+                      {project.budget && (
+                        <div className="flex items-center gap-2 text-sm">
+                          <DollarSign className="h-4 w-4 text-[#006b4f]" />
+                          <span className="font-['Inter'] text-gray-600">{project.budget}</span>
+                        </div>
+                      )}
                       <Badge className="bg-[#006b4f]/10 text-[#006b4f] border border-[#006b4f]/20">
                         {project.status}
                       </Badge>
@@ -715,10 +826,42 @@ export function ProjectsPage({ onNavigateToGovernance, onNavigateToEcosystem }: 
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-2 border-white text-[#006b4f] hover:bg-white/10 text-lg px-8 py-6"
+                className="border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-6"
                 onClick={onNavigateToEcosystem}
               >
                 Explorar Ecossistema
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-6"
+                onClick={onNavigateToMuseum}
+              >
+                Visitar Museu de Mineração
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-6"
+                onClick={onNavigateToMarketplace}
+              >
+                Visitar Marketplace
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-6"
+                onClick={onNavigateToTourism}
+              >
+                Explorar Turismo
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-6"
+                onClick={onNavigateToDigitalPlatform}
+              >
+                Acessar Plataforma Digital
               </Button>
             </motion.div>
           </div>

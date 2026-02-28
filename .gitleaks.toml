@@ -1,0 +1,20 @@
+title = "GEMLAB gitleaks config"
+
+[allowlist]
+description = "Allow placeholders and mock values in docs/tests"
+paths = [
+  '''^\.env\.example$''',
+  '''^docs/DEPLOY_SEPOLIA_CHECKLIST.*\.md$''',
+  '''^src/ORACLE_FISCAL_DOCUMENTATION\.md$''',
+  '''^src/supabase/functions/server/user-data\.tsx$''',
+  '''^test-kms-capabilities\.ts$''',
+  '''^test-offchain-flow\.ts$'''
+]
+regexes = [
+  '''0x\.\.\.''',
+  '''<YOUR_[A-Z0-9_]+>''',
+  '''YOUR_[A-Z0-9_]+''',
+  '''SUA_[A-Z0-9_]+''',
+  '''mock-secret-key''',
+  '''mock-access-key'''
+]

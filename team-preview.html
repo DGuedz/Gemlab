@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualização da Página do Time - GEMLAB</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg {
+            background: linear-gradient(135deg, #006b4f 0%, #014733 50%, #1b1b1b 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            border-color: #006b4f !important;
+            box-shadow: 0 10px 25px -5px rgba(0, 107, 79, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-white min-h-screen">
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <span class="inline-block bg-[#caa34b] text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
+                Equipe de Excelência
+            </span>
+            <h1 class="text-4xl lg:text-6xl font-bold mb-6">
+                Conheça o Time que vai<br>
+                <span class="text-[#caa34b]">Transformar a Gemologia</span>
+            </h1>
+            <p class="text-xl text-gray-200 mb-8 max-w-3xl mx-auto">
+                Uma equipe multidisciplinar que combina expertise técnica, governança institucional 
+                e conhecimento local para criar o padrão ouro em rastreabilidade de esmeraldas
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <button class="bg-[#caa34b] hover:bg-[#b8923f] text-white px-8 py-3 rounded-lg font-medium transition-colors flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                    </svg>
+                    Ver Projeto Completo
+                </button>
+                <button class="border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-lg font-medium transition-colors flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                    Documentação
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Grid -->
+    <main class="container mx-auto px-4 py-20">
+        
+        <!-- Nível Estratégico -->
+        <section class="mb-16">
+            <div class="text-center mb-12">
+                <div class="flex justify-center items-center mb-4">
+                    <svg class="h-8 w-8 text-[#006b4f] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                    </svg>
+                    <span class="bg-[#006b4f] text-white px-4 py-1 rounded-full text-sm font-medium">
+                        Estratégico
+                    </span>
+                </div>
+                <h2 class="text-3xl font-bold text-[#1b1b1b] mb-4">
+                    Nível Estratégico
+                </h2>
+                <p class="text-lg text-gray-600">
+                    Liderança e tomada de decisão estratégica do projeto
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Diego Guedes -->
+                <div class="bg-white p-6 rounded-xl border-2 border-gray-200 card-hover">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#006b4f] to-[#014733] flex items-center justify-center">
+                            <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                            </svg>
+                        </div>
+                        <span class="bg-[#006b4f]/10 text-[#006b4f] px-3 py-1 rounded-full text-xs font-medium" style="background-color: #caa34b10; color: #caa34b;">
+                            Founder & CTO
+                        </span>
+                    </div>
+
+                    <div class="mb-4">
+                        <h3 class="text-xl font-bold text-[#1b1b1b] mb-2">
+                            Diego Guedes
+                        </h3>
+                        <p class="text-sm text-gray-600">
+                            Líder tecnológico e visionário do projeto GEMLAB.
+                        </p>
+                    </div>
+
+                    <div class="mb-4">
+                        <h4 class="text-sm font-semibold text-[#1b1b1b] mb-2">Responsabilidades:</h4>
+                        <ul class="space-y-1">
+                            <li class="flex items-start">
+                                <svg class="h-3 w-3 text-[#006b4f] mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-xs text-gray-600">Desenvolvimento do algoritmo SpectralHash</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-3 w-3 text-[#006b4f] mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-xs text-gray-600">Arquitetura de smart contracts</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="border-t border-gray-200 pt-3">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-xs font-semibold text-[#1b1b1b]">R$ 25.620,00</p>
+                                <p class="text-xs text-gray-500">Pró-Labore</p>
+                            </div>
+                            <span class="bg-[#caa34b]/10 text-[#caa34b] px-2 py-1 rounded-full text-xs">
+                                12 meses
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Marcelo Silva -->
+                <div class="bg-white p-6 rounded-xl border-2 border-gray-200 card-hover">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#006b4f] to-[#014733] flex items-center justify-center">
+                            <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                            </svg>
+                        </div>
+                        <span class="bg-[#006b4f]/10 text-[#006b4f] px-3 py-1 rounded-full text-xs font-medium">
+                            Consultor Estratégico
+                        </span>
+                    </div>
+
+                    <div class="mb-4">
+                        <h3 class="text-xl font-bold text-[#1b1b1b] mb-2">
+                            Marcelo Silva
+                        </h3>
+                        <p class="text-sm text-gray-600">
+                            Especialista em governança e compliance.
+                        </p>
+                    </div>
+
+                    <div class="mb-4">
+                        <h4 class="text-sm font-semibold text-[#1b1b1b] mb-2">Responsabilidades:</h4>
+                        <ul class="space-y-1">
+                            <li class="flex items-start">
+                                <svg class="h-3 w-3 text-[#006b4f] mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-xs text-gray-600">Blindagem regulatória Bacen/LIFT</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-3 w-3 text-[#006b4f] mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-xs text-gray-600">Governança corporativa</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="border-t border-gray-200 pt-3">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-xs font-semibold text-[#1b1b1b]">R$ 24.000,00</p>
+                                <p class="text-xs text-gray-500">Serviços PJ</p>
+                            </div>
+                            <span class="bg-[#caa34b]/10 text-[#caa34b] px-2 py-1 rounded-full text-xs">
+                                6 meses
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Resumo Financeiro -->
+        <section class="gradient-bg rounded-2xl p-8 text-white">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-8">
+                    <svg class="h-12 w-12 text-[#caa34b] mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                    </svg>
+                    <h2 class="text-3xl font-bold mb-4">
+                        Investimento Total: R$ 135.400,00
+                    </h2>
+                    <p class="text-lg text-gray-200">
+                        Alocação estratégica de recursos entre subvenção e bolsas CNPq
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white/10 backdrop-blur-md border-2 border-white/20 p-6 rounded-xl">
+                        <h3 class="text-xl font-bold mb-4">💰 Subvenção (R$ 85.400,00)</h3>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span>Pró-Labore</span>
+                                <span class="font-semibold">R$ 25.620,00</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Consultoria</span>
+                                <span class="font-semibold">R$ 24.000,00</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Yatha Services</span>
+                                <span class="font-semibold">R$ 20.780,00</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Hardware IA</span>
+                                <span class="font-semibold">R$ 15.000,00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white/10 backdrop-blur-md border-2 border-white/20 p-6 rounded-xl">
+                        <h3 class="text-xl font-bold mb-4">🎓 Bolsas CNPq (R$ 50.000,00)</h3>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span>Carlos Vaz</span>
+                                <span class="font-semibold">R$ 18.000,00</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Gemólogo</span>
+                                <span class="font-semibold">R$ 15.000,00</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Dev Full Stack</span>
+                                <span class="font-semibold">R$ 17.000,00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Efeitos interativos simples
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card-hover');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-2px)';
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

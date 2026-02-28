@@ -14,9 +14,7 @@ import {
   Package,
   MapPin,
   Calendar,
-  DollarSign,
   FileText,
-  CheckCircle2,
   Send,
   Loader2,
 } from "lucide-react";
@@ -104,7 +102,7 @@ export function MinerDashboard() {
                 Garimpeiro Formalizado #MINER-042 - João Silva
               </p>
             </div>
-            <Button className="bg-[#006b4f] text-white hover:bg-[#014733]">
+            <Button className="bg-[#006b4f] text-white hover:bg-[#014733] text-sm">
               <Send className="h-4 w-4 mr-2" />
               Enviar Novo Lote
             </Button>
@@ -113,60 +111,7 @@ export function MinerDashboard() {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Stats Cards */}
-        <div className="grid md:grid-cols-4 gap-6 mb-8">
-          <Card className="p-6 border-2 border-[#e5e7eb]">
-            <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 rounded-xl bg-[#006b4f]/10 flex items-center justify-center">
-                <Package className="h-6 w-6 text-[#006b4f]" />
-              </div>
-              <Badge className="bg-blue-100 text-blue-700">Total</Badge>
-            </div>
-            <div className="font-['Inter'] text-3xl font-bold text-[#1b1b1b] mb-1">
-              {minerStats.totalBatches}
-            </div>
-            <div className="font-['Inter'] text-sm text-gray-600">Lotes Enviados</div>
-          </Card>
-
-          <Card className="p-6 border-2 border-[#e5e7eb]">
-            <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 rounded-xl bg-[#caa34b]/10 flex items-center justify-center">
-                <Mountain className="h-6 w-6 text-[#caa34b]" />
-              </div>
-              <Badge className="bg-purple-100 text-purple-700">Peso</Badge>
-            </div>
-            <div className="font-['Inter'] text-3xl font-bold text-[#1b1b1b] mb-1">
-              {minerStats.totalWeight}
-            </div>
-            <div className="font-['Inter'] text-sm text-gray-600">Peso Total Processado</div>
-          </Card>
-
-          <Card className="p-6 border-2 border-[#e5e7eb]">
-            <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center">
-                <DollarSign className="h-6 w-6 text-green-600" />
-              </div>
-              <Badge className="bg-green-100 text-green-700">Média</Badge>
-            </div>
-            <div className="font-['Inter'] text-3xl font-bold text-[#1b1b1b] mb-1">
-              {minerStats.averageValue}
-            </div>
-            <div className="font-['Inter'] text-sm text-gray-600">Valor Médio/Lote</div>
-          </Card>
-
-          <Card className="p-6 border-2 border-[#e5e7eb]">
-            <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 rounded-xl bg-[#014733]/10 flex items-center justify-center">
-                <CheckCircle2 className="h-6 w-6 text-[#014733]" />
-              </div>
-              <Badge className="bg-orange-100 text-orange-700">Taxa</Badge>
-            </div>
-            <div className="font-['Inter'] text-3xl font-bold text-[#1b1b1b] mb-1">
-              {minerStats.certified}%
-            </div>
-            <div className="font-['Inter'] text-sm text-gray-600">Pedras Certificadas</div>
-          </Card>
-        </div>
+        {/* Stats Cards Removed for Simplification */}
 
         {/* Tabs */}
         <div className="flex gap-2 mb-6">

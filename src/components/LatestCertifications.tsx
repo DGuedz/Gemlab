@@ -1,17 +1,21 @@
 import { Card } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
-import { ExternalLink, CheckCircle2, Sparkles, Fingerprint } from "lucide-react";
+import { ExternalLink, CheckCircle2, Sparkles } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import emeraldImage1 from "figma:asset/f7f9158f729120c00ef8e711014954ebdd6e6678.png";
 import emeraldImage2 from "figma:asset/7afd83b00f931b4b28c7832cd46b3851eb11afb2.png";
 import emeraldImage3 from "figma:asset/64352e7879bd0c0122555126b1aa7e87c30ecead.png";
 
 interface LatestCertificationsProps {
-  onViewDetails?: (gemId: string) => void;
+  onViewDetails?: (id: string) => void;
+  onViewAll?: () => void;
 }
 
-export function LatestCertifications({ onViewDetails }: LatestCertificationsProps) {
+export function LatestCertifications({
+  onViewDetails,
+  onViewAll,
+}: LatestCertificationsProps) {
   const certifications = [
     {
       id: "GEM-2024-1247",
@@ -70,6 +74,7 @@ export function LatestCertifications({ onViewDetails }: LatestCertificationsProp
           <Button
             variant="outline"
             className="hidden md:flex border-[#006b4f] text-[#006b4f] hover:bg-[#006b4f] hover:text-white"
+            onClick={onViewAll}
           >
             Ver Todas
             <ExternalLink className="ml-2 h-4 w-4" />
@@ -95,9 +100,7 @@ export function LatestCertifications({ onViewDetails }: LatestCertificationsProp
                   variant={cert.status === "Certificado" ? "default" : "outline"}
                 >
                   <CheckCircle2 className="h-3 w-3 mr-1 text-[#006b4f]" />
-                  <span className="font-['Inter'] text-xs font-medium text-[#1b1b1b]">
-                    {cert.status}
-                  </span>
+                  {cert.status}
                 </Badge>
               </div>
 
@@ -141,12 +144,9 @@ export function LatestCertifications({ onViewDetails }: LatestCertificationsProp
                 {/* SpectralHash */}
                 <div className="pt-3 border-t border-[#e5e7eb]">
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-1.5">
-                      <Fingerprint className="h-3.5 w-3.5 text-[#006b4f]" />
-                      <span className="font-['Inter'] text-xs text-gray-500">
-                        SpectralHash
-                      </span>
-                    </div>
+                    <span className="font-['Inter'] text-xs text-gray-500">
+                      SpectralHash
+                    </span>
                     <code className="font-['Inter'] text-xs font-mono text-[#006b4f]">
                       {cert.spectralHash}
                     </code>
@@ -169,6 +169,7 @@ export function LatestCertifications({ onViewDetails }: LatestCertificationsProp
           <Button
             variant="outline"
             className="border-[#006b4f] text-[#006b4f]"
+            onClick={onViewAll}
           >
             Ver Todas as Certificações
             <ExternalLink className="ml-2 h-4 w-4" />

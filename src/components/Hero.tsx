@@ -4,36 +4,41 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { motion } from "framer-motion";
 import emeraldImage from "figma:asset/424e84f437a2a74f98b3ea6b5e52a92e38df01a6.png";
 
-export function Hero() {
+interface HeroProps {
+  onNavigateToVerification?: () => void;
+}
+
+export function Hero({ onNavigateToVerification }: HeroProps = {}) {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-white via-[#f0fdf4] to-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-32">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Column - Content */}
-          <div className="space-y-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#006b4f]/10 rounded-full">
-              <Shield className="h-4 w-4 text-[#006b4f]" />
-              <span className="font-['Inter'] text-sm text-[#006b4f]">
+          <div className="space-y-6 sm:space-y-8">
+            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-[#006b4f]/10 rounded-full">
+              <Shield className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#006b4f]" />
+              <span className="font-['Inter'] text-xs sm:text-sm text-[#006b4f]">
                 Certificação Blockchain de Esmeraldas
               </span>
             </div>
 
-            <div className="space-y-4">
-              <h1 className="font-['Inter'] text-4xl lg:text-5xl xl:text-6xl font-bold text-[#1b1b1b] leading-tight">
+            <div className="space-y-3 sm:space-y-4">
+              <h1 className="font-['Inter'] text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-[#1b1b1b] leading-tight">
                 Rastreabilidade e Certificação Digital de{" "}
                 <span className="text-[#006b4f]">Esmeraldas</span>
               </h1>
-              <p className="font-['Inter'] text-lg text-gray-600 max-w-xl">
+              <p className="font-['Inter'] text-base sm:text-lg text-gray-600 max-w-xl">
                 Tecnologia blockchain para garantir autenticidade, origem e
                 qualidade gemológica. De Campos Verdes para o mundo.
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <Button
                 size="lg"
                 variant="outline"
-                className="bg-[#006b4f] text-white hover:bg-[#014733] gap-2"
+                className="bg-[#006b4f] text-white hover:bg-[#014733] gap-2 w-full sm:w-auto min-h-[48px]"
+                onClick={onNavigateToVerification}
               >
                 Consultar Registry
                 <ArrowRight className="h-5 w-5" />
@@ -41,36 +46,36 @@ export function Hero() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-[#006b4f] text-[#006b4f] hover:bg-[#006b4f] hover:text-white"
+                className="border-[#006b4f] text-[#006b4f] hover:bg-[#006b4f] hover:text-white w-full sm:w-auto min-h-[48px]"
               >
                 Como Funciona
               </Button>
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-[#e5e7eb]">
+            <div className="grid grid-cols-3 gap-3 sm:gap-6 pt-6 sm:pt-8 border-t border-[#e5e7eb]">
               <div>
-                <div className="font-['Inter'] text-2xl font-bold text-[#006b4f]">
-                  1,247
+                <div className="font-['Inter'] text-xl sm:text-2xl font-bold text-[#006b4f]">
+                  Piloto
                 </div>
-                <div className="font-['Inter'] text-sm text-gray-600">
-                  Esmeraldas Certificadas
+                <div className="font-['Inter'] text-xs sm:text-sm text-gray-600">
+                  Certificação em validação
                 </div>
               </div>
               <div>
-                <div className="font-['Inter'] text-2xl font-bold text-[#006b4f]">
-                  23
+                <div className="font-['Inter'] text-xl sm:text-2xl font-bold text-[#006b4f]">
+                  Labs
                 </div>
-                <div className="font-['Inter'] text-sm text-gray-600">
-                  Labs Credenciados
+                <div className="font-['Inter'] text-xs sm:text-sm text-gray-600">
+                  Integração técnica em andamento
                 </div>
               </div>
               <div>
-                <div className="font-['Inter'] text-2xl font-bold text-[#006b4f]">
-                  342
+                <div className="font-['Inter'] text-xl sm:text-2xl font-bold text-[#006b4f]">
+                  Fase 2
                 </div>
-                <div className="font-['Inter'] text-sm text-gray-600">
-                  Lotes Rastreados
+                <div className="font-['Inter'] text-xs sm:text-sm text-gray-600">
+                  Rastreabilidade auditável
                 </div>
               </div>
             </div>
@@ -122,7 +127,79 @@ export function Hero() {
                           <animate attributeName="stop-opacity" values="0.8;0;0" dur="2s" repeatCount="indefinite" />
                         </stop>
                       </linearGradient>
+                      
+                      {/* Máscara para blur nas gemas */}
+                      <filter id="gemBlur">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="8" />
+                      </filter>
                     </defs>
+                    
+                    {/* Gemas de fundo assimétricas (camada mais profunda) */}
+                    {/* Gema grande no canto superior direito */}
+                    <image 
+                      href={emeraldImage} 
+                      x="55%" 
+                      y="5%" 
+                      width="35%" 
+                      height="35%" 
+                      opacity="0.15" 
+                      style={{filter: 'blur(8px)'}}
+                      transform="rotate(25 72 22)"
+                    >
+                      <animateTransform 
+                        attributeName="transform" 
+                        type="rotate" 
+                        from="25 72 22" 
+                        to="35 72 22" 
+                        dur="8s" 
+                        repeatCount="indefinite"
+                        additive="sum"
+                      />
+                    </image>
+                    
+                    {/* Gema média no canto inferior esquerdo */}
+                    <image 
+                      href={emeraldImage} 
+                      x="5%" 
+                      y="60%" 
+                      width="30%" 
+                      height="30%" 
+                      opacity="0.12" 
+                      style={{filter: 'blur(8px)'}}
+                      transform="rotate(-15 20 75)"
+                    >
+                      <animateTransform 
+                        attributeName="transform" 
+                        type="rotate" 
+                        from="-15 20 75" 
+                        to="-25 20 75" 
+                        dur="10s" 
+                        repeatCount="indefinite"
+                        additive="sum"
+                      />
+                    </image>
+                    
+                    {/* Gema pequena centralizada à esquerda */}
+                    <image 
+                      href={emeraldImage} 
+                      x="10%" 
+                      y="30%" 
+                      width="20%" 
+                      height="20%" 
+                      opacity="0.1" 
+                      style={{filter: 'blur(8px)'}}
+                      transform="rotate(45 20 40)"
+                    >
+                      <animateTransform 
+                        attributeName="transform" 
+                        type="rotate" 
+                        from="45 20 40" 
+                        to="55 20 40" 
+                        dur="12s" 
+                        repeatCount="indefinite"
+                        additive="sum"
+                      />
+                    </image>
                     
                     {/* Camada 1: Grid de fundo (profundidade) */}
                     <rect width="100%" height="100%" fill="url(#grid-small)" opacity="0.3" />
@@ -277,7 +354,7 @@ export function Hero() {
                       initial={{ scale: 0.95, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
                       transition={{ delay: 0.4, duration: 0.6 }}
-                      className="aspect-square bg-gradient-to-br from-[#006b4f]/20 to-[#014733]/20 rounded-2xl flex items-center justify-center overflow-hidden relative group/image cursor-pointer border border-cyan-500/30 shadow-lg shadow-cyan-500/10"
+                      className="aspect-square bg-gradient-to-br from-[#0a2e22]/30 via-[#0b221a]/30 to-[#081410]/55 rounded-2xl flex items-center justify-center overflow-hidden relative group/image cursor-pointer border border-cyan-500/30 shadow-lg shadow-cyan-500/10"
                     >
                       {/* Reflexo de luz superior */}
                       <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
@@ -286,11 +363,26 @@ export function Hero() {
                       <ImageWithFallback
                         src={emeraldImage}
                         alt="Esmeralda certificada com SpectralHash"
-                        className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out group-hover/image:scale-110 group-hover/image:brightness-110 mix-blend-lighten"
+                        className="absolute inset-0 w-full h-full object-contain transition-all duration-700 ease-out group-hover/image:scale-110 group-hover/image:brightness-110 mix-blend-lighten drop-shadow-[0_20px_34px_rgba(16,185,129,0.35)]"
+                        style={{ objectPosition: 'center' }}
                       />
                       
-                      {/* Overlay de rede criptográfica sobre a esmeralda */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#006b4f]/60 via-transparent to-cyan-500/10 group-hover/image:from-[#006b4f]/40 transition-all duration-700" />
+                      {/* Glow orgânico para evitar o "recorte quadrado" na base da gema */}
+                      <div className="absolute inset-0 pointer-events-none">
+                        <div className="absolute inset-x-[18%] -bottom-[7%] h-[34%] rounded-full bg-emerald-400/22 blur-3xl" />
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_70%,rgba(16,185,129,0.18)_0%,rgba(6,95,70,0.08)_34%,rgba(0,0,0,0)_64%)]" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-cyan-500/10" />
+              {/* Badge flutuante de impressão digital (coeso e sem conflito com "Validado") */}
+              <motion.div
+                initial={{ scale: 0, rotate: -10 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{ delay: 0.35, type: "spring", stiffness: 220 }}
+                whileHover={{ scale: 1.04 }}
+                className="absolute top-4 right-4 bg-gradient-to-br from-[#006b4f] to-[#014733] rounded-xl shadow-lg p-2.5 border border-white/80 cursor-pointer group/badge z-20"
+              >
+                <Fingerprint className="h-5 w-5 text-white group-hover/badge:scale-110 transition-transform" />
+              </motion.div>
+            </div>
                       
                       {/* Glow effect ao hover */}
                       <div className="absolute inset-0 opacity-0 group-hover/image:opacity-100 transition-opacity duration-700">
@@ -762,18 +854,6 @@ export function Hero() {
                 </div>
               </motion.div>
 
-              {/* Floating Badge EAS */}
-              <motion.div
-                initial={{ scale: 0, rotate: -45 }}
-                animate={{ scale: 1, rotate: 0 }}
-                transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                className="absolute -top-4 -right-4 bg-gradient-to-br from-[#006b4f] to-[#014733] rounded-2xl shadow-2xl p-4 border-2 border-white cursor-pointer group/badge"
-              >
-                <Fingerprint className="h-8 w-8 text-white group-hover/badge:scale-110 transition-transform" />
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-pulse" />
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-green-400/20 to-cyan-400/20 opacity-0 group-hover/badge:opacity-100 transition-opacity blur" />
-              </motion.div>
             </div>
 
             {/* Background Decoration - Tech Style com profundidade */}

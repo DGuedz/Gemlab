@@ -38,21 +38,30 @@ export function UserDashboard() {
     try {
       setLoading(true);
       
-      // Mock dashboard data (edge function not available)
-      const mockData = {
-        stats: {
-          totalAssets: 0,
-          totalValue: 0,
-          pendingVerifications: 0,
-          completedTransactions: 0,
-        },
-        recentActivity: [],
-        assets: [],
-      };
+      // Get access token from Supabase
+      const { data: { session } } = await supabase.auth.getSession();
       
-      setDashboardData(mockData);
+      if (!session?.access_token) {
+        console.log('No access token available');
+        setLoading(false);
+        return;
+      }
+
+      const response = await fetch(
+        `https://${projectId}.supabase.co/functions/v1/make-server-6272b4ab/user-data/dashboard`,
+        {
+          headers: {
+            'Authorization': `Bearer ${session.access_token}`,
+          },
+        }
+      );
+
+      if (response.ok) {
+        const data = await response.json();
+        setDashboardData(data);
+      }
     } catch (error) {
-      console.error('Error loading dashboard:', error);
+      console.error('Error loading dashboard data:', error);
     } finally {
       setLoading(false);
     }
@@ -78,9 +87,9 @@ export function UserDashboard() {
   // Default empty data structure
   const stats = dashboardData?.stats || {
     totalAssets: 0,
-    totalValue: 0,
-    pendingVerifications: 0,
-    completedTransactions: 0,
+    totalSales: 0,
+    totalRevenue: 0,
+    pendingTransactions: 0,
   };
 
   const assets = dashboardData?.assets || [];

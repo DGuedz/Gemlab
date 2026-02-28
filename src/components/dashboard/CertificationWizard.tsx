@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card } from "../ui/card";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
@@ -12,15 +12,16 @@ import {
   Upload,
   Image,
   Fingerprint,
-  Award,
+  Shield,
   Send,
   ChevronRight,
   ChevronLeft,
   Check,
   AlertCircle,
   Loader2,
+  Lock
 } from "lucide-react";
-import { Alert, AlertDescription } from "../ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "../ui/alert";
 
 interface CertificationData {
   // Step 1
@@ -47,14 +48,33 @@ interface CertificationData {
   gemologistNotes: string;
   pgpSignature: string;
   // Step 6
+  easUID: string;
+  // Step 7
   ipfsCid: string;
   nftTokenId: string;
 }
+
+import { CertificationServiceFactory } from "../../services/certificationService";
 
 export function CertificationWizard({ onClose }: { onClose: () => void }) {
   const [currentStep, setCurrentStep] = useState(1);
   const [isProcessing, setIsProcessing] = useState(false);
   const [data, setData] = useState<Partial<CertificationData>>({});
+  const [systemStatus, setSystemStatus] = useState<{ contractsPaused: boolean; maintenanceMode: boolean } | null>(null);
+  
+  const certService = CertificationServiceFactory.getInstance();
+
+  useEffect(() => {
+    const checkStatus = async () => {
+      try {
+        const status = await certService.checkSystemStatus();
+        setSystemStatus(status);
+      } catch (error) {
+        console.error("Failed to check system status:", error);
+      }
+    };
+    checkStatus();
+  }, []);
 
   const steps = [
     { number: 1, title: "Identificação", icon: FileText },
@@ -62,8 +82,11 @@ export function CertificationWizard({ onClose }: { onClose: () => void }) {
     { number: 3, title: "Espectro", icon: Fingerprint },
     { number: 4, title: "Gemologia", icon: Award },
     { number: 5, title: "Revisão", icon: Check },
-    { number: 6, title: "Tokenização", icon: Send },
+    { number: 6, title: "Atestado EAS", icon: Shield },
+    { number: 7, title: "Tokenização", icon: Send },
   ];
+
+  const isPaused = systemStatus?.contractsPaused || systemStatus?.maintenanceMode;
 
   const progress = (currentStep / steps.length) * 100;
 
@@ -79,29 +102,70 @@ export function CertificationWizard({ onClose }: { onClose: () => void }) {
     }
   };
 
-  const handleGenerateSpectralHash = () => {
+  const handleGenerateSpectralHash = async () => {
     setIsProcessing(true);
-    setTimeout(() => {
-      setData({ ...data, spectralHash: "0x" + Math.random().toString(16).substr(2, 8) });
+    try {
+      const hash = await certService.generateSpectralHash(data);
+      setData({ ...data, spectralHash: hash });
+    } catch (error) {
+      console.error("Error generating spectral hash:", error);
+      // TODO: Add user-facing error notification (e.g., toast)
+    } finally {
       setIsProcessing(false);
-    }, 2000);
+    }
   };
 
-  const handlePinAndMint = () => {
+  const handleGenerateAttestation = async () => {
     setIsProcessing(true);
-    setTimeout(() => {
+    try {
+      const uid = await certService.generateAttestation(data);
+      setData({ ...data, easUID: uid });
+    } catch (error) {
+      console.error("Error generating attestation:", error);
+      // TODO: Add user-facing error notification
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
+  const handlePinAndMint = async () => {
+    setIsProcessing(true);
+    try {
+      const result = await certService.mintNFT(data);
       setData({
         ...data,
-        ipfsCid: "QmX" + Math.random().toString(36).substr(2, 9),
-        nftTokenId: Math.floor(Math.random() * 10000).toString(),
+        ipfsCid: result.ipfsCid,
+        nftTokenId: result.nftTokenId,
       });
+    } catch (error) {
+      console.error("Error minting NFT:", error);
+      // TODO: Add user-facing error notification
+    } finally {
       setIsProcessing(false);
-    }, 3000);
+    }
   };
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <Card className="w-full max-w-4xl max-h-[90vh] overflow-y-auto">
+      <Card className="w-full max-w-4xl max-h-[90vh] overflow-y-auto relative">
+        {/* Paused/Maintenance Banner */}
+        {isPaused && (
+          <div className="absolute inset-0 bg-white/80 z-50 flex flex-col items-center justify-center backdrop-blur-sm p-8 text-center">
+            <div className="bg-amber-50 border border-amber-200 p-8 rounded-2xl max-w-md">
+              <Lock className="h-16 w-16 text-amber-600 mx-auto mb-4" />
+              <h3 className="text-xl font-bold text-amber-900 mb-2">
+                Sistema em Manutenção
+              </h3>
+              <p className="text-amber-700 mb-6">
+                A emissão de novos certificados está temporariamente pausada para atualizações de segurança ou manutenção da rede. Por favor, tente novamente mais tarde.
+              </p>
+              <Button onClick={onClose} variant="outline" className="border-amber-600 text-amber-700 hover:bg-amber-100">
+                Fechar Assistente
+              </Button>
+            </div>
+          </div>
+        )}
+
         {/* Header */}
         <div className="sticky top-0 bg-white border-b p-6 z-10">
           <div className="flex items-center justify-between mb-4">
@@ -574,8 +638,71 @@ export function CertificationWizard({ onClose }: { onClose: () => void }) {
             </div>
           )}
 
-          {/* Step 6: Pin IPFS e Mint NFT */}
+          {/* Step 6: EAS Attestation */}
           {currentStep === 6 && (
+            <div className="space-y-6">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-[#006b4f]/10 flex items-center justify-center">
+                  <Shield className="h-6 w-6 text-[#006b4f]" />
+                </div>
+                <div>
+                  <h3 className="font-['Inter'] text-lg font-semibold text-[#1b1b1b]">
+                    Atestado On-Chain (EAS)
+                  </h3>
+                  <p className="font-['Inter'] text-sm text-gray-600">
+                    Gerar atestado de certificação científica na blockchain (Ethereum Attestation Service)
+                  </p>
+                </div>
+              </div>
+
+              {!data.easUID ? (
+                <Card className="p-8 text-center border-2 border-[#e5e7eb]">
+                  <Shield className="h-16 w-16 text-[#006b4f] mx-auto mb-4" />
+                  <h4 className="font-['Inter'] font-semibold text-[#1b1b1b] mb-2">
+                    Pronto para Gerar Atestado
+                  </h4>
+                  <p className="font-['Inter'] text-sm text-gray-600 mb-6">
+                    O atestado conterá o hash espectral e os metadados da gema, garantindo a proveniência.
+                  </p>
+                  <Button
+                    onClick={handleGenerateAttestation}
+                    disabled={isProcessing}
+                    size="lg"
+                    className="bg-[#006b4f] text-white hover:bg-[#014733]"
+                  >
+                    {isProcessing ? (
+                      <>
+                        <Loader2 className="h-5 w-5 mr-2 animate-spin" />
+                        Gerando Atestado...
+                      </>
+                    ) : (
+                      <>
+                        <Shield className="h-5 w-5 mr-2" />
+                        Gerar Atestado EAS
+                      </>
+                    )}
+                  </Button>
+                </Card>
+              ) : (
+                <Alert className="bg-green-50 border-green-200">
+                  <Check className="h-4 w-4 text-green-600" />
+                  <AlertDescription>
+                    <div className="font-['Inter'] font-semibold text-green-900 mb-2">
+                      Atestado Gerado com Sucesso!
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <code className="font-['Inter'] font-mono text-sm bg-white px-3 py-1 rounded border border-green-200 break-all">
+                        UID: {data.easUID}
+                      </code>
+                    </div>
+                  </AlertDescription>
+                </Alert>
+              )}
+            </div>
+          )}
+
+          {/* Step 7: Pin IPFS e Mint NFT */}
+          {currentStep === 7 && (
             <div className="space-y-6">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 rounded-xl bg-[#006b4f]/10 flex items-center justify-center">

@@ -1,45 +1,39 @@
 # GEMLAB PROTOCOL (VSC Core)
 
-![Status](https://img.shields.io/badge/status-Stealth%20Mode-grey)
+![Status](https://img.shields.io/badge/status-Public%20Evaluation-0a7a5a)
 ![Architecture](https://img.shields.io/badge/architecture-VSC%20Compliant-blue)
-![Security](https://img.shields.io/badge/security-Enterprise%20Grade-red)
+![TRL](https://img.shields.io/badge/TRL-4--5%20atual%20%7C%205--6%20meta-f59e0b)
+![Security](https://img.shields.io/badge/security-Preflight%20%2B%20Secret%20Scan-16a34a)
+![Deploy](https://img.shields.io/badge/deploy-Vercel-111111?logo=vercel)
 
-> **Economy-First Blockchain Protocol for Real World Assets (RWA)**
+> Infraestrutura de confianca para ativos gemologicos com trilha verificavel: `Raman -> SpectralHash -> EAS -> Certificado + QR`.
 
----
+## Painel Executivo (1 tela)
 
-## 🔒 VSC (Value-Separated Control) Architecture
+| Bloco | Sintese objetiva |
+| --- | --- |
+| Problema | Cadeia de esmeraldas com baixa padronizacao tecnica e fragilidade documental, elevando risco comercial e de diligencia. |
+| Solucao | Infraestrutura B2B com prova de integridade: `Origem -> Raman -> SpectralHash -> EAS -> Certificado + QR`. |
+| Evidencias | [Plataforma live](https://gemlab-platform.vercel.app) · [Whitepaper PDF](./public/docs/whitepaper_tecnico_gemlab_fase2_centelha_2026-02-26.pdf) · [Arquitetura EAS](./docs/EAS_GEMLAB_ARQUITETURA.md) · [GO/NO-GO](./docs/CENTELHA_SUBMISSION_GO_NO_GO_2026-02-27.md) |
+| TRL e meta | TRL atual **4-5** (prototipo funcional + validacao tecnica). Meta **5-6** com piloto operacional ate a Feira das Esmeraldas 2026. |
 
-This repository contains the core implementation of the GEMLAB Protocol, architected under strict **VSC principles**:
+## Comece Aqui (Jurado)
 
-1.  **Value Layer (The Truth):** Off-chain scientific validation (Raman Spectroscopy) anchored via cryptographic hashes.
-2.  **Control Layer (The Rules):** Smart Contracts ensuring atomic settlement and fiscal compliance.
-3.  **Interface Layer (The View):** Decoupled front-ends for privacy and performance.
+1. **Visao rapida (3 min):** [`JURORS_START_HERE.md`](./JURORS_START_HERE.md)
+2. **Plataforma institucional (live):** https://gemlab-platform.vercel.app
+3. **Whitepaper tecnico (PDF):** [`public/docs/whitepaper_tecnico_gemlab_fase2_centelha_2026-02-26.pdf`](./public/docs/whitepaper_tecnico_gemlab_fase2_centelha_2026-02-26.pdf)
+4. **Checklist de prontidao:** [`docs/CENTELHA_SUBMISSION_GO_NO_GO_2026-02-27.md`](./docs/CENTELHA_SUBMISSION_GO_NO_GO_2026-02-27.md)
 
-### Core Features
+## O que este repositorio prova
 
-*   **Fail-Fast Validation:** Transactions revert immediately if required attestations (EAS) are missing.
-*   **Data Economy:** Heavy data (images, spectra) stored off-chain; only `bytes32` hashes touch the blockchain.
-*   **Zero-Trust Security:** Private keys managed via KMS/Env variables; strict role separation between Origin, Science, and Custody actors.
+- Arquitetura VSC e separacao entre dados sensiveis off-chain e provas on-chain.
+- Implementacao com EAS para atestacao e trilha auditavel.
+- Coerencia tecnica/comercial/regulatoria para avaliacao Centelha.
+- Boas praticas de seguranca para publicacao publica.
 
----
+## Links tecnicos essenciais
 
-## 🛠 Tech Stack
-
-*   **Smart Contracts:** Solidity ^0.8.20 (OpenZeppelin + EAS)
-*   **Validation:** Ethereum Attestation Service (EAS)
-*   **Framework:** Hardhat
-*   **Network:** Ethereum Sepolia (Testnet) / Mainnet
-
----
-
-## ⚠️ Private Repository Notice
-
-This project is currently in **Stealth Mode**.
-Access to source code, documentation, and deployment scripts is restricted to authorized personnel only.
-
-**Unauthorized use, copying, or distribution of this code is strictly prohibited.**
-
----
-
-*© 2026 GEMLAB Protocol. All Rights Reserved.*
+- Arquitetura EAS: [`docs/EAS_GEMLAB_ARQUITETURA.md`](./docs/EAS_GEMLAB_ARQUITETURA.md)
+- Hardening publico: [`docs/GITHUB_PUBLIC_HARDENING_CHECKLIST.md`](./docs/GITHUB_PUBLIC_HARDENING_CHECKLIST.md)
+- Guia detalhado de projeto: [`src/README.md`](./src/README.md)
+- Licenciamento segmentado: [`LICENSING.md`](./LICENSING.md)

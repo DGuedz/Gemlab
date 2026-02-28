@@ -25,6 +25,7 @@ import {
   Database,
   Heart
 } from "lucide-react";
+import { motion } from "motion/react";
 import { Card } from "../ui/card";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";

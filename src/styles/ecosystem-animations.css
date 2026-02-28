@@ -1,0 +1,203 @@
+/* Ecosystem Page Premium Animations */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.05);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Card Premium Hover Effects */
+.card-premium-hover {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-premium-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(202, 163, 75, 0.2);
+}
+
+/* Icon Rotate Animation */
+.icon-rotate-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.icon-rotate-hover:hover {
+  transform: scale(1.1) rotate(6deg);
+}
+
+/* Glassmorphism Enhanced */
+.glass-enhanced {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-enhanced:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(202, 163, 75, 0.5);
+}
+
+/* Gradient Orb Background */
+.gradient-orb-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.gradient-orb-bg::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(202, 163, 75, 0.15) 0%, transparent 70%);
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+/* Table Row Hover with Border Accent */
+.table-row-premium {
+  transition: all 0.3s ease;
+  border-left: 4px solid transparent;
+}
+
+.table-row-premium:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-left-color: #caa34b;
+}
+
+/* Badge Pulse Animation */
+.badge-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Numbered Badge Hover */
+.numbered-badge {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.numbered-badge:hover {
+  transform: scale(1.1) rotate(6deg);
+  box-shadow: 0 8px 16px rgba(202, 163, 75, 0.4);
+}
+
+/* Shimmer Loading Effect */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.shimmer-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  animation: shimmer 2s infinite;
+}
+
+/* Card Entrance Animation */
+@keyframes card-entrance {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.card-entrance {
+  animation: card-entrance 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Tooltip Animations */
+@keyframes tooltip-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tooltip-animate {
+  animation: tooltip-in 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Icon Glow Pulse */
+@keyframes icon-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 4px rgba(202, 163, 75, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 12px rgba(202, 163, 75, 0.6));
+  }
+}
+
+.icon-glow-hover:hover {
+  animation: icon-glow 2s ease-in-out infinite;
+}

@@ -42,7 +42,15 @@ export function AuthModal() {
       setSignUpPassword('');
       setSignUpName('');
     } catch (err: any) {
-      setError(err.message || 'Erro ao criar conta');
+      console.error('Sign up error:', err);
+      // Provide more helpful error messages
+      if (err.message?.includes('já está registrado')) {
+        setError('⚠️ Este email já possui uma conta. Por favor, faça login ou use outro email.');
+      } else if (err.message?.includes('Invalid login credentials')) {
+        setError('⚠️ Credenciais inválidas. Verifique seu email e senha.');
+      } else {
+        setError(err.message || 'Erro ao criar conta');
+      }
     } finally {
       setIsLoading(false);
     }
@@ -58,7 +66,15 @@ export function AuthModal() {
       await signInWithEmail(signInEmail, signInPassword);
       setSuccess('Login realizado com sucesso!');
     } catch (err: any) {
-      setError(err.message || 'Erro ao fazer login');
+      console.error('Sign in error:', err);
+      // Provide more helpful error messages
+      if (err.message?.includes('Invalid login credentials')) {
+        setError('⚠️ Email ou senha incorretos. Verifique suas credenciais e tente novamente.');
+      } else if (err.message?.includes('Email not confirmed')) {
+        setError('⚠️ Por favor, confirme seu email antes de fazer login.');
+      } else {
+        setError(err.message || 'Erro ao fazer login');
+      }
     } finally {
       setIsLoading(false);
     }

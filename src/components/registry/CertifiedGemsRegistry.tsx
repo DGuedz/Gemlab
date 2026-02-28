@@ -19,7 +19,6 @@ import {
 } from "lucide-react";
 import { RegistryFilters } from "./RegistryFilters";
 import { GemDetailModal } from "./GemDetailModal";
-import { EmeraldGlow } from "../icons/EmeraldGlow";
 
 interface CertifiedGem {
   uid: string;
@@ -261,7 +260,7 @@ export function CertifiedGemsRegistry() {
                   >
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center gap-2">
-                        <EmeraldGlow size={20} className="flex-shrink-0" />
+                        <Sparkles className="h-4 w-4 text-[#006b4f]" />
                         <code className="font-['Inter'] text-sm text-[#006b4f] font-mono">
                           {gem.uid}
                         </code>

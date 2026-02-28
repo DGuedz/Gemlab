@@ -1,0 +1,177 @@
+              {/* Card 1: Incentivo Político */}
+              <Card 
+                className="relative p-0 border border-white/20 bg-gradient-to-br from-[#1b1b1b] to-[#0a0a0a] hover:border-[#caa34b] transition-all duration-500 hover:shadow-[0_0_30px_rgba(202,163,75,0.3)] group overflow-hidden h-full flex flex-col"
+                style={{ clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))' }}
+                onMouseEnter={() => setHoveredCard('inc-pol')}
+                onMouseLeave={() => setHoveredCard(null)}
+              >
+                <svg className="absolute inset-0 w-full h-full opacity-5 group-hover:opacity-10 transition-opacity" preserveAspectRatio="xMidYMid slice">
+                  <pattern id="inc-grid-1" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#caa34b" strokeWidth="0.5"/>
+                  </pattern>
+                  <rect width="100%" height="100%" fill="url(#inc-grid-1)" />
+                </svg>
+                <svg className="absolute top-0 right-0 w-12 h-12 text-[#caa34b] opacity-30 group-hover:opacity-60 transition-opacity" viewBox="0 0 64 64">
+                  <line x1="64" y1="0" x2="64" y2="24" stroke="currentColor" strokeWidth="1" />
+                  <line x1="40" y1="0" x2="64" y2="0" stroke="currentColor" strokeWidth="1" />
+                </svg>
+                <div className="relative p-8 flex flex-col flex-1">
+                  <div className="flex items-start justify-between mb-6">
+                    <div className="flex items-center gap-4 flex-1">
+                      <div className="relative">
+                        <svg className="absolute inset-0 w-14 h-14 -left-1 -top-1" viewBox="0 0 100 100">
+                          <circle cx="50" cy="50" r="45" fill="none" stroke="#caa34b" strokeWidth="2" className="opacity-60 group-hover:opacity-100 transition-opacity" />
+                        </svg>
+                        <div className="bg-gradient-to-br from-[#caa34b] to-[#b8923f] text-white w-12 h-12 rounded-full flex items-center justify-center font-['Montserrat'] text-xl font-bold shadow-lg group-hover:scale-110 transition-all relative z-10">
+                          1
+                        </div>
+                      </div>
+                      <h4 className="font-['Montserrat'] text-xl font-bold text-white group-hover:text-[#caa34b] transition-colors">
+                        Incentivo Político Perpétuo
+                      </h4>
+                    </div>
+                    <div 
+                      className="font-['Inter'] font-mono text-[9px] text-[#caa34b] border border-[#caa34b]/30 px-2 py-1 rounded bg-[#caa34b]/5 hover:bg-[#caa34b]/20 transition-all cursor-pointer flex items-center gap-1"
+                      onClick={(e) => handleCopyNftId('#INC-001', e)}
+                    >
+                      <span>#INC-001</span>
+                      {copiedId === '#INC-001' ? <Check className="h-2.5 w-2.5" /> : <Copy className="h-2.5 w-2.5 opacity-0 hover:opacity-100 transition-opacity" />}
+                    </div>
+                  </div>
+                  <p className="font-['Inter'] text-sm lg:text-base text-white/80 leading-relaxed flex-1">
+                    Ao posicionar a{" "}
+                    <span className="font-bold text-white">
+                      Prefeitura como Validador de Origem (Oracle Fiscal)
+                    </span>
+                    , a arrecadação automática de impostos (CFEM/ISS) torna-se
+                    dependente da manutenção do sistema GEMLAB. Isso cria um{" "}
+                    <span className="font-bold text-white">
+                      incentivo político perpétuo
+                    </span>{" "}
+                    para manter o projeto rodando, independente da gestão.
+                  </p>
+                  <div className="absolute bottom-0 left-0 right-0 h-1">
+                    <svg className="w-full h-full"><rect width="100%" height="100%" fill="url(#doc-bottom-1)" className="group-hover:opacity-100 opacity-50 transition-opacity" /></svg>
+                  </div>
+                </div>
+              </Card>
+
+              {/* Card 2: Garantia de Lastro */}
+              <Card 
+                className="relative p-0 border border-white/20 bg-gradient-to-br from-[#1b1b1b] to-[#0a0a0a] hover:border-[#caa34b] transition-all duration-500 hover:shadow-[0_0_30px_rgba(202,163,75,0.3)] group overflow-hidden h-full flex flex-col"
+                style={{ clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))', animationDelay: '100ms' }}
+                onMouseEnter={() => setHoveredCard('inc-lastro')}
+                onMouseLeave={() => setHoveredCard(null)}
+              >
+                <svg className="absolute inset-0 w-full h-full opacity-5 group-hover:opacity-10 transition-opacity" preserveAspectRatio="xMidYMid slice">
+                  <pattern id="inc-grid-2" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#caa34b" strokeWidth="0.5"/>
+                  </pattern>
+                  <rect width="100%" height="100%" fill="url(#inc-grid-2)" />
+                </svg>
+                <svg className="absolute top-0 right-0 w-12 h-12 text-[#caa34b] opacity-30 group-hover:opacity-60 transition-opacity" viewBox="0 0 64 64">
+                  <line x1="64" y1="0" x2="64" y2="24" stroke="currentColor" strokeWidth="1" />
+                  <line x1="40" y1="0" x2="64" y2="0" stroke="currentColor" strokeWidth="1" />
+                </svg>
+                <div className="relative p-8 flex flex-col flex-1">
+                  <div className="flex items-start justify-between mb-6">
+                    <div className="flex items-center gap-4 flex-1">
+                      <div className="relative">
+                        <svg className="absolute inset-0 w-14 h-14 -left-1 -top-1" viewBox="0 0 100 100">
+                          <circle cx="50" cy="50" r="45" fill="none" stroke="#caa34b" strokeWidth="2" className="opacity-60 group-hover:opacity-100 transition-opacity" />
+                        </svg>
+                        <div className="bg-gradient-to-br from-[#caa34b] to-[#b8923f] text-white w-12 h-12 rounded-full flex items-center justify-center font-['Montserrat'] text-xl font-bold shadow-lg group-hover:scale-110 transition-all relative z-10">
+                          2
+                        </div>
+                      </div>
+                      <h4 className="font-['Montserrat'] text-xl font-bold text-white group-hover:text-[#caa34b] transition-colors">
+                        Garantia de Lastro
+                      </h4>
+                    </div>
+                    <div 
+                      className="font-['Inter'] font-mono text-[9px] text-[#caa34b] border border-[#caa34b]/30 px-2 py-1 rounded bg-[#caa34b]/5 hover:bg-[#caa34b]/20 transition-all cursor-pointer flex items-center gap-1"
+                      onClick={(e) => handleCopyNftId('#INC-002', e)}
+                    >
+                      <span>#INC-002</span>
+                      {copiedId === '#INC-002' ? <Check className="h-2.5 w-2.5" /> : <Copy className="h-2.5 w-2.5 opacity-0 hover:opacity-100 transition-opacity" />}
+                    </div>
+                  </div>
+                  <p className="font-['Inter'] text-sm lg:text-base text-white/80 leading-relaxed flex-1">
+                    Se o Underground Vault (custodiante) falhar em renovar o{" "}
+                    <span className="font-bold text-white">
+                      Atestado de Custódia
+                    </span>
+                    , o token{" "}
+                    <span className="font-bold text-white">
+                      perde valor ou é pausado
+                    </span>
+                    , expondo o risco em{" "}
+                    <span className="font-bold text-white">tempo real</span>{" "}
+                    para o investidor e para a CVM.
+                  </p>
+                  <div className="absolute bottom-0 left-0 right-0 h-1">
+                    <svg className="w-full h-full"><rect width="100%" height="100%" fill="url(#doc-bottom-1)" className="group-hover:opacity-100 opacity-50 transition-opacity" /></svg>
+                  </div>
+                </div>
+              </Card>
+
+              {/* Card 3: Segurança */}
+              <Card 
+                className="relative p-0 border border-white/20 bg-gradient-to-br from-[#1b1b1b] to-[#0a0a0a] hover:border-[#caa34b] transition-all duration-500 hover:shadow-[0_0_30px_rgba(202,163,75,0.3)] group overflow-hidden h-full flex flex-col"
+                style={{ clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))', animationDelay: '200ms' }}
+                onMouseEnter={() => setHoveredCard('inc-seg')}
+                onMouseLeave={() => setHoveredCard(null)}
+              >
+                <svg className="absolute inset-0 w-full h-full opacity-5 group-hover:opacity-10 transition-opacity" preserveAspectRatio="xMidYMid slice">
+                  <pattern id="inc-grid-3" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#caa34b" strokeWidth="0.5"/>
+                  </pattern>
+                  <rect width="100%" height="100%" fill="url(#inc-grid-3)" />
+                </svg>
+                <svg className="absolute top-0 right-0 w-12 h-12 text-[#caa34b] opacity-30 group-hover:opacity-60 transition-opacity" viewBox="0 0 64 64">
+                  <line x1="64" y1="0" x2="64" y2="24" stroke="currentColor" strokeWidth="1" />
+                  <line x1="40" y1="0" x2="64" y2="0" stroke="currentColor" strokeWidth="1" />
+                </svg>
+                <div className="relative p-8 flex flex-col flex-1">
+                  <div className="flex items-start justify-between mb-6">
+                    <div className="flex items-center gap-4 flex-1">
+                      <div className="relative">
+                        <svg className="absolute inset-0 w-14 h-14 -left-1 -top-1" viewBox="0 0 100 100">
+                          <circle cx="50" cy="50" r="45" fill="none" stroke="#caa34b" strokeWidth="2" className="opacity-60 group-hover:opacity-100 transition-opacity" />
+                        </svg>
+                        <div className="bg-gradient-to-br from-[#caa34b] to-[#b8923f] text-white w-12 h-12 rounded-full flex items-center justify-center font-['Montserrat'] text-xl font-bold shadow-lg group-hover:scale-110 transition-all relative z-10">
+                          3
+                        </div>
+                      </div>
+                      <h4 className="font-['Montserrat'] text-xl font-bold text-white group-hover:text-[#caa34b] transition-colors">
+                        Segurança para o Investidor
+                      </h4>
+                    </div>
+                    <div 
+                      className="font-['Inter'] font-mono text-[9px] text-[#caa34b] border border-[#caa34b]/30 px-2 py-1 rounded bg-[#caa34b]/5 hover:bg-[#caa34b]/20 transition-all cursor-pointer flex items-center gap-1"
+                      onClick={(e) => handleCopyNftId('#INC-003', e)}
+                    >
+                      <span>#INC-003</span>
+                      {copiedId === '#INC-003' ? <Check className="h-2.5 w-2.5" /> : <Copy className="h-2.5 w-2.5 opacity-0 hover:opacity-100 transition-opacity" />}
+                    </div>
+                  </div>
+                  <p className="font-['Inter'] text-sm lg:text-base text-white/80 leading-relaxed flex-1">
+                    A{" "}
+                    <span className="font-bold text-white">
+                      "corrente de atestados"
+                    </span>{" "}
+                    assinados por todas as partes funciona como{" "}
+                    <span className="font-bold text-white">
+                      prova judicial de propriedade
+                    </span>{" "}
+                    para o investidor em caso de falência, garantindo a{" "}
+                    <span className="font-bold text-white">
+                      segregação patrimonial clara
+                    </span>
+                    .
+                  </p>
+                  <div className="absolute bottom-0 left-0 right-0 h-1">
+                    <svg className="w-full h-full"><rect width="100%" height="100%" fill="url(#doc-bottom-1)" className="group-hover:opacity-100 opacity-50 transition-opacity" /></svg>
+                  </div>
+                </div>
+              </Card>

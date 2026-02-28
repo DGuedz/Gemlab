@@ -7,7 +7,6 @@ import { Label } from "../ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 import {
   Shield,
-  Users,
   Settings,
   Activity,
   UserCheck,
@@ -17,8 +16,6 @@ import {
   AlertTriangle,
   CheckCircle2,
   Clock,
-  TrendingUp,
-  FileCheck,
   Eye,
 } from "lucide-react";
 import { Alert, AlertDescription } from "../ui/alert";
@@ -139,72 +136,7 @@ export function AdminPanel() {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* System Stats */}
-        <div className="grid md:grid-cols-4 gap-6 mb-8">
-          <Card className="p-6 border-2 border-[#e5e7eb]">
-            <div className="flex items-center justify-between mb-4">
-              <Users 
-                className="h-8 w-8 text-[#006b4f]" 
-                style={{ filter: 'drop-shadow(0 2px 4px rgba(0, 107, 79, 0.4))' }}
-              />
-              <Badge className="bg-blue-100 text-blue-700">Usuários</Badge>
-            </div>
-            <div className="font-['Inter'] text-3xl font-bold text-[#1b1b1b] mb-1">
-              {systemStats.totalUsers.toLocaleString()}
-            </div>
-            <div className="font-['Inter'] text-sm text-gray-600">
-              Participantes ativos
-            </div>
-          </Card>
-
-          <Card className="p-6 border-2 border-[#e5e7eb]">
-            <div className="flex items-center justify-between mb-4">
-              <FileCheck 
-                className="h-8 w-8 text-[#caa34b]" 
-                style={{ filter: 'drop-shadow(0 2px 4px rgba(202, 163, 75, 0.5))' }}
-              />
-              <Badge className="bg-purple-100 text-purple-700">Contratos</Badge>
-            </div>
-            <div className="font-['Inter'] text-3xl font-bold text-[#1b1b1b] mb-1">
-              {systemStats.activeContracts}
-            </div>
-            <div className="font-['Inter'] text-sm text-gray-600">
-              Contratos deployados
-            </div>
-          </Card>
-
-          <Card className="p-6 border-2 border-[#e5e7eb]">
-            <div className="flex items-center justify-between mb-4">
-              <Activity 
-                className="h-8 w-8 text-[#014733]" 
-                style={{ filter: 'drop-shadow(0 2px 4px rgba(1, 71, 51, 0.4))' }}
-              />
-              <Badge className="bg-green-100 text-green-700">24h</Badge>
-            </div>
-            <div className="font-['Inter'] text-3xl font-bold text-[#1b1b1b] mb-1">
-              {systemStats.totalTransactions.toLocaleString()}
-            </div>
-            <div className="font-['Inter'] text-sm text-gray-600">
-              Transações totais
-            </div>
-          </Card>
-
-          <Card className="p-6 border-2 border-[#e5e7eb]">
-            <div className="flex items-center justify-between mb-4">
-              <TrendingUp 
-                className="h-8 w-8 text-green-600" 
-                style={{ filter: 'drop-shadow(0 2px 4px rgba(22, 163, 74, 0.4))' }}
-              />
-              <Badge className="bg-orange-100 text-orange-700">TVL</Badge>
-            </div>
-            <div className="font-['Inter'] text-3xl font-bold text-[#1b1b1b] mb-1">
-              {systemStats.totalValueLocked}
-            </div>
-            <div className="font-['Inter'] text-sm text-gray-600">
-              Valor total bloqueado
-            </div>
-          </Card>
-        </div>
+        {/* System Stats Removed for Simplification */}
 
         {/* Main Tabs */}
         <Tabs defaultValue="roles" className="space-y-6">
