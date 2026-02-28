@@ -35,5 +35,6 @@
 
 - Arquitetura EAS: [`docs/EAS_GEMLAB_ARQUITETURA.md`](./docs/EAS_GEMLAB_ARQUITETURA.md)
 - Hardening publico: [`docs/GITHUB_PUBLIC_HARDENING_CHECKLIST.md`](./docs/GITHUB_PUBLIC_HARDENING_CHECKLIST.md)
+- Baseline de seguranca: [`docs/SECURITY_BASELINE_2026-02-28.md`](./docs/SECURITY_BASELINE_2026-02-28.md)
 - Guia detalhado de projeto: [`src/README.md`](./src/README.md)
 - Licenciamento segmentado: [`LICENSING.md`](./LICENSING.md)

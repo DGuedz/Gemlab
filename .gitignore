@@ -14,5 +14,6 @@ vercel-debug.log
 *.key
 gcp-oauth.keys.json
 .gdrive-server-credentials.json
+google-service-account*.json
 .vercel
 security/reports/
